@@ -1,0 +1,52 @@
+/* Settings (Nov 6 reorganization): grouped rows like the iPhone's own Settings, switches instead of checkboxes */
+.stg { padding-bottom: 40px; }
+.st-group { margin-top: 22px; }
+.st-title { margin: 0 0 8px 6px; font: 600 13px/1.2 var(--font-body), system-ui, sans-serif; color: var(--ink-3); text-transform: none; letter-spacing: 0; }
+.st-card { border-radius: 18px; background: var(--surface); overflow: hidden; }
+.st-card > * + * { box-shadow: inset 0 1px 0 var(--line); }
+.st-foot { margin: 8px 6px 0; font-size: 13px; line-height: 1.4; color: var(--ink-3); }
+.st-row, .st-card > .field.toggle, .st-line { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px; color: var(--ink);
+  text-decoration: none; font: 500 16px/1.25 var(--font-body), system-ui, sans-serif; text-transform: none; letter-spacing: 0; }
+.st-row:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.st-ico { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; }
+.st-ico svg { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.st-name { flex: 1; min-width: 0; }
+.st-name small { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-3); font-weight: 400; }
+.st-val { display: inline-flex; align-items: center; gap: 4px; color: var(--ink-3); font-size: 15px; text-align: right; max-width: 55%; }
+.st-chev { color: var(--ink-3); font-size: 22px; line-height: 1; margin-left: -2px; }
+.st-books { display: inline-flex; }
+.st-books > * + * { margin-left: -6px; }
+
+/* a switch: the checkbox drawn as the iPhone's toggle */
+.stg .field.toggle { justify-content: space-between; }
+.stg .field.toggle .st-name { flex: 1; }
+.stg .field.toggle input[type="checkbox"] { order: 2; appearance: none; -webkit-appearance: none; flex: none; width: 51px; height: 31px; margin: 0;
+  border-radius: 16px; background: var(--sunk); position: relative; cursor: pointer; transition: background .2s ease; }
+.stg .field.toggle input[type="checkbox"]::after { content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%;
+  background: #fff; box-shadow: 0 2px 4px rgb(0 0 0 / .25); transition: transform .2s ease; }
+.stg .field.toggle input[type="checkbox"]:checked { background: var(--pos); }
+.stg .field.toggle input[type="checkbox"]:checked::after { transform: translateX(20px); }
+.stg .field.toggle input[type="checkbox"]:disabled { opacity: .6; }
+@media (prefers-reduced-motion: reduce) { .stg .field.toggle input, .stg .field.toggle input::after { transition: none; } }
+
+/* the account card at the top */
+.st-me { display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 22px; background: var(--surface); color: inherit; text-decoration: none; margin-top: 8px; }
+.st-me .fr-avatar { flex: none; }
+.st-me b { display: block; font: 800 20px/1.15 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.st-me > span:last-child > span { color: var(--ink-3); font-size: 14px; }
+
+/* a field inside a card row (units, dates, times) */
+.st-field { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 6px 14px; font: 500 16px var(--font-body), system-ui, sans-serif; }
+.st-field span { flex: 1; }
+.st-field input { width: 150px; text-align: right; background: transparent; border: 0; color: var(--ink); font: 600 16px var(--font-body); padding: 8px 0; }
+.st-field input:focus { outline: none; box-shadow: inset 0 -2px 0 var(--accent); }
+
+/* sports as chips */
+.st-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; }
+.st-chips button { min-height: 38px; padding: 0 14px; border-radius: 19px; border: 0; background: var(--sunk); color: var(--ink-3);
+  font: 600 14px var(--font-body); cursor: pointer; }
+.st-chips button[aria-pressed="true"] { background: color-mix(in srgb, var(--pos) 18%, transparent); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--pos); }
+.st-out { display: block; width: 100%; min-height: 52px; border: 0; background: var(--surface); border-radius: 18px; color: var(--neg);
+  font: 600 16px var(--font-body); cursor: pointer; margin-top: 22px; }
+.st-status { padding: 12px 14px; font-size: 14px; color: var(--ink-3); }
+.st-looks { padding: 12px; }

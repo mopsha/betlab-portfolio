@@ -1,0 +1,930 @@
+{
+ "_about": "Ladder challenges (Oct 26): web/lib/ladder.ts and ios/BetLab/Me/Ladder.swift must answer these alike. A step: stake, price, status (open/won/lost/push/void), optional bonus, boost (percent), cashout (units back). stack = start + each settled step's profit. step_names (Nov 6): a step reads as its legs (a single its leg, a parlay by who is in it) before the slip reader's label ('$10.4 cash'); no legs, the label; nothing, the matchup.",
+ "states": [
+  {
+   "name": "fresh ladder waits for its first step",
+   "ladder": {
+    "start": 1,
+    "target": 100
+   },
+   "steps": [],
+   "expect": {
+    "phase": "next step",
+    "stack": 1,
+    "won": 0,
+    "next_stake": 1
+   }
+  },
+  {
+   "name": "one even-money win doubles the stack",
+   "ladder": {
+    "start": 1,
+    "target": 100
+   },
+   "steps": [
+    {
+     "stake": 1,
+     "price": 100,
+     "status": "won"
+    }
+   ],
+   "expect": {
+    "phase": "next step",
+    "stack": 2,
+    "won": 1,
+    "next_stake": 2
+   }
+  },
+  {
+   "name": "a step in play",
+   "ladder": {
+    "start": 1,
+    "target": 100
+   },
+   "steps": [
+    {
+     "stake": 1,
+     "price": -110,
+     "status": "won"
+    },
+    {
+     "stake": 1.909091,
+     "price": 150,
+     "status": "open"
+    }
+   ],
+   "expect": {
+    "phase": "in play",
+    "stack": 1.909091,
+    "won": 1,
+    "next_stake": null,
+    "to_win": 2.863636
+   }
+  },
+  {
+   "name": "a lost step with the whole stack busts it",
+   "ladder": {
+    "start": 1,
+    "target": 100
+   },
+   "steps": [
+    {
+     "stake": 1,
+     "price": 100,
+     "status": "won"
+    },
+    {
+     "stake": 2,
+     "price": -120,
+     "status": "lost"
+    }
+   ],
+   "expect": {
+    "phase": "busted",
+    "stack": 0,
+    "won": 1,
+    "next_stake": null
+   }
+  },
+  {
+   "name": "a push keeps the stack",
+   "ladder": {
+    "start": 2,
+    "target": 10
+   },
+   "steps": [
+    {
+     "stake": 2,
+     "price": -110,
+     "status": "push"
+    }
+   ],
+   "expect": {
+    "phase": "next step",
+    "stack": 2,
+    "won": 0,
+    "next_stake": 2
+   }
+  },
+  {
+   "name": "part of the stack held back survives a loss",
+   "ladder": {
+    "start": 4,
+    "target": 40
+   },
+   "steps": [
+    {
+     "stake": 3,
+     "price": 120,
+     "status": "lost"
+    }
+   ],
+   "expect": {
+    "phase": "next step",
+    "stack": 1,
+    "won": 0,
+    "next_stake": 1
+   }
+  },
+  {
+   "name": "a boost multiplies a step's profit",
+   "ladder": {
+    "start": 1,
+    "target": 100
+   },
+   "steps": [
+    {
+     "stake": 1,
+     "price": 100,
+     "status": "won",
+     "boost": 50
+    }
+   ],
+   "expect": {
+    "phase": "next step",
+    "stack": 2.5,
+    "won": 1,
+    "next_stake": 2.5
+   }
+  },
+  {
+   "name": "a cash-out settles at what came back",
+   "ladder": {
+    "start": 2,
+    "target": 20
+   },
+   "steps": [
+    {
+     "stake": 2,
+     "price": 200,
+     "status": "open",
+     "cashout": 3.5
+    }
+   ],
+   "expect": {
+    "phase": "next step",
+    "stack": 3.5,
+    "won": 0,
+    "next_stake": 3.5
+   }
+  },
+  {
+   "name": "reaching the target climbs it",
+   "ladder": {
+    "start": 1,
+    "target": 4
+   },
+   "steps": [
+    {
+     "stake": 1,
+     "price": 100,
+     "status": "won"
+    },
+    {
+     "stake": 2,
+     "price": 100,
+     "status": "won"
+    }
+   ],
+   "expect": {
+    "phase": "climbed",
+    "stack": 4,
+    "won": 2,
+    "next_stake": null
+   }
+  },
+  {
+   "name": "a stopped ladder stays stopped",
+   "ladder": {
+    "start": 1,
+    "target": 100,
+    "status": "stopped"
+   },
+   "steps": [
+    {
+     "stake": 1,
+     "price": 100,
+     "status": "won"
+    }
+   ],
+   "expect": {
+    "phase": "stopped",
+    "stack": 2,
+    "won": 1,
+    "next_stake": null
+   }
+  }
+ ],
+ "suggest": [
+  {
+   "name": "the best pick before any lean, inside the price range",
+   "now": "2026-10-31T12:00:00Z",
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -105,
+     "ev": 0.09,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-big",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": -115,
+     "ev": 0.03,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 120,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-b",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 400,
+     "ev": 0.2,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-long",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": -400,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-chalk",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.08,
+     "commence_time": "2026-10-31T12:10:00Z",
+     "offer_id": "pick-soon",
+     "game_id": "g3"
+    },
+    {
+     "tier": "check",
+     "price": 100,
+     "ev": 0.3,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "check",
+     "game_id": "g2"
+    }
+   ],
+   "expect": "pick-b"
+  },
+  {
+   "name": "no pick fits: the best lean",
+   "now": "2026-10-31T12:00:00Z",
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -130,
+     "ev": 0.02,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "lean",
+     "price": 110,
+     "ev": 0.025,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-b",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": -0.01,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-neg",
+     "game_id": "g1"
+    }
+   ],
+   "expect": "lean-b"
+  },
+  {
+   "name": "nothing fits",
+   "now": "2026-10-31T12:00:00Z",
+   "offers": [
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T11:00:00Z",
+     "offer_id": "started",
+     "game_id": "g1"
+    }
+   ],
+   "expect": null
+  },
+  {
+   "name": "a turned-down suggestion makes way for the next best",
+   "now": "2026-10-31T12:00:00Z",
+   "skipped": [
+    "pick-b"
+   ],
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -105,
+     "ev": 0.09,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-big",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": -115,
+     "ev": 0.03,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 120,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-b",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 400,
+     "ev": 0.2,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-long",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": -400,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-chalk",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.08,
+     "commence_time": "2026-10-31T12:10:00Z",
+     "offer_id": "pick-soon",
+     "game_id": "g3"
+    },
+    {
+     "tier": "check",
+     "price": 100,
+     "ev": 0.3,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "check",
+     "game_id": "g2"
+    }
+   ],
+   "expect": "pick-a"
+  },
+  {
+   "name": "every pick turned down: the best lean",
+   "now": "2026-10-31T12:00:00Z",
+   "skipped": [
+    "pick-b",
+    "pick-a"
+   ],
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -105,
+     "ev": 0.09,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-big",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": -115,
+     "ev": 0.03,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 120,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-b",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 400,
+     "ev": 0.2,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-long",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": -400,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-chalk",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.08,
+     "commence_time": "2026-10-31T12:10:00Z",
+     "offer_id": "pick-soon",
+     "game_id": "g3"
+    },
+    {
+     "tier": "check",
+     "price": 100,
+     "ev": 0.3,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "check",
+     "game_id": "g2"
+    }
+   ],
+   "expect": "lean-big"
+  },
+  {
+   "name": "one game: its best step, picks first",
+   "now": "2026-10-31T12:00:00Z",
+   "game": "g1",
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -105,
+     "ev": 0.09,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-big",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": -115,
+     "ev": 0.03,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 120,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-b",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 400,
+     "ev": 0.2,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-long",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": -400,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-chalk",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.08,
+     "commence_time": "2026-10-31T12:10:00Z",
+     "offer_id": "pick-soon",
+     "game_id": "g3"
+    },
+    {
+     "tier": "check",
+     "price": 100,
+     "ev": 0.3,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "check",
+     "game_id": "g2"
+    }
+   ],
+   "expect": "pick-a"
+  },
+  {
+   "name": "one game, its pick turned down: the next option there",
+   "now": "2026-10-31T12:00:00Z",
+   "game": "g1",
+   "skipped": [
+    "pick-a"
+   ],
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -105,
+     "ev": 0.09,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-big",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": -115,
+     "ev": 0.03,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 120,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-b",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 400,
+     "ev": 0.2,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-long",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": -400,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-chalk",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.08,
+     "commence_time": "2026-10-31T12:10:00Z",
+     "offer_id": "pick-soon",
+     "game_id": "g3"
+    },
+    {
+     "tier": "check",
+     "price": 100,
+     "ev": 0.3,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "check",
+     "game_id": "g2"
+    }
+   ],
+   "expect": "lean-big"
+  },
+  {
+   "name": "one game with nothing left",
+   "now": "2026-10-31T12:00:00Z",
+   "game": "g3",
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -105,
+     "ev": 0.09,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-big",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": -115,
+     "ev": 0.03,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 120,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-b",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 400,
+     "ev": 0.2,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-long",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": -400,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-chalk",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.08,
+     "commence_time": "2026-10-31T12:10:00Z",
+     "offer_id": "pick-soon",
+     "game_id": "g3"
+    },
+    {
+     "tier": "check",
+     "price": 100,
+     "ev": 0.3,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "check",
+     "game_id": "g2"
+    }
+   ],
+   "expect": null
+  },
+  {
+   "name": "today only: a better game tomorrow doesn't count",
+   "now": "2026-10-31T12:00:00Z",
+   "before": "2026-10-31T19:00:00Z",
+   "offers": [
+    {
+     "tier": "lean",
+     "price": -105,
+     "ev": 0.09,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "lean-big",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": -115,
+     "ev": 0.03,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "offer_id": "pick-a",
+     "game_id": "g1"
+    },
+    {
+     "tier": "pick",
+     "price": 120,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-b",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 400,
+     "ev": 0.2,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-long",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": -400,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "pick-chalk",
+     "game_id": "g2"
+    },
+    {
+     "tier": "pick",
+     "price": 100,
+     "ev": 0.08,
+     "commence_time": "2026-10-31T12:10:00Z",
+     "offer_id": "pick-soon",
+     "game_id": "g3"
+    },
+    {
+     "tier": "check",
+     "price": 100,
+     "ev": 0.3,
+     "commence_time": "2026-10-31T20:00:00Z",
+     "offer_id": "check",
+     "game_id": "g2"
+    }
+   ],
+   "expect": "pick-a"
+  },
+  {
+   "name": "any book: the best price wherever it is",
+   "now": "2026-10-31T12:00:00Z",
+   "offers": [
+    {
+     "offer_id": "dk-only",
+     "tier": "pick",
+     "game_id": "g1",
+     "price": 105,
+     "ev": 0.06,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "DraftKings",
+     "point": 4.5,
+     "other_book": "FanDuel",
+     "other_point": 3.5,
+     "other_price": -188,
+     "other_ev": -0.047
+    },
+    {
+     "offer_id": "dk-both",
+     "tier": "pick",
+     "game_id": "g1",
+     "price": 110,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "DraftKings",
+     "point": -2.5,
+     "other_book": "FanDuel",
+     "other_point": -2.5,
+     "other_price": 100,
+     "other_ev": 0.03
+    },
+    {
+     "offer_id": "fd-lean",
+     "tier": "lean",
+     "game_id": "g2",
+     "price": -110,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "FanDuel",
+     "point": 44.5
+    }
+   ],
+   "expect": "dk-only"
+  },
+  {
+   "name": "at FanDuel: a line FanDuel posts at another number is out; one it posts at the same number counts at its price",
+   "now": "2026-10-31T12:00:00Z",
+   "book": "FanDuel",
+   "offers": [
+    {
+     "offer_id": "dk-only",
+     "tier": "pick",
+     "game_id": "g1",
+     "price": 105,
+     "ev": 0.06,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "DraftKings",
+     "point": 4.5,
+     "other_book": "FanDuel",
+     "other_point": 3.5,
+     "other_price": -188,
+     "other_ev": -0.047
+    },
+    {
+     "offer_id": "dk-both",
+     "tier": "pick",
+     "game_id": "g1",
+     "price": 110,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "DraftKings",
+     "point": -2.5,
+     "other_book": "FanDuel",
+     "other_point": -2.5,
+     "other_price": 100,
+     "other_ev": 0.03
+    },
+    {
+     "offer_id": "fd-lean",
+     "tier": "lean",
+     "game_id": "g2",
+     "price": -110,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "FanDuel",
+     "point": 44.5
+    }
+   ],
+   "expect": "dk-both",
+   "expect_price": 100
+  },
+  {
+   "name": "at Novig: nothing posted there",
+   "now": "2026-10-31T12:00:00Z",
+   "book": "Novig",
+   "offers": [
+    {
+     "offer_id": "dk-only",
+     "tier": "pick",
+     "game_id": "g1",
+     "price": 105,
+     "ev": 0.06,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "DraftKings",
+     "point": 4.5,
+     "other_book": "FanDuel",
+     "other_point": 3.5,
+     "other_price": -188,
+     "other_ev": -0.047
+    },
+    {
+     "offer_id": "dk-both",
+     "tier": "pick",
+     "game_id": "g1",
+     "price": 110,
+     "ev": 0.05,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "DraftKings",
+     "point": -2.5,
+     "other_book": "FanDuel",
+     "other_point": -2.5,
+     "other_price": 100,
+     "other_ev": 0.03
+    },
+    {
+     "offer_id": "fd-lean",
+     "tier": "lean",
+     "game_id": "g2",
+     "price": -110,
+     "ev": 0.04,
+     "commence_time": "2026-10-31T17:00:00Z",
+     "book": "FanDuel",
+     "point": 44.5
+    }
+   ],
+   "expect": null
+  }
+ ],
+ "steps_to_target": [
+  {
+   "stack": 1,
+   "target": 100,
+   "price": 100,
+   "expect": 7
+  },
+  {
+   "stack": 1,
+   "target": 100,
+   "price": -110,
+   "expect": 8
+  },
+  {
+   "stack": 50,
+   "target": 100,
+   "price": 100,
+   "expect": 1
+  },
+  {
+   "stack": 120,
+   "target": 100,
+   "price": 100,
+   "expect": 0
+  }
+ ],
+ "step_names": [
+  {
+   "legs": [
+    "Rashod Bateman over 1.5 receptions"
+   ],
+   "label": "$10.4 cash",
+   "matchup": "Jacksonville Jaguars @ Baltimore Ravens",
+   "expect": "Rashod Bateman over 1.5 receptions"
+  },
+  {
+   "legs": [
+    "Karl-Anthony Towns under 3.5 assists",
+    "Jalen Brunson 25+ points"
+   ],
+   "label": "$5 cash",
+   "matchup": "Chicago Bulls @ New York Knicks",
+   "expect": "Towns, Brunson"
+  },
+  {
+   "legs": null,
+   "label": "Duncan Robinson under 11.5 points",
+   "matchup": "Detroit Pistons @ New York Knicks",
+   "expect": "Duncan Robinson under 11.5 points"
+  },
+  {
+   "legs": [],
+   "label": null,
+   "matchup": "Detroit Pistons @ New York Knicks",
+   "expect": "Detroit Pistons @ New York Knicks"
+  }
+ ],
+ "ended_stack": [
+  {
+   "stack": -0.0624,
+   "expect": 0
+  },
+  {
+   "stack": 2.08,
+   "expect": 2.08
+  },
+  {
+   "stack": 1e-06,
+   "expect": 0
+  }
+ ]
+}

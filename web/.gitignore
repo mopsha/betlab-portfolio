@@ -1,0 +1,9 @@
+# Never commit keys: .env.local holds the Supabase URL and anon key (Mike adds them).
+.env*
+!.env.example
+node_modules/
+.next/
+out/
+fixtures/
+next-env.d.ts
+*.tsbuildinfo

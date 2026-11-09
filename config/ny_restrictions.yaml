@@ -1,0 +1,33 @@
+# New York sports wagering restrictions that BetLab enforces.
+# NY bans all college player props, any bet on a game involving a New York
+# college team (wherever it is played), and any college game played in NY.
+college_player_props: false
+college_games_in_ny_state: false
+
+# Division I schools in New York. Names are matched case-insensitively
+# against team names from each data source (see betlab.ny_rules).
+ny_college_teams:
+  - Albany
+  - UAlbany
+  - Army
+  - Binghamton
+  - Buffalo
+  - Canisius
+  - Colgate
+  - Columbia
+  - Cornell
+  - Fordham
+  - Hofstra
+  - Iona
+  - Le Moyne
+  - LIU
+  - Long Island University
+  - Manhattan
+  - Marist
+  - Niagara
+  - St. Bonaventure
+  - St. John's
+  - Siena
+  - Stony Brook
+  - Syracuse
+  - Wagner

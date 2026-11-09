@@ -1,0 +1,14 @@
+{
+  "_": "FanDuel's College Football Pick'em (Nov 7): one week's rows, the score and the flips worth an alert. Three ports: src/betlab/pickem.py, web/lib/pickem.ts, ios/BetLab/Promos/Pickem.swift.",
+  "rows": [
+    {"n": 1, "home": "Northwestern", "away": "Iowa", "home_line": -2.5, "pick": "home", "ours": "away", "p_home": 0.394, "result": "away"},
+    {"n": 2, "home": "LSU", "away": "Alabama", "home_line": -5.5, "pick": "away", "ours": "home", "p_home": 0.51, "result": "home"},
+    {"n": 3, "home": "Utah", "away": "BYU", "home_line": -4.5, "pick": "home", "ours": "home", "p_home": 0.511, "result": "push"},
+    {"n": 4, "home": "Ole Miss", "away": "Georgia", "home_line": 3.5, "pick": null, "ours": "away", "p_home": 0.5, "result": "away"},
+    {"n": 5, "home": "Syracuse", "away": "Pittsburgh", "home_line": 3.5, "pick": "home", "ours": null, "p_home": 0.55, "result": null}
+  ],
+  "score": {"games": 5, "picked": 4, "graded": 4, "yours": 1, "ours": 4},
+  "flips": ["Iowa +2.5"],
+  "unpicked": [4],
+  "labels": {"1:away": "Iowa +2.5", "2:home": "LSU -5.5", "4:home": "Ole Miss +3.5"}
+}

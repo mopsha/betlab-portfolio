@@ -1,0 +1,434 @@
+{
+  "_about": "The promo finder's ranking (Oct 30): web lib/promo-finder.ts rank (web/tests/promo-finder.test.mjs) and iPhone PromoFinder.rank (BetLabTests) must give these orders and values. Picks are builder.promoCandidates' output (p, likely dec, the ranked-at low, plain = one leg per game); locks are findLocks' (per promo dollar). Nov 6: a case may carry its own picks and locks; Balanced and Safe ask only what the token's bets worth something reach (their median and top quarter of chance, never more than 25% and 45%): a 30% boost on 3+ legs at +100 or longer has no 25% bet, and both used to come back empty.",
+  "picks": [
+    {
+      "id": "A",
+      "legs": 1,
+      "p": 0.55,
+      "dec": 1.95,
+      "low": 1.95,
+      "plain": true
+    },
+    {
+      "id": "B",
+      "legs": 2,
+      "p": 0.3,
+      "dec": 3.6,
+      "low": 3.6,
+      "plain": true
+    },
+    {
+      "id": "C",
+      "legs": 3,
+      "p": 0.12,
+      "dec": 9.5,
+      "low": 8.4,
+      "plain": false
+    },
+    {
+      "id": "D",
+      "legs": 2,
+      "p": 0.48,
+      "dec": 2.2,
+      "low": 1.95,
+      "plain": false
+    },
+    {
+      "id": "E",
+      "legs": 1,
+      "p": 0.06,
+      "dec": 18,
+      "low": 18,
+      "plain": true
+    }
+  ],
+  "locks": [
+    {
+      "id": "L",
+      "promoPrice": 150,
+      "hedgePrice": -150,
+      "locked": 0.6,
+      "hedge": 0.9
+    }
+  ],
+  "cases": [
+    {
+      "promo": {
+        "kind": "bonus",
+        "stake": 10
+      },
+      "mode": "max",
+      "order": [
+        "C",
+        "B",
+        "L",
+        "A",
+        "D"
+      ],
+      "values": {
+        "C": 8.88,
+        "B": 7.8,
+        "L": 6,
+        "A": 5.225,
+        "D": 4.56
+      }
+    },
+    {
+      "promo": {
+        "kind": "bonus",
+        "stake": 10
+      },
+      "mode": "balanced",
+      "order": [
+        "B",
+        "L",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "promo": {
+        "kind": "bonus",
+        "stake": 10
+      },
+      "mode": "safe",
+      "order": [
+        "L",
+        "A"
+      ]
+    },
+    {
+      "promo": {
+        "kind": "boost",
+        "pct": 50,
+        "stake": 20,
+        "maxExtra": 5
+      },
+      "mode": "balanced",
+      "order": [
+        "L",
+        "A",
+        "B",
+        "D"
+      ],
+      "values": {
+        "L": 12,
+        "A": 4.2,
+        "B": 3.1,
+        "D": 1.12
+      },
+      "adds": {
+        "A": 2.75,
+        "B": 1.5
+      }
+    },
+    {
+      "promo": {
+        "kind": "boost",
+        "pct": 50
+      },
+      "mode": "max",
+      "order": [
+        "L",
+        "B",
+        "C",
+        "A",
+        "D"
+      ],
+      "values": {
+        "B": 4.7,
+        "C": 4.52,
+        "A": 3.3375
+      },
+      "adds": {
+        "C": 4.44
+      },
+      "text": {
+        "B": "Expected $4.70 on each $10 of it \u00b7 the boost adds $3.90 \u00b7 hits 30%",
+        "L": "Two bets: the promo on the first side, $9.00 cash on the other. Whichever side wins, you're up $6.00"
+      }
+    },
+    {
+      "promo": {
+        "kind": "boost",
+        "pct": 30,
+        "stake": 25
+      },
+      "mode": "max",
+      "picks": [
+        {
+          "id": "P",
+          "legs": 3,
+          "p": 0.22,
+          "dec": 4.3,
+          "low": 4.3,
+          "plain": true
+        },
+        {
+          "id": "Q",
+          "legs": 3,
+          "p": 0.18,
+          "dec": 5.2,
+          "low": 5.2,
+          "plain": true
+        },
+        {
+          "id": "R",
+          "legs": 3,
+          "p": 0.14,
+          "dec": 6.8,
+          "low": 6.8,
+          "plain": true
+        },
+        {
+          "id": "T",
+          "legs": 3,
+          "p": 0.1,
+          "dec": 9.6,
+          "low": 9.6,
+          "plain": true
+        }
+      ],
+      "locks": [],
+      "order": [
+        "T",
+        "R",
+        "P",
+        "Q"
+      ],
+      "values": {
+        "T": 5.45,
+        "R": 4.89,
+        "P": 4.095,
+        "Q": 4.07
+      }
+    },
+    {
+      "promo": {
+        "kind": "boost",
+        "pct": 30,
+        "stake": 25
+      },
+      "mode": "balanced",
+      "picks": [
+        {
+          "id": "P",
+          "legs": 3,
+          "p": 0.22,
+          "dec": 4.3,
+          "low": 4.3,
+          "plain": true
+        },
+        {
+          "id": "Q",
+          "legs": 3,
+          "p": 0.18,
+          "dec": 5.2,
+          "low": 5.2,
+          "plain": true
+        },
+        {
+          "id": "R",
+          "legs": 3,
+          "p": 0.14,
+          "dec": 6.8,
+          "low": 6.8,
+          "plain": true
+        },
+        {
+          "id": "T",
+          "legs": 3,
+          "p": 0.1,
+          "dec": 9.6,
+          "low": 9.6,
+          "plain": true
+        }
+      ],
+      "locks": [],
+      "order": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "promo": {
+        "kind": "boost",
+        "pct": 30,
+        "stake": 25
+      },
+      "mode": "safe",
+      "picks": [
+        {
+          "id": "P",
+          "legs": 3,
+          "p": 0.22,
+          "dec": 4.3,
+          "low": 4.3,
+          "plain": true
+        },
+        {
+          "id": "Q",
+          "legs": 3,
+          "p": 0.18,
+          "dec": 5.2,
+          "low": 5.2,
+          "plain": true
+        },
+        {
+          "id": "R",
+          "legs": 3,
+          "p": 0.14,
+          "dec": 6.8,
+          "low": 6.8,
+          "plain": true
+        },
+        {
+          "id": "T",
+          "legs": 3,
+          "p": 0.1,
+          "dec": 9.6,
+          "low": 9.6,
+          "plain": true
+        }
+      ],
+      "locks": [],
+      "order": [
+        "P"
+      ]
+    }
+  ],
+  "variety": {
+    "_about": "Nov 8: a leg in two results at most, all-under bets half the list, then the best of the rest when too few others. Legs share event g; labels name the leg.",
+    "cases": [
+      {
+        "top": 4,
+        "promo": {
+          "kind": "bonus",
+          "stake": 10
+        },
+        "mode": "max",
+        "picks": [
+          {
+            "id": "U1",
+            "labels": [
+              "X under 5.5 assists",
+              "Y under 3.5 rebounds"
+            ],
+            "p": 0.3,
+            "dec": 4.0,
+            "low": 4.0,
+            "plain": true
+          },
+          {
+            "id": "U2",
+            "labels": [
+              "X under 5.5 assists",
+              "Z under 2.5 threes"
+            ],
+            "p": 0.3,
+            "dec": 3.9,
+            "low": 3.9,
+            "plain": true
+          },
+          {
+            "id": "U3",
+            "labels": [
+              "X under 5.5 assists",
+              "W under 1.5 steals"
+            ],
+            "p": 0.3,
+            "dec": 3.8,
+            "low": 3.8,
+            "plain": true
+          },
+          {
+            "id": "U4",
+            "labels": [
+              "Y under 3.5 rebounds",
+              "Z under 2.5 threes"
+            ],
+            "p": 0.3,
+            "dec": 3.7,
+            "low": 3.7,
+            "plain": true
+          },
+          {
+            "id": "M1",
+            "labels": [
+              "A over 4.5 assists",
+              "Y under 3.5 rebounds"
+            ],
+            "p": 0.3,
+            "dec": 3.5,
+            "low": 3.5,
+            "plain": true
+          },
+          {
+            "id": "S1",
+            "labels": [
+              "B over 1.5 threes"
+            ],
+            "p": 0.4,
+            "dec": 2.5,
+            "low": 2.5,
+            "plain": true
+          }
+        ],
+        "order": [
+          "U1",
+          "U2",
+          "M1",
+          "S1"
+        ]
+      },
+      {
+        "top": 4,
+        "promo": {
+          "kind": "bonus",
+          "stake": 10
+        },
+        "mode": "max",
+        "picks": [
+          {
+            "id": "U1",
+            "labels": [
+              "X under 5.5 assists",
+              "Y under 3.5 rebounds"
+            ],
+            "p": 0.3,
+            "dec": 4.0,
+            "low": 4.0,
+            "plain": true
+          },
+          {
+            "id": "U2",
+            "labels": [
+              "X under 5.5 assists",
+              "Z under 2.5 threes"
+            ],
+            "p": 0.3,
+            "dec": 3.9,
+            "low": 3.9,
+            "plain": true
+          },
+          {
+            "id": "U3",
+            "labels": [
+              "X under 5.5 assists",
+              "W under 1.5 steals"
+            ],
+            "p": 0.3,
+            "dec": 3.8,
+            "low": 3.8,
+            "plain": true
+          }
+        ],
+        "order": [
+          "U1",
+          "U2",
+          "U3"
+        ]
+      }
+    ]
+  }
+}

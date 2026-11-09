@@ -1,0 +1,28 @@
+{
+  "_about": "Kickoff slices: [sport, kickoff, ET day, slice] as src/betlab/sgp_plus.slice_of, web lib/slices.ts sliceOf and iPhone Slices.sliceOf all read them (tests/test_slices.py, web/tests/slices.test.mjs, BetLabTests). Times cross both clock changes.",
+  "cases": [
+    ["nfl", "2026-11-01T14:30:00Z", "2026-11-01", "morning"],
+    ["nfl", "2026-11-01T18:00:00Z", "2026-11-01", "early"],
+    ["nfl", "2026-11-01T21:25:00Z", "2026-11-01", "late"],
+    ["nfl", "2026-11-02T01:20:00Z", "2026-11-01", "night"],
+    ["nfl", "2026-10-25T17:00:00Z", "2026-10-25", "early"],
+    ["ncaaf", "2026-10-31T16:00:00Z", "2026-10-31", "noon"],
+    ["ncaaf", "2026-10-31T19:30:00Z", "2026-10-31", "afternoon"],
+    ["ncaaf", "2026-11-01T04:30:00Z", "2026-10-31", "night"],
+    ["soccer", "2026-11-01T14:00:00Z", "2026-11-01", "nine"],
+    ["soccer", "2026-10-31T16:45:00Z", "2026-10-31", "lunch"],
+    ["soccer", "2026-10-31T19:00:00Z", "2026-10-31", "three"],
+    ["nhl", "2026-10-30T23:00:00Z", "2026-10-30", "evening"],
+    ["nhl", "2026-10-31T02:00:00Z", "2026-10-30", "late"],
+    ["ncaab", "2026-11-01T14:30:00Z", "2026-11-01", "morning"],
+    ["nba", "2026-11-03T00:30:00Z", "2026-11-02", "early"],
+    ["nba", "2026-11-07T22:10:00Z", "2026-11-07", "dusk"],
+    ["nba", "2026-11-07T23:30:00Z", "2026-11-07", "dusk"],
+    ["nba", "2026-11-08T00:00:00Z", "2026-11-07", "early"],
+    ["nba", "2026-11-08T01:10:00Z", "2026-11-07", "early"],
+    ["nhl", "2026-11-07T22:00:00Z", "2026-11-07", "dusk"],
+    ["nhl", "2026-11-08T00:00:00Z", "2026-11-07", "evening"],
+    ["ufc", "2026-11-01T01:00:00Z", "2026-10-31", "prelims"],
+    ["ufc", "2026-11-01T03:00:00Z", "2026-10-31", "main"]
+  ]
+}

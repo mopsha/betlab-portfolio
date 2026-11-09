@@ -1,0 +1,15 @@
+# Keep the worker image small and free of data, keys and the web app.
+.git
+.venv
+.env
+.env.*
+data/
+exports/
+web/
+page/
+build/
+tests/
+docs/
+**/__pycache__
+**/node_modules
+supabase/tests

@@ -1,0 +1,15 @@
+{
+  "_about": "What search finds in your own bets and in the team list: web lib/search.ts (web/tests/search.test.mjs) and ios/BetLab/Games/SearchView.swift (SearchTests) must answer alike. Every word must appear; accents and case don't matter; newest bet first.",
+  "bets": [
+    {"bet_id": "a", "placed_at": "2026-11-01T20:00:00Z", "label": "Jalen Brunson 3+ threes", "matchup": "New York Knicks @ Boston Celtics", "legs": ["Jalen Brunson 3+ threes"]},
+    {"bet_id": "b", "placed_at": "2026-11-03T20:00:00Z", "label": "$4.41 cash", "matchup": "Parlay Tue, Nov 3", "legs": ["New York Rangers ML", "New Jersey Devils ML"]},
+    {"bet_id": "c", "placed_at": "2026-10-30T20:00:00Z", "label": null, "matchup": "Ferencváros TC @ AC Milan", "legs": ["Both teams to score"]},
+    {"bet_id": "d", "placed_at": "2026-11-02T20:00:00Z", "label": null, "matchup": null, "legs": null}
+  ],
+  "bet_cases": [["brunson", ["a"]], ["KNICKS", ["a"]], ["new york", ["b", "a"]], ["rangers devils", ["b"]], ["devils rangers", ["b"]], ["ferencvaros", ["c"]],
+                ["both teams", ["c"]], ["brunson rangers", []], ["", []], ["z", []]],
+  "teams": {"nba": [{"name": "New York Knicks", "abbr": ["NYK", "NY"]}, {"name": "Boston Celtics", "abbr": ["BOS"]}],
+            "nhl": [{"name": "New York Rangers", "abbr": ["NYR"]}]},
+  "team_cases": [["knicks", ["New York Knicks"]], ["new york", ["New York Knicks", "New York Rangers"]], ["NYR", ["New York Rangers"]], ["bos", ["Boston Celtics"]],
+                 ["ny", ["New York Knicks"]], ["z", []], ["yankees", []]]
+}

@@ -1,0 +1,43 @@
+# NFL venues for the kickoff forecast (sources/weather.py), keyed by nflverse's stadium_id.
+# roof: outdoors (weather counts), dome (never), retractable (usually closed in bad weather,
+# so weather isn't applied; the preview says so). lat/lon to about 100 m; the forecast grid
+# is ~10 km, so that's plenty. nflverse labels some international venues "dome" that are
+# open-air (Stade de France, the MCG, Munich); this table wins.
+BAL00: {name: M&T Bank Stadium, lat: 39.2780, lon: -76.6227, roof: outdoors}
+BOS00: {name: Gillette Stadium, lat: 42.0909, lon: -71.2643, roof: outdoors}
+BUF00: {name: Highmark Stadium, lat: 42.7738, lon: -78.7870, roof: outdoors}
+CAR00: {name: Bank of America Stadium, lat: 35.2258, lon: -80.8528, roof: outdoors}
+CHI98: {name: Soldier Field, lat: 41.8623, lon: -87.6167, roof: outdoors}
+CIN00: {name: Paycor Stadium, lat: 39.0955, lon: -84.5161, roof: outdoors}
+CLE00: {name: Huntington Bank Field, lat: 41.5061, lon: -81.6995, roof: outdoors}
+DEN00: {name: Empower Field at Mile High, lat: 39.7439, lon: -105.0201, roof: outdoors}
+GNB00: {name: Lambeau Field, lat: 44.5013, lon: -88.0622, roof: outdoors}
+JAX00: {name: EverBank Stadium, lat: 30.3239, lon: -81.6373, roof: outdoors}
+KAN00: {name: GEHA Field at Arrowhead Stadium, lat: 39.0489, lon: -94.4839, roof: outdoors}
+MIA00: {name: Hard Rock Stadium, lat: 25.9580, lon: -80.2389, roof: outdoors}
+NAS00: {name: Nissan Stadium, lat: 36.1665, lon: -86.7713, roof: outdoors}
+NYC01: {name: MetLife Stadium, lat: 40.8135, lon: -74.0745, roof: outdoors}
+PHI00: {name: Lincoln Financial Field, lat: 39.9008, lon: -75.1675, roof: outdoors}
+PIT00: {name: Acrisure Stadium, lat: 40.4468, lon: -80.0158, roof: outdoors}
+SEA00: {name: Lumen Field, lat: 47.5952, lon: -122.3316, roof: outdoors}
+SFO01: {name: Levi's Stadium, lat: 37.4033, lon: -121.9694, roof: outdoors}
+TAM00: {name: Raymond James Stadium, lat: 27.9759, lon: -82.5033, roof: outdoors}
+WAS00: {name: Northwest Stadium, lat: 38.9077, lon: -76.8645, roof: outdoors}
+ATL97: {name: Mercedes-Benz Stadium, lat: 33.7554, lon: -84.4008, roof: retractable}
+DAL00: {name: AT&T Stadium, lat: 32.7473, lon: -97.0945, roof: retractable}
+HOU00: {name: NRG Stadium, lat: 29.6847, lon: -95.4107, roof: retractable}
+IND00: {name: Lucas Oil Stadium, lat: 39.7601, lon: -86.1639, roof: retractable}
+PHO00: {name: State Farm Stadium, lat: 33.5276, lon: -112.2626, roof: retractable}
+DET00: {name: Ford Field, lat: 42.3400, lon: -83.0456, roof: dome}
+LAX01: {name: SoFi Stadium, lat: 33.9535, lon: -118.3392, roof: dome}
+MIN01: {name: U.S. Bank Stadium, lat: 44.9736, lon: -93.2575, roof: dome}
+NOR00: {name: Caesars Superdome, lat: 29.9511, lon: -90.0812, roof: dome}
+VEG00: {name: Allegiant Stadium, lat: 36.0909, lon: -115.1833, roof: dome}
+LON00: {name: Wembley Stadium, lat: 51.5560, lon: -0.2796, roof: outdoors}
+LON02: {name: Tottenham Hotspur Stadium, lat: 51.6043, lon: -0.0664, roof: outdoors}
+MEX00: {name: Estadio Banorte, lat: 19.3029, lon: -99.1505, roof: outdoors}
+MEL00: {name: Melbourne Cricket Ground, lat: -37.8200, lon: 144.9834, roof: outdoors}
+MUN01: {name: FC Bayern Munich Stadium, lat: 48.2188, lon: 11.6247, roof: outdoors}
+PAR00: {name: Stade de France, lat: 48.9245, lon: 2.3602, roof: outdoors}
+RIO00: {name: Maracana Stadium, lat: -22.9122, lon: -43.2302, roof: outdoors}
+MAD01: {name: Bernabeu, lat: 40.4531, lon: -3.6883, roof: retractable}

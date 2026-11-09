@@ -1,0 +1,431 @@
+{
+ "_about": "The ban list (Oct 25): which legs a ban on a player or team hits. src/betlab/bans.py (tests/test_bans.py), web/lib/bans.ts (web/tests/bans.test.mjs) and ios/BetLab/Core/Bans.swift (BansTests) must answer every case alike.",
+ "cases": [
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "New York Jets"
+    }
+   ],
+   "label": "NYJ +3.5",
+   "league": "nfl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Jets"
+    }
+   ],
+   "label": "NYJ ML",
+   "league": "nfl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "New York Jets",
+     "league": "nfl"
+    }
+   ],
+   "label": "WPG ML",
+   "league": "nhl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "New York Jets"
+    }
+   ],
+   "label": "NYG ML",
+   "league": "nfl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "New York Jets"
+    }
+   ],
+   "label": "Under 39.5",
+   "league": "nfl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Knicks"
+    }
+   ],
+   "label": "New York Knicks -4.5",
+   "league": "nba",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "NYK"
+    }
+   ],
+   "label": "New York Knicks ML",
+   "league": "nba",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Lightning"
+    }
+   ],
+   "label": "TBL to win",
+   "league": "nhl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Lightning"
+    }
+   ],
+   "label": "TB +2.5",
+   "league": "nfl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Manchester United"
+    }
+   ],
+   "label": "Manchester United to win",
+   "league": "soccer",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Manchester United"
+    }
+   ],
+   "label": "Manchester City to win",
+   "league": "soccer",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Manchester United"
+    }
+   ],
+   "label": "Draw",
+   "league": "soccer",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Milan"
+    }
+   ],
+   "label": "AC Milan to win",
+   "league": "soccer",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Ohio State"
+    }
+   ],
+   "label": "Ohio State Buckeyes -14.5",
+   "league": "ncaaf",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Ohio State"
+    }
+   ],
+   "label": "Ohio Bobcats +3.5",
+   "league": "ncaaf",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Knicks"
+    }
+   ],
+   "label": "Jalen Brunson over 25.5 points",
+   "league": "nba",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Josh Allen"
+    }
+   ],
+   "label": "Josh Allen 250+ passing yds",
+   "league": "nfl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Josh Allen"
+    }
+   ],
+   "label": "Josh Allen anytime TD",
+   "league": "nfl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Josh Allen"
+    }
+   ],
+   "label": "Kyle Allen 200+ passing yds",
+   "league": "nfl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Josh Allen"
+    }
+   ],
+   "label": "BUF -3.5",
+   "league": "nfl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Jabari Smith"
+    }
+   ],
+   "label": "Jabari Smith Jr over 1.5 threes",
+   "league": "nba",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Anthony Cirelli"
+    }
+   ],
+   "label": "Anthony Cirelli to score",
+   "league": "nhl",
+   "player": "Anthony Cirelli",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Anthony Cirelli"
+    }
+   ],
+   "label": "Anthony Cirelli to score",
+   "league": "nhl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Luka Don\u010di\u0107"
+    }
+   ],
+   "label": "Luka Doncic over 8.5 assists",
+   "league": "nba",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Brunson"
+    }
+   ],
+   "label": "Jalen Brunson over 25.5 points",
+   "league": "nba",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Will Richard"
+    }
+   ],
+   "label": "Will Richard over 7.5 points",
+   "league": "nba",
+   "hit": true
+  },
+  {
+   "bans": [],
+   "label": "Josh Allen 250+ passing yds",
+   "league": "nfl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Arsenal"
+    }
+   ],
+   "label": "Arsenal or draw",
+   "league": "epl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Arsenal"
+    }
+   ],
+   "label": "Chelsea or draw",
+   "league": "epl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Arsenal"
+    }
+   ],
+   "label": "Draw",
+   "league": "epl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Arsenal"
+    }
+   ],
+   "label": "Both teams to score: no",
+   "league": "epl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Mark Andrews"
+    }
+   ],
+   "label": "Mark Andrews most receiving yards",
+   "league": "nfl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Mark Andrews"
+    }
+   ],
+   "label": "Zay Flowers most receiving yards",
+   "league": "nfl",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Bukayo Saka"
+    }
+   ],
+   "label": "Bukayo Saka to be carded",
+   "league": "soccer",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Mark Andrews"
+    }
+   ],
+   "label": "Mark Andrews longest reception over 12.5",
+   "league": "nfl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Salzburg"
+    }
+   ],
+   "label": "Salzburg not to win",
+   "league": "uel",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Salzburg"
+    }
+   ],
+   "label": "No draw",
+   "league": "uel",
+   "hit": false
+  },
+  {
+   "bans": [
+    {
+     "kind": "team",
+     "name": "Kansas City Chiefs"
+    }
+   ],
+   "label": "Chiefs PK",
+   "league": "nfl",
+   "hit": true
+  },
+  {
+   "bans": [
+    {
+     "kind": "player",
+     "name": "Josh Jacobs"
+    }
+   ],
+   "label": "Josh Jacobs 2+ TDs",
+   "league": "nfl",
+   "hit": true
+  }
+ ]
+}

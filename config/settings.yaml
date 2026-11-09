@@ -1,0 +1,281 @@
+# BetLab settings. Money in USD, probabilities and EV as fractions (0.03 = 3%).
+timezone: America/New_York
+
+app:                          # the web app's database (docs/APP_PLAN.md)
+  owner_user_id: 00000000-0000-4000-8000-000000000001   # Mike's Supabase user id: not a secret (RLS guards rows)
+
+bankroll:
+  real_start_date: 2026-10-18
+  real_bankroll: 100          # $ at go-live; $500+ once the checklist says the model works
+  unit_pct: 0.01              # 1 unit = 1% of bankroll ($1 at $100)
+  max_units_per_bet: 2
+  max_units_per_game: 2
+  max_units_per_day: 5
+  fun_bucket_monthly: 10      # $ for parlays/SGPs, kept outside the bankroll
+
+picks:
+  min_ev:
+    game_line: 0.03
+    prop: 0.05
+    prop_under: 0.10          # prop unders only from 10% EV (Mike, 2026-09-26: "only the reallllly good" ones;
+                              #   every edge on Sep 26 was an under from the over-lean correction)
+  lean_ev: 0.01               # smaller edges are shown as leans, never bet
+  horizon_hours: 36           # a pick only within 36 hours of kickoff (Mike, 2026-09-30): an edge found
+                              #   earlier shows as a lean; a week-out price isn't the one bet on game day
+  max_model_market_gap: 0.12  # bigger disagreement -> never a pick or lean
+  check_news_min_gap: 0.20    # and a "check news" flag only from this gap: in college moneylines 2022-25, at
+                              #   12-20 points the model's side won exactly what the market said (35.2% vs 35.2%,
+                              #   537 games); from 20 points it won 5-7 points more (36.7% vs 31.3%; 32.5% vs 25.2%)
+  devig_two_way: power
+  devig_three_way: shin
+
+staking:
+  kelly_fraction: 0.25
+  kelly_cap_units: 2
+  tiers:                      # confidence tiers: EV at least min_ev -> units
+    - {min_ev: 0.03, units: 1.0}
+    - {min_ev: 0.06, units: 1.5}
+    - {min_ev: 0.09, units: 2.0}
+
+props:
+  # The props market leans toward overs: on 6,455 FanDuel main lines (2025 weeks 3-18),
+  # Pinnacle's no-vig prices said overs ~50% but they hit 46.5%. Fair over-probabilities
+  # are shifted by this much in log-odds (fit on 2025; out-of-sample check passed;
+  # docs/MODEL_CHANGELOG.md). Stats whose shift wasn't clearly non-zero are left out.
+  # Off everywhere since 2026-10-19 (Mike): 2024 lines don't show the lean (overs -1.1 pts vs the plain market,
+  # receiving yards -0.4, receptions -1.4; 2025 was -3.4 / -4.1 / -4.5; DECISIONS 2026-10-19). It was
+  # receptions: -0.18, receiving_yards: -0.17 (log-odds), last used in the parlays' anchoring and the previews.
+  market_shift: {}
+  # Whether prop picks use the shift (Mike, 2026-09-28: no). Weekly review #1: every corrected
+  # pick was an under with no edge against Pinnacle's plain price, so it lost to the close by
+  # construction (-1.4% raw CLV, 24% beat it), and on 2026's first 325 receptions/receiving-yards
+  # lines overs hit 45.8% (SE 2.8) vs the plain market's 45.3% (the shift said ~41%). Picks now
+  # use the plain sharp price; the shift stays in the parlays and as a note until 2026 or 2024
+  # confirms it (docs/DECISIONS.md).
+  shift_in_picks: false
+
+nhl:                          # the NHL view (free data; cards/preview_nhl.py). Reads are tracked, never picks:
+  read_min: 0.05              #   model minus DraftKings' no-vig win chance. In 2025-26 (936 games) lines moved toward
+                              #   the model 62% of the time at 5+ pts, but taking its side at DraftKings' open lost
+                              #   2.0% to the close (the vig is bigger than the move). docs/MODELS.md, "NHL"
+
+preview:                      # Game Previews (betlab preview, the page's Games tab)
+  script_lean:                # how the game script moves the market's P(over) on pass-game props, in log-odds:
+                              #   fit on 2025 FanDuel main lines (5,245 pass-game lines, 237 games; `betlab
+                              #   backtest script`, "with who starts at QB and the weather", as the Games tab
+                              #   computes it). Game-bootstrap SEs: matchup 0.024, volume 0.46. Positive in both
+                              #   halves of the season. Rushing props showed nothing. Shown on the Games tab only;
+                              #   not used for picks until an out-of-sample season agrees.
+    stats: [receptions, receiving_yards, passing_yards]
+    matchup: 0.068            # per league SD of the offense's pass edge vs this defense (QB and weather included)
+    volume: 0.96              # per log of projected dropbacks over the team's last-8-game average
+    show: false               # lines that fit the script off since 2026-10-28 (Mike): 2026 lines (2,338, Sep 24-Oct 26)
+                              #   log loss 0.6931 vs market 0.6914, favored sides 51.1% vs 51.6%; 2024 didn't confirm
+                              #   either. Still tracked in prop_lines.csv
+  matchup_read:               # UNCONFIRMED receiver matchups (models/matchups_nfl.py): promising on 2025 lines
+                              #   but t ~2 among 7 matchups tried (docs/MODELS.md "Matchup research"). Joint fit
+                              #   with the script lean, log-odds per SD of each feature. Games tab notes only;
+                              #   every line is tracked in data/ledger/prop_lines.csv until a second season agrees.
+    stats: [receiving_yards]
+    ypt: {coef: 0.043, sd: 0.085}   # yards per target the defense allows to the receiver's position group
+    deep: {coef: 0.065, sd: 0.017}  # receiver's deep-target share x the defense's yards per deep attempt
+    show_min: 0.093           # show a note when the combined read moves log-odds this much (1 SD of the read)
+    show: false               # notes off since 2026-10-19 (Mike): 2024 lines didn't confirm either matchup (ypt +0.025,
+                              #   deep -0.027, strong side 49.0% vs 50.1%); features still tracked in prop_lines.csv
+
+fun:                          # same-game parlays for the fun bucket (betlab fun, the page's Fun tab)
+  script_read: false          # the game-script read in slips' chances and stories: off since 2026-10-19 (Mike); 2024
+                              #   lines didn't confirm it (pass-game edge -0.007 vs 2025's +0.068)
+  band: [150, 1000]           # fair American odds a suggested parlay must fall between
+  min_legs: 4
+  max_legs: 5
+  min_leg_p: 0.55             # every leg at least this likely on its own (about -122): no longshot rungs
+  max_leg_p: 0.80             # and no near-certain filler (about -400) that adds only margin
+  under_min_p: 0.75           # unders only when they're near-locks (about -300 or shorter), Mike's rule:
+  under_max_p: 0.92           #   betting all unders is no fun
+  max_unders: 1               # at most one under per slip; the rest are overs or anytime TDs
+  one_leg_per_player: true    # FanDuel (and DraftKings) price same-player legs as nearly one bet and cut the
+                              #   payout hard: a Penix + London 4+ catches + London 50+ yds slip (legs x +230)
+                              #   was quoted +104 on 2026-09-24, about 20% under fair
+  longshot:                   # plus one long shot per game (Mike's request): bigger payout, longer legs
+    band: [1500, 6000]
+    min_legs: 2
+    max_legs: 4
+    min_leg_p: 0.12           # legs down to about +730 (e.g. 90+ receiving yards, an anytime TD)
+  per_game: 5                 # parlays suggested per game
+  story_per_game: 2           # plus "one story" slips: every pair of legs hits together at least as often as
+                              #   unrelated (Mike, Oct 11: no QB 250+ with the other team's moneyline); tracked
+                              #   with the value slips in data/ledger/fun_offers.csv to compare the two styles
+  story_min_pair_lift: 0.97   # the weakest pair's lift that still counts as one story (sim noise below 1)
+  paused_themes: ["Win it with them"]   # Mike, 2026-10-09: 1 hit in 34 tickets (14 games) vs 5.9 expected; player
+                              #   yardage overs hit less when their team won. Retest before turning back on.
+  plus:                       # one SGP+ ticket per slate (kickoff window) across its games, plus straight overs
+                              #   to root for (Mike, 2026-09-26: "a parlay for each slate across the games";
+                              #   sgp_plus.py). Fun bucket only.
+    band: [500, 4000]         # fair American odds of the whole ticket
+    min_games: 2
+    max_games: 4
+    max_legs: 10              # legs across the ticket
+    mini_legs: [2, 3]         # each game's piece: a small same-game parlay with a correlated pair
+    mini_band: [1, 250]       # its fair odds (up to +250: at least ~29% to hit)
+    max_unders_mini: 0        # no unders in the ticket: every leg is something to cheer for
+    minis_per_game: 3
+    over_p: [0.30, 0.80]      # straight overs to root for: chance on their own
+    overs_per_game: 3
+    overs_per_slate: 6
+    td_min_p: 0.20            # the window's anytime TD ticket: one scorer per game, at least 20% likely, picked by
+                              #   value with our TD read (models/td_nfl.py; Mike, 2026-09-26: "get some analysis in there")
+    td_per_game: 3
+  college:                    # college football: one lines-only SGP+ ticket per kickoff slice (Mike, 2026-09-26; NY bans
+                              #   college props). cards/fun_ncaaf.py
+    band: [400, 5000]         # fair American odds of the day's ticket
+    min_games: 3
+    max_games: 4              # room for side + total pairs (the college-specific part) inside the band
+    max_legs: 10
+    leg_p: [0.40, 0.80]       # spreads and totals sit near 50%, so the floor is lower than the NFL slips'
+    allow_unders: false       # no unders: every leg is something to cheer for
+    pair_lift: 1.05           # a side and the total go in together only when they move together (big favorites)
+    minis_per_game: 3
+    pool_games: 12            # the best-value games the ticket is chosen from
+  ufc:                        # UFC (Oct 23): one plain parlay per card segment from fighters' FanDuel moneylines at
+                              #   the sharp no-vig chance (fights are independent). cards/fun_ufc.py
+    band: [250, 2500]         # fair American odds of a segment's ticket
+    min_games: 2
+    max_games: 4
+    max_legs: 4
+    leg_p: [0.45, 0.85]       # fighters from a coin flip to a solid favorite
+    minis_per_game: 2
+  ncaab:                      # college basketball: one lines-only SGP+ ticket per tip slice (to-do c-sgp-ncaab, Oct 12;
+                              #   NY bans college props). cards/fun_ncaab.py: paid lines from the opener (Oct 15)
+    band: [400, 5000]
+    min_games: 3
+    max_games: 4
+    max_legs: 10
+    leg_p: [0.40, 0.80]
+    allow_unders: false
+    pair_lift: 1.05           # a side and the total together only when they move together (20+ point favorites)
+    minis_per_game: 3
+    pool_games: 12
+  nba:                        # NBA: same as the NFL (Mike, 2026-09-26): SGP+ tickets per slice (afternoon, early, late:
+                              #   sgp_plus.SLICES, Oct 21; 30-minute tip windows before) and overs to root for in
+                              #   national-TV games. Copula of real-game correlations (models/game_sim_nba.py); cards/fun_nba.py
+    short:                    # a likelier SGP+ next to the regular one (Mike, Oct 21: NBA tickets ran longer than the
+      band: [150, 500]        #   other markets'; "just want a mix"), from the games the regular one left out if it can
+      max_games: 3
+    band: [500, 4000]
+    min_games: 2
+    max_games: 4
+    max_legs: 10
+    mini_legs: [2, 3]
+    mini_band: [1, 250]
+    max_unders_mini: 0
+    minis_per_game: 3
+    over_p: [0.30, 0.80]
+    overs_per_game: 3
+    overs_per_slate: 6
+    min_pair_lift: 1.03       # the NFL wants a pair hitting 1.10x together; across different NBA players
+                              #   real pairs reach only about 1.02-1.07 for 70% legs (2025-26: a scorer and a
+                              #   teammate's assists 1.016, a scorer and the over 1.033); same-player stacks
+                              #   run higher but one leg per player rules them out
+  soccer:                     # soccer: one SGP+ ticket per kickoff slice, leagues mixed, never with other sports (Mike,
+                              #   2026-09-26). Chances from a score grid fit to Pinnacle's result and goals prices.
+                              #   cards/fun_soccer.py
+    band: [400, 3000]         # fair American odds of the day's ticket
+    band_two_games: [300, 3000]  # a 2-match slice (the cups' 12:45 slot) tops out near +340 (Mike, Oct 14)
+    min_games: 2               # Mike, Oct 14: the 12:45 cup slice has 2 matches on UCL days (was 3)
+    max_games: 5
+    max_legs: 8
+    leg_p: [0.45, 0.85]       # a team to win, over 1.5/2.5/3.5 goals, both teams to score
+    pair_lift: 1.05           # two legs from one match go in together only when they move together
+    pair_min_p: 0.30
+    minis_per_game: 3
+    pool_games: 12
+    max_fit_error: 0.03       # skip a match whose market prices don't fit one score grid within 3 points
+    max_snapshot_age_hours: 24  # only a league's fresh pull (a Sep 25 snapshot once priced Oct 10 matches)
+    horizon_hours: 36         # only matches in the next day and a half, like the pulls
+    over_p: [0.35, 0.80]      # shot overs to root for (Oct 10): the market's fair chance in this band, and
+    overs: 6                  #   our shots model agreeing (its chance at least the fair one); up to 6 a slice
+    primetime:                # matches treated like the NFL's prime-time games (Mike, Oct 25: "El Clasico ... treat it
+                              #   as a primetime game"): their own slice, locked before their own kickoff, with a
+                              #   one-match parlay of 2-3 legs priced on the match's score grid (fun_soccer.prime_minis)
+      - {name: El Clásico, teams: [Barcelona, Real Madrid]}
+    band_primetime: [150, 1500]  # fair American odds of a primetime match's own parlay
+  nhl:                        # NHL: one SGP+ ticket per night plus shots-on-goal overs to root for (Mike, Sep 30).
+                              #   Chances from our score grid fit to the sharp moneyline and total. cards/fun_nhl.py
+    band: [300, 1500]         # fair American odds of the night's ticket (Mike's best-value band; small likely parlays)
+    band_two_games: [200, 1500]  # a 2-game slice's floor (Mike, Nov 7): two games' one-leg pieces top out near +265 when
+                              #   FanDuel's only total moves off 6.5, and the Nov 7 afternoon slice locked with no ticket
+    min_games: 2
+    max_games: 4
+    max_legs: 8
+    leg_p: [0.45, 0.85]       # a team to win, favorite -1.5, underdog +1.5, over 5.5 / 6.5
+    pair_lift: 1.05
+    pair_min_p: 0.30
+    minis_per_game: 3
+    pool_games: 12
+    max_fit_error: 0.03
+    horizon_hours: 36
+    over_p: [0.35, 0.80]      # shots overs to root for: 35-80% likely
+    overs: 8
+  stake: 1                    # $ per parlay, from bankroll.fun_bucket_monthly
+  sims: 20000                 # simulated versions of each game
+
+schedule:
+  # The worker's pre-game pulls (Mike, 2026-10-04): game lines in the morning; props and line
+  # updates only after each game's news. `betlab pregame` runs every 15 minutes and pulls each
+  # game once, at the first run when its start is between lo and hi minutes away. hi sits just
+  # after the news: NFL inactives (T-90), NHL confirmed goalies, soccer lineups (T-60), NBA
+  # injury report and lineups (retune from the Oct 5-7 lineup watch).
+  pregame:
+    nfl: [30, 85]
+    ncaaf: [30, 85]
+    nba: [15, 45]
+    ncaab: [15, 45]           # from the Nov 2 opener (paid lines, Oct 15); one batched game-line call a tick, ~3 credits
+    nhl: [20, 60]
+    soccer: [15, 55]          # every soccer league
+    ufc: [20, 60]             # each card segment (early prelims, prelims, main card) about 45 min before it starts
+
+odds_api:
+  base_url: https://api.the-odds-api.com/v4
+  keys:                       # used in order: the free key's credits first, then the paid key's
+    - {secret: ODDS_API_KEY, label: free, monthly_credits: 500, reserve: 0, reset_day: 1}
+    - {secret: ODDS_API_KEY_PAID, label: paid, monthly_credits: 20000, reserve: 50, reset_day: 1}  # the API showed 20,000 again at midnight UTC Oct 1 (8 PM ET Sep 30), not on the 24th
+  # reserve: only closing snapshots for open picks may dip into it (it sits on the last key)
+  # Up to 10 named books cost the same as one region.
+  # Novig (the CFTC sports exchange, Oct 22) took Bovada's place: an 11th book would double every pull's cost.
+  bookmakers: [fanduel, draftkings, betmgm, williamhill_us, fanatics, betrivers, pinnacle, lowvig, betonlineag, novig]
+  sharp_books: [pinnacle, lowvig, betonlineag]   # in order of preference for the "fair" price
+  target_book: fanduel        # the parlays' and props' book until each moves to target_books (docs/DRAFTKINGS_PLAN.md)
+  target_books: [fanduel, draftkings, novig]   # Mike's books (Oct 12; Novig Oct 22): game lines are priced at each; ties go to the first
+  prop_books: [fanduel, draftkings]     # props and parlays stay at the sportsbooks (Novig: game lines first, Oct 22)
+  novig:
+    min_limit: 50          # a Novig price with less than this many dollars behind it never wins the card's best-book choice
+    default_wager: 5       # the stake its "Open in Novig" link fills in, in dollars (1u in Mike's bets)
+    unit_dollars: 5        # novig-sync: dollars per unit when it enters Mike's Novig bets
+    parlays: true          # Novig's exact price on every slip and SGP+ ticket (novig_parlays.py, Oct 28; free)
+
+# Odds API sport keys. `start` is when paper trading begins for that league.
+leagues:
+  nfl:        {sport_key: americanfootball_nfl,      family: football,   start: 2026-09-24, props: true}
+  ncaaf:      {sport_key: americanfootball_ncaaf,    family: football,   start: 2026-09-25, props: false}  # pulled from Sep 25 so the early read sees Friday prices
+  nba:        {sport_key: basketball_nba,            family: basketball, start: 2026-10-20, props: true}
+  ncaab:      {sport_key: basketball_ncaab,          family: basketball, start: 2026-11-01, props: false,
+               paid_odds_from: 2026-10-26}  # the full FanDuel card from the opener (Mike, Oct 15; was Mar 1: free ESPN lines)
+               # start Nov 1 (was Nov 2): Villanova @ Notre Dame plays in Rome Sun Nov 1, 9:30 AM ET (CBBD, Oct 26)
+  nhl:        {sport_key: icehockey_nhl,             family: hockey,     start: 2026-10-01, props: false}  # FanDuel vs the sharp book, market-only
+  # UFC from UFC 333 (Mike, Oct 23): moneyline and total rounds vs the sharp book, market-only (cards/ufc.py); the
+  # feed mixes promotions, so only fights on ESPN's UFC card are pulled and priced
+  ufc:        {sport_key: mma_mixed_martial_arts,    family: mma,        start: 2026-10-24, props: false, markets: [h2h, totals]}
+  wnba:       {sport_key: basketball_wnba,           family: basketball, start: 2027-05-15, props: true}
+  epl:        {sport_key: soccer_epl,                family: soccer,     start: 2026-09-25, props: true, markets: [h2h, totals]}
+  # the European cups (Mike, Oct 12): lines, goals, BTTS and player props like the leagues, from Oct 13
+  ucl:        {sport_key: soccer_uefa_champs_league, family: soccer,     start: 2026-10-13, props: true, markets: [h2h, totals]}
+  uel:        {sport_key: soccer_uefa_europa_league, family: soccer,     start: 2026-10-13, props: true, markets: [h2h, totals]}
+  uecl:       {sport_key: soccer_uefa_europa_conference_league, family: soccer, start: 2026-10-13, props: true, markets: [h2h, totals]}
+  la_liga:    {sport_key: soccer_spain_la_liga,      family: soccer,     start: 2026-09-25, props: true, markets: [h2h, totals]}
+  serie_a:    {sport_key: soccer_italy_serie_a,      family: soccer,     start: 2026-09-25, props: true, markets: [h2h, totals]}
+  bundesliga: {sport_key: soccer_germany_bundesliga, family: soccer,     start: 2026-09-25, props: true, markets: [h2h, totals]}
+  ligue_1:    {sport_key: soccer_france_ligue_one,   family: soccer,     start: 2026-09-25, props: true, markets: [h2h, totals]}
+  mls:        {sport_key: soccer_usa_mls,            family: soccer,     start: 2026-09-25, props: true, markets: [h2h, totals]}
+  # Soccer totals (Sep 28): FanDuel doesn't post them in the feed, but Pinnacle's ladder anchors the soccer
+  # SGP+ ticket's goals legs (cards/fun_soccer.py); about 1 more credit per league pull.

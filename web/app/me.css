@@ -1,0 +1,130 @@
+/* Me, reorganized (docs/OVERHAUL.md; Nov 5): app/more/page.tsx with components/me/Me*.tsx, and the switch that joins
+   Record, Stats and Prices. Imported last. The page uses its own class names (me-dash, me-top, ...), so the older Me
+   rules in screens.css (me-grid, me-hero, me-lists, me-range) no longer match anything here. */
+
+/* ---- the header: who you are; Settings and Search stay round buttons */
+.me .me-who { cursor: default; }
+.me .me-who .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ---- your number: the hero, the range beside it, the chart, four stats in one row */
+.me-dash { display: grid; grid-template-columns: minmax(0, 1fr); }
+.me-top { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding-top: 6px; }
+.me-num { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.me-num p { margin: 8px 0 0; }
+.me-chips { display: flex; gap: 6px; flex: none; }
+.me-chips .mk { position: relative; min-height: 32px; padding: 0 11px; font-size: 12px; }
+.me-chips .mk::before { content: ""; position: absolute; inset: -6px 0; }      /* a 44px tap target around a 32px chip */
+.me-chart > p { margin: 0; padding: 22px 0; }
+.me-stats { display: flex; align-items: center; gap: 10px; padding: 14px 16px; min-height: 44px; color: inherit; text-decoration: none; overflow: hidden; }
+.me-stats:hover { background: color-mix(in srgb, var(--surface) 70%, var(--sunk)); }
+.me-cell { flex: 1 1 auto; min-width: 0; display: grid; gap: 6px; align-content: start; }
+.me-cell + .me-cell { border-left: 1px solid var(--line); padding-left: 10px; }
+.me-cell .numx { font-size: 15px; line-height: 1; white-space: nowrap; }
+.me-cell .numx.pos { color: var(--pos); } .me-cell .numx.neg { color: var(--neg); }
+.me-stats .chev { flex: none; color: var(--ink-3); font-size: 18px; line-height: 1; }
+
+/* ---- your betting: two tiles, then Record and stats as one row */
+.me-rungs { display: flex; gap: 4px; margin-top: 2px; }
+.me-rungs i { flex: 1; height: 6px; border-radius: 3px; background: var(--sunk); }
+.me-rungs i.won { background: var(--pos); }
+.me-rungs i.now { background: var(--accent); }
+.me-record { margin-top: 10px; }
+
+/* ---- badges: a sideways row, each its own art; the locked ones dimmed */
+.me-badges { list-style: none; display: flex; gap: 10px; margin: 0 -16px; padding: 2px 16px; overflow-x: auto; scrollbar-width: none; }
+.me-badges::-webkit-scrollbar { display: none; }
+.me-badge { position: relative; width: 44px; height: 44px; flex: none; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center;
+  font-size: 20px; line-height: 1; }
+.me-badge.off { opacity: .5; }
+.me-badge.off > span:first-child { filter: grayscale(1); }
+
+/* ---- friends: faces in a row (social.css draws a face), then Add */
+.me-faces { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 4px 16px 6px; }
+.me-faces::-webkit-scrollbar { display: none; }
+.me-faces .fx-count { box-shadow: 0 0 0 3px var(--bg); }
+.me-add-pic { width: 58px; height: 58px; border-radius: 50%; background: var(--surface); color: var(--ink-2); display: inline-flex; align-items: center; justify-content: center; }
+.me-add-pic svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.me-add .fx-face-name { color: var(--ink-2); }
+
+/* ---- BetLab: three rows in one card; Reviews and plan is one row with two places */
+.rowx.me-two { padding: 0 14px 0 0; gap: 8px; }
+.rowx.me-two > a.grow { align-self: stretch; align-content: center; padding: 14px 4px 14px 18px; color: inherit; text-decoration: none; }
+.rowx.me-two > a.grow:hover { background: color-mix(in srgb, var(--sunk) 50%, transparent); }
+.rowx.me-two > .mk { flex: none; min-height: 44px; background: var(--sunk); }
+.rowx.me-two > .mk.for-you { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+
+/* ---- extras: chips, each a link */
+.me-extras { display: flex; flex-wrap: wrap; gap: 8px; }
+.me-extras .mk { min-height: 44px; padding: 0 15px; }
+.me-extras .mk:hover, .me-chips .mk:not([aria-current]):hover { color: var(--ink); }
+.me .install-card { margin-top: 26px; }
+
+/* ---- Record · Stats · Prices: one switch on all three pages */
+.me-switch { margin-top: 2px; }
+
+/* ---- desktop: a dashboard. Your number, the chart and the stats across the top; your betting and badges in the main
+   column; friends, BetLab and extras at the right */
+@media (min-width: 1000px) {
+  .me-dash { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); column-gap: 32px; align-items: start; }
+  .me-top { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); grid-template-areas: "num chart" "stats chart"; column-gap: 32px; row-gap: 22px;
+    background: var(--surface); border-radius: 24px; padding: 26px 0 26px 26px; margin-top: 4px; overflow: hidden; }
+  .me-num { grid-area: num; flex-direction: column; align-items: flex-start; gap: 18px; }
+  .me-chips .mk { background: var(--sunk); min-height: 36px; font-size: 13px; padding: 0 14px; }
+  .me-chips .mk[aria-current="true"] { background: var(--ink); }
+  .me-chart { grid-area: chart; align-self: stretch; display: flex; align-items: flex-end; min-height: 190px; margin: -26px 0; }
+  .me-chart .areachart { width: 100%; height: 100%; margin: 0; }
+  .me-chart > p { padding: 0 26px 26px; }
+  .me-stats { grid-area: stats; background: var(--sunk); align-self: end; }
+  .me-stats:hover { background: color-mix(in srgb, var(--sunk) 80%, var(--ink-3)); }
+  .me-cell .numx { font-size: 16px; }
+  .me-badges { margin: 0; padding: 2px 0; flex-wrap: wrap; overflow: visible; }
+  .me-faces { margin: 0; padding: 4px 0 6px; flex-wrap: wrap; overflow: visible; }
+}
+
+/* "All" and "Feed" beside a title: short words, a full tap target */
+.me .section-title .section-right a { min-width: 44px; justify-content: flex-end; }
+
+/* Me > Extras > DFS lineups */
+.dfs-slate { margin-top: 20px; }
+.dfs-lineup { padding: 14px 16px; margin-top: 10px; }
+.dfs-lineup header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.dfs-lineup ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dfs-lineup li { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+.dfs-lineup li .grow { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dfs-lineup small { color: var(--faint, inherit); }
+.dfs-slot { width: 34px; flex: none; font-size: 12px; opacity: 0.7; }
+.dfs-proj { width: 42px; flex: none; text-align: right; }
+
+/* Me > Extras > Desktop ticker. A short window crawls, a taller one lists; ?bare=1 hides the app around it. */
+.tick-card { padding: 12px 16px; }
+.tick-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tick-item { display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap; font-size: 14px; min-width: 0; }
+.tick-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--faint, #888); align-self: center; flex: none; }
+.tick-live .tick-dot { background: var(--accent); animation: tick-pulse 1.6s ease-in-out infinite; }
+.tick-won .tick-dot { background: var(--good, #2fa36b); }
+.tick-lost .tick-dot { background: var(--bad, #d9534f); }
+.tick-clock, .tick-count { font-family: var(--font-mono), ui-monospace, monospace; font-size: 12px; opacity: 0.75; }
+.tick-next { overflow: hidden; text-overflow: ellipsis; opacity: 0.85; }
+.tick-empty { margin: 0; opacity: 0.7; font-size: 14px; }
+.tick-crawl { display: none; overflow: hidden; }
+.tick-crawl > div { display: inline-flex; gap: 32px; animation: tick-crawl linear infinite; will-change: transform; }
+.tick-crawl:hover > div { animation-play-state: paused; }
+.tick-bare, .tick-bare-page { background: var(--bg, #111); color: var(--ink, #eee); margin: 0; padding: 10px 12px; }
+.tick-bare { overflow: hidden; }
+body:has(.tick-bare-page) .sidenav, body:has(.tick-bare-page) .tabbar { display: none; }
+@media (max-height: 130px) {
+  .tick-bare .tick-list, .tick-bare-page .tick-list { display: none; }
+  .tick-bare .tick-crawl, .tick-bare-page .tick-crawl { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tick-crawl > div, .tick-live .tick-dot { animation: none; }
+  .tick-crawl { overflow-x: auto; }
+}
+@keyframes tick-crawl { to { transform: translateX(-50%); } }
+@keyframes tick-pulse { 50% { opacity: 0.35; } }
+
+/* The first-run welcome */
+.welcome { padding: 22px; display: grid; gap: 12px; margin-top: 12px; }
+.welcome h1 { margin: 0; font: 700 24px/1.15 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.welcome p { margin: 0; }
+.welcome-step { font-size: 12px; }

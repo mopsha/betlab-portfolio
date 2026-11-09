@@ -1,0 +1,228 @@
+/* Build, reorganized (Nov 5, docs/OVERHAUL.md; ported from the approved V4-Build / V4-Slip mockups onto the app's own
+   tokens, so every theme keeps working). Three layers of controls (header · modes · sport and game), one row of market
+   tabs, and the slip as a sheet (phones) or a pinned column (wide screens). All of it is under .bd, with its own class
+   names: the old Build rules in globals.css and screens.css (.build, .bpick, .bbtn, .bslip, ...) no longer match anything. */
+.bd { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-items: start; }
+.bd.has-slip { padding-bottom: 76px; }
+.bd-pick { display: grid; gap: 14px; min-width: 0; }
+.bd .shead { padding-bottom: 0; }
+.bd .segx { margin: 0; }
+.bd .mk { min-height: 44px; gap: 6px; font-family: var(--font-body), system-ui, sans-serif; }
+.bd-count { flex: none; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: var(--accent); color: var(--accent-ink);
+  font: 700 11px/20px var(--font-mono), ui-monospace, monospace; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* the header: the book as a small menu, saved parlays, search */
+.bd-book { position: relative; display: inline-flex; }
+.bd-bookbtn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 12px 0 9px; border: 0; border-radius: 22px; background: var(--surface);
+  color: var(--ink); font: 600 13px/1 var(--font-body), system-ui, sans-serif; cursor: pointer; }
+.bd-bookbtn:hover { background: var(--sunk); }
+.bd-caret { color: var(--ink-3); font-size: 11px; }
+.bd-bookmenu { position: absolute; top: calc(100% + 6px); right: 0; z-index: 30; min-width: 196px; display: grid; gap: 2px; padding: 6px; border-radius: 16px;
+  background: var(--surface); box-shadow: 0 14px 40px rgba(0, 0, 0, .35), inset 0 0 0 1px var(--line); }
+.bd-bookmenu button { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 10px; border: 0; border-radius: 10px; background: none; color: var(--ink);
+  font: 600 14px/1 var(--font-body), system-ui, sans-serif; text-align: left; cursor: pointer; }
+.bd-bookmenu button:hover, .bd-bookmenu button[aria-checked="true"] { background: var(--sunk); }
+.bd-tick { margin-left: auto; color: var(--accent); }
+@media (max-width: 359px) { .bd-bookname { display: none; } }
+.bd-search { display: flex; gap: 8px; }
+.bd-search input { flex: 1; min-width: 0; min-height: 46px; padding: 0 16px; border: 0; border-radius: 14px; background: var(--surface); color: var(--ink); font: inherit; font-size: 16px; }
+.bd-search .btn { min-height: 46px; }
+
+/* sport chips and the game strip */
+.bd-sports, .bd-strip, .bd-tabs { overflow-x: auto; scrollbar-width: none; }
+.bd-sports::-webkit-scrollbar, .bd-strip::-webkit-scrollbar, .bd-tabs::-webkit-scrollbar { display: none; }
+.bd-sports { display: flex; gap: 8px; }
+.bd-sports .mk { flex: none; }
+.bd-strip-wrap { display: flex; align-items: stretch; gap: 6px; min-width: 0; }
+.bd-strip { display: flex; gap: 10px; flex: 1; min-width: 0; scroll-snap-type: x proximity; }
+.bd-game { position: relative; isolation: isolate; overflow: hidden; flex: none; width: 132px; display: grid; gap: 2px; align-content: start; text-align: left; padding: 12px 14px;
+  border: 0; border-radius: 20px; background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; scroll-snap-align: start; }
+.bd-game:hover { background: color-mix(in srgb, var(--sunk) 60%, var(--surface)); }
+.bd-game[aria-current="true"] { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.bd-glow { position: absolute; z-index: -1; left: -70px; top: -110px; width: 180px; height: 180px; border-radius: 50%; filter: blur(40px); opacity: .3; pointer-events: none; }
+.bd-game-art { display: flex; align-items: center; gap: 6px; min-height: 34px; }
+.bd-game-art .bd-count { margin-left: auto; }
+.bd-game-name { margin-top: 6px; font: 700 14px/1.2 var(--font-display), system-ui, sans-serif; font-stretch: 86%; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; line-clamp: 2; }
+.bd-nudge { display: none; flex: none; width: 32px; border: 0; border-radius: 14px; background: var(--surface); color: var(--ink-2); font-size: 18px; cursor: pointer; }
+.bd-nudge:hover { color: var(--ink); background: var(--sunk); }
+@media (min-width: 760px) and (hover: hover) { .bd-nudge { display: block; } }
+@media (max-width: 759px) {
+  /* the rows that scroll sideways run to the screen's edge */
+  .bd-sports, .bd-strip { margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
+}
+
+/* the market tabs and what they hold */
+.bd-tabs { gap: 20px; }
+.bd-tabs button { flex: none; }
+.bd-markets { display: grid; gap: 12px; min-width: 0; container-type: inline-size; }
+.bd-note { padding: 14px 2px; }
+.bd-pb { min-width: 0; min-height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 4px 6px; border: 0;
+  border-radius: 12px; background: var(--sunk); color: var(--ink); font: inherit; cursor: pointer; }
+.bd-pb:hover { background: color-mix(in srgb, var(--accent) 10%, var(--sunk)); }
+.bd-pb small { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 600 10.5px/1.15 var(--font-body), system-ui, sans-serif; color: var(--ink-2); }
+.bd-pr { display: inline-flex; align-items: baseline; gap: 6px; }
+.bd-pr b { font-size: 14px; }
+.bd-pr i { font: 400 11px/1 var(--font-mono), ui-monospace, monospace; font-style: normal; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.bd-pb[aria-pressed="true"] { background: color-mix(in srgb, var(--accent) 22%, transparent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.bd-pb[aria-pressed="true"] b { color: var(--accent); }
+.bd-pb.off:not([aria-pressed="true"]) { opacity: .5; }
+.bd-pb.fixed { flex: none; width: 84px; }
+
+.bd-main { display: grid; gap: 10px; padding: 16px; }
+.bd-main-row { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(var(--cols, 3), minmax(0, 1fr)); gap: 8px; align-items: center; }
+.bd-main-row.head .cap { text-align: center; }
+.bd-team { display: flex; align-items: center; gap: 10px; min-width: 0; font: 700 16px/1.15 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.bd-team > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bd-team:not(.short) > .bd-full { white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; font-size: 14px; }
+.bd-abbr { display: none; }
+@container (max-width: 560px) {
+  .bd-main-row { grid-template-columns: minmax(0, 1.15fr) repeat(var(--cols, 3), minmax(0, 1fr)); }
+  .bd-team.short .bd-full { display: none; }
+  .bd-team.short .bd-abbr { display: inline; }
+}
+
+.bd-props { padding: 6px 16px; }
+.bd-prop { display: flex; align-items: center; gap: 12px; padding: 10px 0; }
+.bd-prop + .bd-prop { border-top: 1px solid var(--line); }
+.bd-prop-what { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.bd-prop-what b { font-weight: 600; }
+
+.bd-secs { padding: 2px 16px; }
+.bd-secs-title { padding-top: 14px; font: 700 16px/1.2 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.bd-sec { display: grid; gap: 8px; padding: 14px 0; }
+.bd-sec + .bd-sec { border-top: 1px solid var(--line); }
+.bd-sec-h { display: flex; align-items: center; gap: 10px; font: 600 15px/1.2 var(--font-body), system-ui, sans-serif; }
+.bd-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.bd-grid .third { grid-column: span 2; }
+.bd-grid .half { grid-column: span 3; }
+.bd-grid .third.first { grid-column: 1 / span 2; }
+.bd-grid .half.first { grid-column: 1 / span 3; }
+
+.bd-ideas { display: grid; gap: 12px; }
+@container (min-width: 640px) { .bd-ideas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bd-idea { display: grid; gap: 10px; align-content: start; padding: 16px; border: 0; color: var(--ink); font: inherit; text-align: left; }
+button.bd-idea { cursor: pointer; }
+button.bd-idea:hover { background: color-mix(in srgb, var(--sunk) 50%, var(--surface)); }
+.bd-idea-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.bd-idea-h { display: grid; gap: 3px; min-width: 0; }
+.bd-idea-h b { font: 700 18px/1.15 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.bd-idea-px { font-size: 20px; }
+.bd-idea-legs { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; }
+.bd-idea-go { justify-self: start; display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 12px; background: var(--sunk);
+  font: 600 13px/1 var(--font-body), system-ui, sans-serif; color: var(--accent); }
+.bd .pos { color: var(--pos); } .bd .neg { color: var(--neg); }
+
+/* the slip bar, floating over the tab bar */
+.bd-bar { position: fixed; z-index: 25; left: 16px; right: 16px; bottom: calc(92px + env(safe-area-inset-bottom, 0px)); max-width: 560px; margin-inline: auto; min-height: 60px;
+  display: flex; align-items: center; gap: 12px; padding: 8px 16px 8px 12px; border: 0; border-radius: 20px; background: var(--accent); color: var(--accent-ink);
+  font: inherit; text-align: left; cursor: pointer; box-shadow: 0 10px 30px rgba(0, 0, 0, .4); }
+.bd-bar .art.disc { box-shadow: 0 0 0 2px var(--accent); }
+.bd-bar-what { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.bd-bar-what b { font: 700 15px/1.2 var(--font-body), system-ui, sans-serif; }
+.bd-bar-what span { font-size: 12px; }
+.bd-bar-px { font-size: 22px; }
+
+/* the slip: a sheet on phones */
+.bd-scrim { position: fixed; inset: 0; z-index: 39; background: rgba(0, 0, 0, .5); }
+.bd-slip { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; max-width: 560px; margin-inline: auto; max-height: 92dvh; overflow-y: auto; overscroll-behavior: contain;
+  border-radius: 28px 28px 0 0; transform: translateY(105%); visibility: hidden; transition: transform .22s ease, visibility 0s .22s; }
+.bd-slip.open { transform: none; visibility: visible; transition: transform .22s ease; }
+.bd-panel { display: flex; flex-direction: column; gap: 14px; padding: 10px 20px calc(24px + env(safe-area-inset-bottom, 0px)); background: var(--surface);
+  border-radius: 28px 28px 0 0; box-shadow: 0 -20px 60px rgba(0, 0, 0, .4); }
+.bd-panel.empty { text-align: center; color: var(--ink-2); padding: 26px 20px; gap: 6px; }
+.bd-panel.empty b { color: var(--ink); font: 700 17px/1.2 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.bd-grab { align-self: center; width: 40px; height: 5px; border-radius: 3px; background: var(--sunk); }
+.bd-slip-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bd-slip-head h2 { margin: 0 0 3px; font: 800 22px/1.1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; letter-spacing: -.01em; }
+.bd-slip-tools { display: flex; align-items: center; gap: 10px; flex: none; }
+.bd-grade { width: 44px; height: 44px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font: 800 19px/1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; background: color-mix(in srgb, var(--pos) 18%, transparent); color: var(--pos); }
+.bd-grade.mid { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+.bd-grade.bad { background: color-mix(in srgb, var(--neg) 16%, transparent); color: var(--neg); }
+.bd-close { background: var(--sunk); }
+.bd-clear { display: inline-flex; align-items: center; min-height: 44px; margin: -14px 0; padding: 0 2px; border: 0; background: none; color: var(--accent); font: inherit; font-weight: 600; cursor: pointer; }
+.bd-legs { list-style: none; margin: 0; padding: 0; }
+.bd-legs li { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+.bd-legs li + li { border-top: 1px solid var(--line); }
+.bd-legs .art.disc { box-shadow: none; }
+.bd-leg-what { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.bd-leg-what b { font-weight: 600; overflow-wrap: anywhere; }
+.bd-rm { flex: none; width: 36px; height: 44px; margin-right: -10px; border: 0; background: none; color: var(--ink-3); font-size: 14px; cursor: pointer; }
+.bd-rm:hover { color: var(--neg); }
+.bd-panel .cells { margin: 0; }
+.bd-cap { margin-bottom: 8px; }
+.bd-hint { margin: 8px 0 0; }
+
+/* the price at each book */
+.bd-pboxes { display: flex; gap: 8px; }
+.bd-pbox { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 2px 6px 8px; border-radius: 14px; background: var(--sunk); }
+.bd-pbox.on { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.bd-pbox.best { background: color-mix(in srgb, var(--pos) 16%, transparent); box-shadow: inset 0 0 0 1.5px var(--pos); }
+.bd-pbox-h { width: 100%; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 0; background: none; color: var(--ink-2);
+  font: 600 13px/1 var(--font-body), system-ui, sans-serif; cursor: pointer; }
+.bd-pbox-h[aria-pressed="true"] { color: var(--ink); }
+.bd-pbox-h[aria-pressed="true"] span { box-shadow: 0 3px 0 -1px var(--accent); padding-bottom: 3px; margin-bottom: -3px; }
+.bd-pbox input { width: 100%; min-height: 44px; padding: 0 4px; border: 0; border-radius: 10px; background: var(--surface); color: var(--ink); text-align: center; font-size: 17px; }
+.bd-pbox input::placeholder { color: var(--ink-3); font-weight: 400; }
+.bd-pbox input:disabled { opacity: .5; }
+.bd-pbox-v { min-height: 44px; display: flex; align-items: center; font-size: 18px; }
+.bd-pbox small { min-height: 28px; text-align: center; font: 600 11px/1.25 var(--font-body), system-ui, sans-serif; color: var(--ink-2); }
+.bd-pbox small em { display: block; font-style: normal; color: var(--pos); }
+
+/* a promo: one row that opens the choice */
+.bd-promo { border-radius: 14px; background: var(--sunk); }
+.bd-promo-row { width: 100%; min-height: 56px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 0; background: none; color: var(--ink); font: inherit;
+  text-align: left; cursor: pointer; }
+.bd-promo-row > span:first-child { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.bd-promo-row b { font-weight: 600; }
+.bd-promo-row .chev { color: var(--ink-3); font-size: 18px; line-height: 1; }
+.bd-promo-pick { display: grid; gap: 14px; padding: 4px 14px 14px; }
+.bd-promo-pick > .sub { margin: 0; }
+.bd-promo-pick a { color: var(--accent); font-weight: 600; }
+.bd-toks, .bd-typed { display: grid; gap: 8px; }
+.bd-tok { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px 12px 8px 10px; border: 0; border-radius: 12px; background: var(--surface); color: var(--ink);
+  font: inherit; text-align: left; cursor: pointer; }
+.bd-tok[aria-pressed="true"] { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.bd-tok.nofit:not([aria-pressed="true"]) { opacity: .7; }
+.bd-tok-what { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.bd-tok-what b { font-weight: 600; }
+.bd-tok-what .tk-ends { font-size: 12px; }
+.bd-tok-v { font-size: 18px; }
+.bd-kinds, .bd-boosts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.bd-terms { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+.bd-term { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-2); }
+.bd-term input { width: 76px; min-height: 44px; padding: 0 10px; border: 0; border-radius: 10px; background: var(--surface); color: var(--ink);
+  font: 600 16px/1 var(--font-mono), ui-monospace, monospace; }
+.bd-promo-done { justify-self: start; }
+
+/* the actions */
+.bd-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.bd-cta { flex: 1 1 160px; min-height: 48px; border-radius: 14px; font-size: 15px; }
+.bd-acts > .actions { flex: 1 1 100%; }
+.bd-acts-side { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.bd-acts-side .btn { min-height: 48px; border-radius: 14px; }
+.bd-acts .book-icon { width: 48px; height: 48px; border: 0; border-radius: 14px; }
+.bd-notes { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 13px; }
+.bd-panel details.more > summary { display: inline-flex; align-items: center; min-height: 44px; }
+@media (prefers-reduced-motion: reduce) { .bd-slip, .bd-slip.open { transition: none; } }
+
+/* between the side nav's start and the pinned slip: the bar and the sheet clear the nav */
+@media (min-width: 1000px) and (max-width: 1099px) {
+  .bd-bar { left: 264px; right: 48px; bottom: 24px; }
+  .bd-slip { left: 248px; right: 32px; }
+}
+
+/* wide screens: markets in the main column, the slip pinned beside them */
+@media (min-width: 1100px) {
+  .bd-page { max-width: 1240px; }
+  .bd { grid-template-columns: minmax(0, 1fr) 372px; gap: 24px; }
+  .bd.has-slip { padding-bottom: 0; }
+  .bd-slip { position: sticky; top: 24px; z-index: auto; max-width: none; margin: 0; max-height: calc(100dvh - 48px); transform: none; visibility: visible; transition: none;
+    border-radius: 24px; }
+  .bd-panel { padding: 20px; border-radius: 24px; box-shadow: none; }
+  .bd-scrim, .bd-bar, .bd-grab, .bd-close { display: none; }
+}
+
+/* your saved parlays, on their own page */
+.bd-saved .section-title:first-of-type { margin-top: 8px; }

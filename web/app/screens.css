@@ -1,0 +1,335 @@
+/* The overhaul's rebuilt screens (Nov 4, docs/OVERHAUL.md): Today, Live, Me, the game page, Build and the desktop
+   layout, on the pieces in kit.css. Loaded last. A rebuilt screen's old rules have left globals.css. */
+
+/* ------------------------------------------------------------------ the live score (components/live/LiveBets.tsx) */
+.bb { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px; position: relative; }
+.bb-side { display: flex; align-items: center; gap: clamp(6px, 2.4vw, 10px); min-width: 0; }
+.bb-side.right { justify-content: flex-end; }
+.bb-side .score-num { font-size: clamp(32px, 10vw, 46px); }
+.bb-side .art { width: clamp(38px, 11vw, 48px); height: clamp(38px, 11vw, 48px); }
+.bb-mid { display: grid; justify-items: center; gap: 5px; text-align: center; }
+.bb.tall { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.bb.tall .bb-mid { grid-column: 1 / -1; grid-row: 1; }
+.bb-name { font: 800 20px/1.1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; letter-spacing: -.01em; }
+.bb-logo { position: relative; display: inline-flex; }
+.bb-ball { position: absolute; left: 50%; bottom: -8px; width: 8px; height: 5px; margin-left: -4px; border-radius: 50%; background: var(--warn); }
+.score-num.bump { animation: lbump 1.2s ease; }
+.gline { display: flex; align-items: center; gap: 6px; font-size: 13px; min-width: 0; flex-wrap: wrap; }
+.gline b { font-weight: 700; font-variant-numeric: tabular-nums; }
+.gline .livepill { margin-left: auto; padding: 4px 7px; font-size: 10px; }
+
+/* a leg: its ring, its name, its status line */
+.rlegs { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.rleg { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.rleg-body { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.rleg-label { font-weight: 600; overflow-wrap: anywhere; }
+.rleg.lost .rleg-label, .rleg.void .rleg-label { color: var(--ink-2); }
+.rleg.justhit { animation: lhit 1.6s ease; border-radius: 12px; }
+.rleg-court.on { color: var(--pos); }
+.rleg .cardtap { border-radius: 50%; }
+
+/* ------------------------------------------------------------------ a bet's card (components/live/BetCard.tsx) */
+.betk { display: grid; gap: 14px; }
+.betk > .hairline { margin: 2px 0 0; }
+.bk-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.bk-what { display: grid; gap: 3px; min-width: 0; }
+.bk-name { font: 800 19px/1.15 var(--font-display), system-ui, sans-serif; font-stretch: 86%; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.bk-px { display: grid; gap: 5px; justify-items: end; text-align: right; flex: none; }
+.bk-price { font-size: 24px; line-height: 1; }
+.bk-notes { display: flex; flex-wrap: wrap; gap: 2px 14px; }
+.bk-notes b { color: var(--ink); } .bk-notes b.pos { color: var(--pos); } .bk-notes b.neg { color: var(--neg); }
+.bk-multi { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bk-dots { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ltrack2 { display: grid; gap: 16px; }
+.lgame2 { display: grid; gap: 12px; }
+.lgame2 + .lgame2 { border-top: 1px solid var(--line); padding-top: 14px; }
+.bk-fold > summary { display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; list-style: none; }
+.bk-fold > summary::-webkit-details-marker { display: none; }
+.bk-fold > summary .sub { flex: 1; min-width: 0; }
+.bk-fold-more { font: 600 13px/1 var(--font-body), system-ui, sans-serif; color: var(--accent); }
+.bk-fold-more::after { content: " ›"; }
+.bk-fold[open] .bk-fold-more::after { content: " ⌄"; }
+.bk-fold[open] > .ltrack2 { margin-top: 10px; }
+.betk.cashing { box-shadow: 0 0 0 2px var(--pos), 0 0 28px -6px var(--pos); transition: box-shadow .4s ease; }
+.betk.lost .bk-name, .betk.l-lost .bk-name { color: var(--ink-2); }
+.bk-actions .btn, .bk-actions details.more > summary { min-height: 44px; }
+.friend-head + .hairline { display: none; }
+
+/* ------------------------------------------------------------------ Live (app/bets/page.tsx) */
+.live-feed { display: grid; gap: 12px; }
+.live-feed .day { margin: 12px 0 0; }
+.live-sub { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -4px 0 12px; min-height: 32px; }
+
+/* ------------------------------------------------------------------ Today (app/page.tsx) */
+.today-grid { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
+.today-hero { display: grid; gap: 8px; }
+.today-hero p { margin: 0; }
+.hero-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.hero-row .sub { margin-top: 8px; }
+.today-title { margin: 0; font: 800 34px/1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; letter-spacing: -.02em; }
+.today-title + .sub { margin-top: 8px; }
+.today-meta a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; }
+.promo-line { display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 52px; color: inherit; text-decoration: none; margin-top: 6px;
+  background: color-mix(in srgb, var(--warn) 12%, var(--surface)); }
+.promo-line .grow { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.promo-line small { font-size: 13px; color: var(--ink-2); }
+.today-main .controls { margin-bottom: 0; }
+.today-main > .section-title:first-child { margin-top: 0; }
+.chips a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; }
+.tl-head .section-title { margin: 0 0 12px; }
+.tl-cards { display: grid; gap: 12px; }
+.tl-card { padding: 18px 18px 16px; }
+.tl-card .hairline { margin: 16px 0 14px; }
+.tl-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.tl-what { display: grid; gap: 3px; min-width: 0; }
+.tl-name { font: 700 16px/1.2 var(--font-display), system-ui, sans-serif; font-stretch: 86%; overflow-wrap: anywhere; }
+.tl-what .sub b { color: var(--ink); }
+.tl-rings { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; padding: 0 6px 4px 0; }
+.tl-multi { display: grid; gap: 10px; }
+.tl-lines { display: grid; gap: 6px; }
+.tl-wait { margin: 0; }
+.locklist { list-style: none; margin: 0; }
+.locklist .warn { color: var(--warn); }
+.pcard { width: 208px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: left; border: 0; cursor: pointer; color: inherit; font: inherit;
+  background: var(--surface); min-height: 132px; }
+.pcard.on { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.pcard-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-width: 0; }
+.pcard-top .chipx { min-width: 0; max-width: 100%; }
+.pcard-top .chipx > span { overflow: hidden; text-overflow: ellipsis; }
+.pcard-price { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pcard-price > span:first-child { display: grid; gap: 6px; }
+.pcard-price .numx { font-size: 26px; line-height: 1; }
+.pcard-legs { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pshelf-open { margin-top: 10px; display: grid; gap: 8px; }
+.pshelf-title { margin: 0; }
+/* a pick: its picture beside the name */
+.bet-top > .art, .bet-top > .artstack { flex: none; align-self: center; }
+/* a game in the feed */
+.grow2 { gap: 10px; }
+.grow2 .gr-top { align-items: center; gap: 12px; }
+.gr-logos { display: inline-flex; gap: 4px; flex: none; }
+.gr-what { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.grow2 .gr-match { font-size: 16px; }
+.grow2 .chev { color: var(--ink-3); font-size: 18px; }
+.grow2 .gr-items { padding-left: 0; border-top: 1px solid var(--line); padding-top: 10px; }
+/* the header's refresh */
+.refresh-icon { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
+.refresh-icon .err { color: var(--neg); }
+.ib.spin svg { animation: ibspin 1.2s linear infinite; }
+@keyframes ibspin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ib.spin svg { animation: none; } }
+
+/* ------------------------------------------------------------------ the shell: a tab bar to 999px, a side nav from 1000px */
+.sidenav { display: none; }
+@media (min-width: 760px) and (max-width: 999px) {
+  /* the floating tab bar stays through tablet widths (look.css floats it under 760px; globals.css hid it from 760px) */
+  body { padding-block-end: calc(104px + env(safe-area-inset-bottom, 0px)); }
+  .tabbar { display: grid; inset: auto 0 calc(14px + env(safe-area-inset-bottom, 0px)) 0; width: min(480px, calc(100% - 32px)); margin-inline: auto; border: 0; border-radius: 32px; padding: 6px;
+    background: color-mix(in srgb, var(--sunk) 86%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35), inset 0 0 0 1px var(--line); }
+  .tabbar a { min-height: 52px; border-radius: 26px; padding: 7px 0 6px; align-content: center; color: var(--ink-2); }
+  .tabbar a[aria-current="page"] { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+}
+@media (min-width: 1000px) {
+  body { padding-left: 248px; padding-right: 32px; padding-block-end: 48px; }
+  .tabbar { display: none; }
+  .sidenav { display: flex; flex-direction: column; gap: 22px; position: fixed; inset: 0 auto 0 0; width: 216px; padding: 26px 14px 22px; z-index: 20;
+    background: var(--surface); }
+  .sidenav .brand { font: 800 24px/1 var(--font-display), system-ui, sans-serif; letter-spacing: -.01em; color: var(--ink); padding: 0 12px; text-decoration: none; }
+  .sidenav .brand b { color: var(--accent); }
+  .sidenav nav { display: grid; gap: 4px; }
+  .sidenav nav a { display: flex; align-items: center; gap: 12px; min-height: 46px; padding: 0 12px; border-radius: 14px; color: var(--ink-2); font-weight: 600; font-size: 15px; text-decoration: none; }
+  .sidenav nav a svg { width: 21px; height: 21px; flex: none; }
+  .sidenav nav a:hover { color: var(--ink); background: var(--sunk); }
+  .sidenav nav a[aria-current="page"] { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+  .sidenav .sidenav-search { margin-top: 14px; }
+  .sidenav .phase { margin-top: auto; padding: 0 12px; font: 12px/1.3 var(--font-mono), ui-monospace, monospace; color: var(--ink-3); }
+  /* Search is in the side nav here: the header's round button would be a second one */
+  .shead-tools > a.ib[href="/search"] { display: none; }
+  :root { --rail: 760px; }
+}
+body { padding-top: env(safe-area-inset-top, 0px); }
+
+/* ------------------------------------------------------------------ Me (app/more/page.tsx) */
+.me-who { display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; min-height: 44px; min-width: 0; }
+.me-who > span:last-child { display: grid; min-width: 0; }
+.me-who b { font: 700 17px/1.1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.me-avatar { width: 44px; height: 44px; flex: none; border-radius: 50%; background: var(--accent); color: var(--bg); display: inline-flex; align-items: center; justify-content: center;
+  font: 800 18px/1 var(--font-display), system-ui, sans-serif; }
+.me-avatar.s { width: 30px; height: 30px; font-size: 13px; color: #10131a; }
+.me-grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
+.me-hero { display: grid; gap: 8px; padding-top: 6px; }
+.me-hero p { margin: 0; }
+.areachart { display: block; width: calc(100% + 32px); margin: 4px -16px 0; }
+.me-range { display: flex; gap: 8px; }
+.mk { font: 600 13px/1 var(--font-body), system-ui, sans-serif; color: var(--ink-2); padding: 0 13px; border-radius: 999px; background: var(--surface); white-space: nowrap;
+  display: inline-flex; align-items: center; min-height: 36px; text-decoration: none; border: 0; cursor: pointer; }
+.mk[aria-current="true"], .mk[aria-pressed="true"], .mk.on { background: var(--ink); color: var(--bg); }
+.me-friend { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.me-lists { display: grid; gap: 12px; }
+.me-nochart { padding: 18px 0; }
+.settings-group { display: grid; gap: 10px; }
+.settings-group > h3 { margin: 8px 0 0; }
+
+/* ------------------------------------------------------------------ a game's page (app/games/[league]/[id]) */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gp-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0 10px; }
+.gp-top .back { margin-top: 0; }
+/* Watch a game (Nov 7): its own parlays join Today when its slice locks */
+.gp-tools { display: inline-flex; align-items: center; gap: 8px; flex: none; }
+.gp-top .back { white-space: nowrap; }
+.gp-top > .sub { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.watchbtn { display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 16px 0 13px; border: 0; border-radius: 999px;
+  background: var(--surface); color: var(--ink); font: 600 14px/1 var(--font-body), system-ui, sans-serif; cursor: pointer; }
+.watchbtn svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.watchbtn:hover { background: var(--sunk); }
+.watchbtn.on { background: var(--ink); color: var(--bg); }
+.watchbtn:disabled { opacity: .7; cursor: default; }
+.watchnote { margin: -2px 0 10px; }
+.ghero { display: grid; gap: 16px; padding: 22px 18px 18px; border-radius: 28px; }
+.ghero > .glow { width: 260px; height: 260px; top: -130px; opacity: .42; }
+.gh-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px; }
+.gh-team { display: grid; justify-items: center; gap: 6px; text-align: center; min-width: 0; }
+.gh-name { font: 700 15px/1.15 var(--font-display), system-ui, sans-serif; font-stretch: 86%; overflow-wrap: anywhere; }
+.gh-mid { display: grid; justify-items: center; gap: 10px; text-align: center; }
+.gh-score { display: flex; align-items: baseline; gap: 14px; }
+.gh-score .score-num { font-size: clamp(44px, 14vw, 58px); }
+.gh-score .score-num.trail { color: var(--ink-2); }
+.gh-when { font: 800 22px/1.1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; letter-spacing: -.01em; }
+.gh-plain { display: grid; gap: 6px; }
+.gh-plain h1 { margin: 0; font: 800 28px/1.1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.gh-bar { display: flex; height: 8px; gap: 3px; }
+.gh-bar span { border-radius: 4px; flex-basis: 0; }
+.gh-pcts { display: flex; justify-content: space-between; margin-top: 8px; font-size: 13px; color: var(--ink-2); }
+.gh-pcts .lead { color: var(--ink); font-weight: 700; }
+.gh-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 14px; }
+.yourbets { display: grid; gap: 10px; margin-top: 12px; }
+.yourbet { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; color: inherit; text-decoration: none; flex-wrap: wrap; }
+.yb-what { display: grid; gap: 4px; min-width: 0; }
+.yb-name { font: 700 16px/1.2 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.yb-name .numx { font-size: 14px; }
+.gpage .sec { margin-top: 16px; }
+.gpage .folds { border-top: 0; margin-top: 12px; padding: 0; overflow: hidden; display: block; }
+.gpage .fold { border-bottom: 0; }
+.gpage .fold + .fold { border-top: 1px solid var(--line); }
+.gpage .fold > summary { padding: 14px 18px; min-height: 52px; align-items: center; font: 600 15px/1.3 var(--font-body), system-ui, sans-serif; font-stretch: normal; }
+.gpage .fold > summary::before { content: none; }
+.gpage .fold > summary > span:first-child { flex: 1; }
+.gpage .fold > summary::after { content: "›"; color: var(--ink-3); font-size: 18px; line-height: 1; transition: transform .15s; }
+.gpage .fold[open] > summary::after { transform: rotate(90deg); }
+.gpage .fold > .fb { padding: 0 18px 18px; }
+@media (min-width: 1000px) {
+  .gpage { max-width: 1180px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
+  .gp-side { padding-top: 44px; }
+  .gp-side > .section-title:first-child { margin-top: 18px; }
+}
+
+/* ------------------------------------------------------------------ Build (components/build/Builder.tsx) */
+.build { grid-template-columns: minmax(0, 1fr); }       /* one column that can't grow past the phone (the search box and promo row ran off the right edge) */
+@media (min-width: 1180px) { .build { grid-template-columns: minmax(0, 1fr) 380px; } .bpage { max-width: 1180px; } }
+.btop .seg, .bpromo .seg { max-width: 100%; }
+.bpromo { min-width: 0; }
+.bpromo > * { min-width: 0; max-width: 100%; }
+.bsearch { box-sizing: border-box; max-width: 100%; border: 0; background: var(--surface); padding: 0 16px; min-height: 46px; }
+.bterms { min-width: 0; }
+.promo-wallet-link { margin: 0 0 12px; }
+/* the strip of games: both logos, who, when; the picked one has the accent's ring */
+.bgame { width: 132px; gap: 8px; padding: 14px 12px; border: 0; border-radius: 20px; background: var(--surface); }
+.bgame:hover { background: var(--sunk); }
+.bgame[aria-current="true"] { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.bgl { display: flex; align-items: center; gap: 6px; min-height: 30px; }
+.bgl .bn { margin-left: auto; }
+.bgm { font-size: 13px; }
+.bgt { font: 400 12px/1.2 var(--font-body), system-ui, sans-serif; color: var(--ink-2); display: block; }
+.bgame[aria-current="true"] .bgt { color: var(--ink-2); }
+.bscroll { border: 0; border-radius: 14px; }
+/* the board: market chips, then rows of price buttons */
+.bboard { border-radius: 20px; }
+.bghead { align-items: center; padding: 16px 16px 10px; }
+.btabs { gap: 8px; padding: 0 16px 12px; border-bottom: 0; }
+.btabs button { padding: 0 13px; min-height: 36px; border-radius: 999px; background: var(--sunk); font: 600 13px/1 var(--font-body), system-ui, sans-serif; color: var(--ink-2);
+  border-bottom: 0; white-space: nowrap; }
+.btabs button[aria-current="true"] { background: var(--ink); color: var(--bg); }
+.bsec { gap: 8px; padding: 14px 16px; }
+.bsh { display: flex; align-items: center; gap: 10px; font: 600 15px/1.2 var(--font-body), system-ui, sans-serif; font-stretch: normal; }
+.bsh .faint { font: 400 13px/1.2 var(--font-body), system-ui, sans-serif; }
+.bbtn { min-height: 48px; border: 0; border-radius: 12px; gap: 3px; }
+.bbtn:hover { background: color-mix(in srgb, var(--accent) 10%, var(--sunk)); }
+.bbtn .bt { display: inline-flex; align-items: center; justify-content: center; gap: 5px; font: 600 11px/1.1 var(--font-body), system-ui, sans-serif; }
+.bbtn .bpr b { font-size: 14px; }
+.bbtn[aria-pressed="true"] { background: color-mix(in srgb, var(--accent) 22%, transparent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.bbtn[aria-pressed="true"] .bt, .bbtn[aria-pressed="true"] .bpr .faint { color: var(--ink-2); }
+.bbtn[aria-pressed="true"] .bpr b { color: var(--accent); }
+.bthemes { padding: 12px 14px; }
+/* the slip: a floating accent bar with who's on it, then the sheet */
+.bbar { left: 16px; right: 16px; bottom: calc(92px + env(safe-area-inset-bottom, 0px)); gap: 12px; padding: 10px 16px 10px 12px; min-height: 56px; border-radius: 20px;
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 35%, transparent); }
+.bbar .art.disc { box-shadow: 0 0 0 2px var(--accent); }
+.bbar-what { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.bbar-what b { font: 800 15px/1.1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; }
+.bbar-what span { font-size: 12px; opacity: .8; }
+.bbar-price { font-size: 20px; font-weight: 700; }
+@media (max-width: 1179px) { .build:has(.bbar) { padding-bottom: 76px; } .bslip > .card { border-radius: 24px 24px 0 0; } }
+@media (min-width: 1000px) and (max-width: 1179px) { .bbar { left: 264px; right: 48px; bottom: 24px; } .bslip { left: 248px; } }
+.bsliplegs li { align-items: center; }
+.bsliplegs .bsl { flex: 1; min-width: 0; }
+.bslipcard { border-radius: 20px; }
+
+/* ------------------------------------------------------------------ desktop, from 1000px: columns beside the side nav */
+@media (min-width: 1000px) {
+  .rail.today:has(.today-live) { max-width: 1140px; }
+  .today-grid:has(.today-live) { grid-template-columns: minmax(0, 1fr) 372px; grid-template-areas: "hero live" "main live"; column-gap: 32px; align-items: start; }
+  .today-grid:has(.today-live) .today-hero { grid-area: hero; }
+  .today-grid:has(.today-live) .today-live { grid-area: live; position: sticky; top: 20px; max-height: calc(100vh - 40px); overflow-y: auto; scrollbar-width: thin; }
+  .today-grid:has(.today-live) .today-main { grid-area: main; }
+  .hero-num { font-size: 64px; }
+  .rail.livepage { max-width: 1140px; }
+  .live-feed { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 14px; }
+  .live-feed .day { grid-column: 1 / -1; }
+  .rail.live-wall { max-width: 1500px; }
+  .rail.me { max-width: 1140px; }
+  .me-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-areas: "hero tiles" "hero lists"; column-gap: 32px; align-items: start; }
+  .me-hero { grid-area: hero; background: var(--surface); border-radius: 24px; padding: 24px 24px 20px; overflow: hidden; }
+  .me-hero .areachart { width: calc(100% + 48px); margin: 8px -24px 0; height: 220px; }
+  .me .tiles { grid-area: tiles; }
+  .me-lists { grid-area: lists; }
+}
+
+/* a game on the Games list (components/games/GameCard.tsx): its teams' colors as a soft light, not a painted band */
+.gcard.colored { background: radial-gradient(circle at 0 0, color-mix(in srgb, var(--ca) 20%, transparent), transparent 46%),
+  radial-gradient(circle at 100% 0, color-mix(in srgb, var(--ch) 20%, transparent), transparent 46%), var(--surface); }
+.gcard.colored::before { content: none; }
+.gcard { padding: 14px 14px 14px 16px; }
+.gc-team img { width: 28px; height: 28px; }
+.bb-ball { position: static; display: inline-block; margin-left: 4px; }
+.bb-logo .bb-ball { position: absolute; margin-left: -4px; }
+
+/* ------------------------------------------------------------------ Search (components/games/SearchBox.tsx, Nov 6) */
+/* a rounded field with its icon, then rows that lead with a picture: a team's logo, a player's photo, a game's two logos */
+.searchfield { display: flex; align-items: center; gap: 10px; background: var(--surface); border-radius: 999px; padding: 0 16px;
+  height: 48px; margin: 0 0 18px; color: var(--ink-3); }
+.searchfield:focus-within { box-shadow: 0 0 0 2px var(--accent); color: var(--accent); }
+.searchfield input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: 500 16px/1 var(--font-body), system-ui, sans-serif;
+  outline: none; padding: 0; height: 100%; }
+.searchfield input::-webkit-search-cancel-button { filter: grayscale(1); }
+.srows { display: grid; gap: 8px; }
+.srow { display: flex; align-items: center; gap: 12px; padding: 12px 14px; color: var(--ink); text-decoration: none; }
+.srow .artstack { flex: none; width: 46px; }
+.srow-what { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.srow-what b { font-weight: 700; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.srow-what small { font-size: 12px; color: var(--ink-2); }
+.srow .chev { font-size: 18px; }
+/* a team or player row is a CardTap button (it opens your record with them): the row's look, not a button's */
+button.cardtap.srow { width: 100%; text-align: left; background: var(--surface); border: 0; font: inherit; cursor: pointer; }
+
+/* ------------------------------------------------------------------ the Notebook (components/games/Notebook.tsx, Nov 6) */
+/* a page of notes: a margin line down the left, the four parts as small labels, the bet in the accent (ruled lines
+   didn't meet the text's lines and cut through it) */
+.notebook { margin-top: 18px; padding: 18px 18px 14px 22px; display: grid; gap: 12px; position: relative; overflow: hidden; }
+.notebook::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--accent); opacity: .35; }
+.nb-title { font: 700 19px/1.1 var(--font-display), system-ui, sans-serif; font-stretch: 86%; margin: 0; }
+.nb-part { display: grid; gap: 4px; }
+.nb-part p, .nb-part li { font-size: 15px; line-height: 1.55; margin: 0; }
+.nb-part ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.nb-bet b { color: var(--accent); }
+.nb-foot { font-size: 12px; margin: 2px 0 0; }

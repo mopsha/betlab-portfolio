@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "betlab"
+version = "0.1.0"
+description = "Sports betting models, paper trading and bankroll tracking for FanDuel (NY)."
+requires-python = ">=3.13"
+dependencies = [
+  "numpy>=2.1",
+  "pandas>=2.2",
+  "scipy>=1.14",
+  "pyarrow>=17",
+  "pyyaml>=6",
+  "requests>=2.32",
+  "python-dotenv>=1.0",
+  "nflreadpy>=0.1.5",
+  "scikit-learn==1.9.1",        # NHL props model; pinned: the saved model (data/models/nhl_props.joblib) loads only in the version it was trained with
+  "psycopg[binary]>=3.2",       # betlab publish / sync-personal: the app's Postgres (docs/APP_PLAN.md)
+  "apscheduler>=3.10,<4",       # the Railway worker's schedule (src/betlab/worker.py)
+  "pywebpush>=2.0",             # pick alerts to phones (src/betlab/alerts.py)
+  "httpx[http2]>=0.27",         # the iPhone app's alerts: Apple's push service (APNs) speaks HTTP/2 only
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+betlab = "betlab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

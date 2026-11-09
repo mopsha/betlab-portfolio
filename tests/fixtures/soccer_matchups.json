@@ -1,0 +1,15 @@
+{
+  "about": "Soccer reads home team first (Mike, Nov 5): our stored 'Away @ Home' is shown as 'Home vs Away'; other sports and text without ' @ ' stay as they are. One case list for web lib/format.ts matchupText and iPhone Fmt.matchup.",
+  "cases": [
+    {"text": "Brighton and Hove Albion @ Getafe", "sport": "soccer", "out": "Getafe vs Brighton and Hove Albion"},
+    {"text": "Brighton and Hove Albion @ Getafe", "sport": "uecl", "out": "Getafe vs Brighton and Hove Albion"},
+    {"text": "Lyon @ Real Sociedad", "sport": "soccer_uefa_europa_league", "out": "Real Sociedad vs Lyon"},
+    {"text": "SGP+ Thu Nov 5 · soccer 3 PM matches: Union Saint-Gilloise @ Celta Vigo, FC Ararat-Armenia @ Torreense", "sport": "soccer",
+     "out": "SGP+ Thu Nov 5 · soccer 3 PM matches: Celta Vigo vs Union Saint-Gilloise, Torreense vs FC Ararat-Armenia"},
+    {"text": "Getafe vs Brighton and Hove Albion", "sport": "soccer", "out": "Getafe vs Brighton and Hove Albion"},
+    {"text": "Buffalo Bills @ New York Jets", "sport": "nfl", "out": "Buffalo Bills @ New York Jets"},
+    {"text": "PHI @ WSH", "sport": "nhl", "out": "PHI @ WSH"},
+    {"text": "Lyon @ Real Sociedad", "sport": null, "out": "Lyon @ Real Sociedad"},
+    {"text": "", "sport": "soccer", "out": ""}
+  ]
+}

@@ -1,0 +1,1334 @@
+{
+  "_about": "The promos wallet (Oct 30, migration 0029): what web lib/promos.ts (web/tests/promos.test.mjs) and iPhone Promos.swift (BetLabTests/PromosTests) must say about each token. `now` is the moment both judge at.",
+  "now": "2026-10-30T22:00:00Z",
+  "promos": [
+    {
+      "promo_id": "a",
+      "kind": "bonus",
+      "book": "FanDuel",
+      "amount_dollars": 50,
+      "pct": null,
+      "max_extra_dollars": null,
+      "min_legs": null,
+      "min_odds": null,
+      "max_odds": null,
+      "sports": null,
+      "note": null,
+      "expires_at": "2026-11-01T03:59:00Z",
+      "status": "open",
+      "created_at": "2026-10-29T12:00:00Z"
+    },
+    {
+      "promo_id": "b",
+      "kind": "boost",
+      "book": "DraftKings",
+      "amount_dollars": 25,
+      "pct": 30,
+      "max_extra_dollars": 10,
+      "min_legs": 3,
+      "min_odds": -200,
+      "max_odds": null,
+      "sports": [
+        "nfl"
+      ],
+      "note": null,
+      "expires_at": "2026-10-31T01:00:00Z",
+      "status": "open",
+      "created_at": "2026-10-30T12:00:00Z"
+    },
+    {
+      "promo_id": "c",
+      "kind": "boost",
+      "book": null,
+      "amount_dollars": null,
+      "pct": 50,
+      "max_extra_dollars": null,
+      "min_legs": null,
+      "min_odds": -200,
+      "max_odds": 2000,
+      "sports": null,
+      "note": null,
+      "expires_at": null,
+      "status": "open",
+      "created_at": "2026-10-28T12:00:00Z"
+    },
+    {
+      "promo_id": "d",
+      "kind": "bonus",
+      "book": "FanDuel",
+      "amount_dollars": 10,
+      "pct": null,
+      "max_extra_dollars": null,
+      "min_legs": null,
+      "min_odds": null,
+      "max_odds": null,
+      "sports": null,
+      "note": null,
+      "expires_at": "2026-10-30T20:00:00Z",
+      "status": "open",
+      "created_at": "2026-10-27T12:00:00Z"
+    },
+    {
+      "promo_id": "e",
+      "kind": "bonus",
+      "book": "FanDuel",
+      "amount_dollars": 5,
+      "pct": null,
+      "max_extra_dollars": null,
+      "min_legs": null,
+      "min_odds": null,
+      "max_odds": null,
+      "sports": null,
+      "note": null,
+      "expires_at": null,
+      "status": "used",
+      "created_at": "2026-10-26T12:00:00Z"
+    }
+  ],
+  "expect": {
+    "open": [
+      "b",
+      "a",
+      "c"
+    ],
+    "done": [
+      "d",
+      "e"
+    ],
+    "soon": [
+      "b",
+      "a"
+    ],
+    "state": {
+      "a": "open",
+      "b": "open",
+      "c": "open",
+      "d": "expired",
+      "e": "used"
+    },
+    "title": {
+      "a": "$50 bonus bet",
+      "b": "30% profit boost",
+      "c": "50% profit boost"
+    },
+    "terms": {
+      "a": "",
+      "b": "up to $25 \u00b7 max $10 extra \u00b7 3+ legs \u00b7 \u2212200 or longer \u00b7 NFL",
+      "c": "\u2212200 to +2000"
+    },
+    "expires": {
+      "a": "expires Sat",
+      "b": "expires in 3 h",
+      "d": "expired Oct 30"
+    },
+    "note_sports": [
+      [
+        "NBA Only",
+        [
+          "nba"
+        ]
+      ],
+      [
+        "Valid on NFL and college football games",
+        [
+          "ncaaf",
+          "nfl"
+        ]
+      ],
+      [
+        "SGP only",
+        null
+      ],
+      [
+        "Champions League matches",
+        [
+          "soccer"
+        ]
+      ],
+      [
+        "CBB parlays",
+        [
+          "ncaab"
+        ]
+      ],
+      [
+        "nhl",
+        [
+          "nhl"
+        ]
+      ]
+    ],
+    "split_teams": [
+      [
+        "Knicks, Celtics",
+        [
+          "Knicks",
+          "Celtics"
+        ]
+      ],
+      [
+        "Knicks vs Celtics",
+        [
+          "Knicks",
+          "Celtics"
+        ]
+      ],
+      [
+        "Ohio State @ Michigan",
+        [
+          "Ohio State",
+          "Michigan"
+        ]
+      ],
+      [
+        "  ",
+        null
+      ]
+    ],
+    "team_fits": [
+      [
+        [
+          "Knicks"
+        ],
+        "Boston Celtics @ New York Knicks",
+        true
+      ],
+      [
+        [
+          "Ohio State"
+        ],
+        "Ohio State Buckeyes @ Michigan Wolverines",
+        true
+      ],
+      [
+        [
+          "Knicks"
+        ],
+        "Boston Celtics @ Brooklyn Nets",
+        false
+      ],
+      [
+        null,
+        "Boston Celtics @ Brooklyn Nets",
+        true
+      ],
+      [
+        [
+          "Real Madrid"
+        ],
+        "Real Madrid @ Barcelona",
+        true
+      ],
+      [
+        [
+          "Atl\u00e9tico"
+        ],
+        "Atletico Madrid @ Sevilla",
+        true
+      ]
+    ]
+  },
+  "used_on": {
+    "_about": "I used it (Oct 31: Mike's $5 Novig bonus went on a bet saved without the token): the bets a token may have gone on. Real, unlinked, at its book (any book when it has none), the last 7 days; the ones already marked as this kind first, then newest; at most 8.",
+    "bets": [
+      {
+        "bet_id": "nv-bonus",
+        "mode": "real",
+        "book": "Novig",
+        "bonus": true,
+        "boost": null,
+        "promo_id": null,
+        "placed_at": "2026-10-30T17:02:41Z"
+      },
+      {
+        "bet_id": "nv-cash-new",
+        "mode": "real",
+        "book": "Novig",
+        "bonus": false,
+        "boost": null,
+        "promo_id": null,
+        "placed_at": "2026-10-30T20:00:00Z"
+      },
+      {
+        "bet_id": "nv-cash-old",
+        "mode": "real",
+        "book": "Novig",
+        "bonus": false,
+        "boost": null,
+        "promo_id": null,
+        "placed_at": "2026-10-28T20:00:00Z"
+      },
+      {
+        "bet_id": "nv-too-old",
+        "mode": "real",
+        "book": "Novig",
+        "bonus": true,
+        "boost": null,
+        "promo_id": null,
+        "placed_at": "2026-10-22T20:00:00Z"
+      },
+      {
+        "bet_id": "nv-linked",
+        "mode": "real",
+        "book": "Novig",
+        "bonus": true,
+        "boost": null,
+        "promo_id": "other",
+        "placed_at": "2026-10-30T18:00:00Z"
+      },
+      {
+        "bet_id": "nv-paper",
+        "mode": "paper",
+        "book": "Novig",
+        "bonus": false,
+        "boost": null,
+        "promo_id": null,
+        "placed_at": "2026-10-30T18:00:00Z"
+      },
+      {
+        "bet_id": "fd-boosted",
+        "mode": "real",
+        "book": "FanDuel",
+        "bonus": false,
+        "boost": 30,
+        "promo_id": null,
+        "placed_at": "2026-10-29T18:00:00Z"
+      },
+      {
+        "bet_id": "fd-cash",
+        "mode": "real",
+        "book": "FanDuel",
+        "bonus": false,
+        "boost": null,
+        "promo_id": null,
+        "placed_at": "2026-10-30T19:00:00Z"
+      }
+    ],
+    "cases": [
+      {
+        "promo": {
+          "kind": "bonus",
+          "book": "Novig"
+        },
+        "want": [
+          "nv-bonus",
+          "nv-cash-new",
+          "nv-cash-old"
+        ]
+      },
+      {
+        "promo": {
+          "kind": "boost",
+          "book": "FanDuel"
+        },
+        "want": [
+          "fd-boosted",
+          "fd-cash"
+        ]
+      },
+      {
+        "promo": {
+          "kind": "boost",
+          "book": null
+        },
+        "want": [
+          "fd-boosted",
+          "nv-cash-new",
+          "fd-cash",
+          "nv-bonus",
+          "nv-cash-old"
+        ]
+      }
+    ]
+  },
+  "wager": [
+    {
+      "typed": "",
+      "max": 25,
+      "want": 25
+    },
+    {
+      "typed": "10",
+      "max": 25,
+      "want": 10
+    },
+    {
+      "typed": "40",
+      "max": 25,
+      "want": 25
+    },
+    {
+      "typed": "0",
+      "max": 25,
+      "want": 25
+    },
+    {
+      "typed": "abc",
+      "max": 25,
+      "want": 25
+    },
+    {
+      "typed": "12.5",
+      "max": null,
+      "want": 12.5
+    },
+    {
+      "typed": "",
+      "max": null,
+      "want": null
+    }
+  ],
+  "bonus_left": [
+    {
+      "face": 25,
+      "dollars": 10,
+      "want": 15
+    },
+    {
+      "face": 25,
+      "dollars": 25,
+      "want": 0
+    },
+    {
+      "face": 25,
+      "dollars": 30,
+      "want": 0
+    },
+    {
+      "face": 10.5,
+      "dollars": 3.25,
+      "want": 7.25
+    },
+    {
+      "face": null,
+      "dollars": 5,
+      "want": 0
+    },
+    {
+      "face": 25,
+      "dollars": 24.999,
+      "want": 0
+    }
+  ],
+  "market_fits": [
+    {
+      "market": null,
+      "stat": "btts",
+      "player": "",
+      "want": true
+    },
+    {
+      "market": "moneyline",
+      "stat": "moneyline",
+      "player": "",
+      "want": true
+    },
+    {
+      "market": "moneyline",
+      "stat": "draw",
+      "player": "",
+      "want": true
+    },
+    {
+      "market": "moneyline",
+      "stat": "double chance",
+      "player": "",
+      "want": false
+    },
+    {
+      "market": "spread",
+      "stat": "puck line",
+      "player": "",
+      "want": true
+    },
+    {
+      "market": "spread",
+      "stat": "total",
+      "player": "",
+      "want": false
+    },
+    {
+      "market": "total",
+      "stat": "goals",
+      "player": "",
+      "want": true
+    },
+    {
+      "market": "total",
+      "stat": "points",
+      "player": "Jalen Brunson",
+      "want": false
+    },
+    {
+      "market": "props",
+      "stat": "points",
+      "player": "Jalen Brunson",
+      "want": true
+    },
+    {
+      "market": "props",
+      "stat": "moneyline",
+      "player": "",
+      "want": false
+    },
+    {
+      "market": null,
+      "kinds": [
+        "tds"
+      ],
+      "stat": "tds",
+      "player": "Josh Allen",
+      "want": true
+    },
+    {
+      "market": null,
+      "kinds": [
+        "tds"
+      ],
+      "stat": "rushing_yards",
+      "player": "Josh Allen",
+      "want": false
+    },
+    {
+      "market": null,
+      "kinds": [
+        "tds"
+      ],
+      "stat": "moneyline",
+      "player": "",
+      "want": false
+    },
+    {
+      "market": "props",
+      "kinds": [
+        "points",
+        "threes"
+      ],
+      "stat": "threes",
+      "player": "Jalen Brunson",
+      "want": true
+    },
+    {
+      "market": null,
+      "kinds": [
+        "first_td"
+      ],
+      "stat": "tds",
+      "player": "Josh Allen",
+      "want": false
+    }
+  ],
+  "fits_game": [
+    {
+      "teams": null,
+      "games": null,
+      "event": "e2",
+      "matchup": "Miami Heat @ Golden State Warriors",
+      "want": true
+    },
+    {
+      "teams": null,
+      "games": [
+        {
+          "event_id": "e1",
+          "matchup": "New York Knicks @ Chicago Bulls",
+          "commence_time": "2026-11-05T00:40:00Z"
+        }
+      ],
+      "event": "e1",
+      "matchup": "New York Knicks @ Chicago Bulls",
+      "want": true
+    },
+    {
+      "teams": null,
+      "games": [
+        {
+          "event_id": "e1",
+          "matchup": "New York Knicks @ Chicago Bulls",
+          "commence_time": "2026-11-05T00:40:00Z"
+        }
+      ],
+      "event": "e2",
+      "matchup": "New York Knicks @ Boston Celtics",
+      "want": false
+    },
+    {
+      "teams": [
+        "Celtics"
+      ],
+      "games": [
+        {
+          "event_id": "e1",
+          "matchup": "New York Knicks @ Chicago Bulls",
+          "commence_time": "2026-11-05T00:40:00Z"
+        }
+      ],
+      "event": "e2",
+      "matchup": "New York Knicks @ Boston Celtics",
+      "want": true
+    },
+    {
+      "teams": [
+        "Celtics"
+      ],
+      "games": null,
+      "event": "e3",
+      "matchup": "Miami Heat @ Golden State Warriors",
+      "want": false
+    },
+    {
+      "teams": null,
+      "games": [
+        {
+          "event_id": "nfl:401",
+          "matchup": "Jacksonville Jaguars @ Baltimore Ravens",
+          "commence_time": "2026-11-06T01:15:00Z",
+          "sport": "nfl"
+        }
+      ],
+      "event": "odds-1",
+      "matchup": "Jacksonville Jaguars @ Baltimore Ravens",
+      "start": "2026-11-06T01:15:00Z",
+      "want": true
+    },
+    {
+      "teams": null,
+      "games": [
+        {
+          "event_id": "nfl:401",
+          "matchup": "Jacksonville Jaguars @ Baltimore Ravens",
+          "commence_time": "2026-11-06T01:15:00Z",
+          "sport": "nfl"
+        }
+      ],
+      "event": "odds-2",
+      "matchup": "Jacksonville Jaguars @ Baltimore Ravens",
+      "start": "2026-11-14T01:15:00Z",
+      "want": false
+    },
+    {
+      "teams": null,
+      "games": [
+        {
+          "event_id": "nhl:402",
+          "matchup": "Calgary Flames @ Seattle Kraken",
+          "commence_time": "2026-11-06T03:00:00Z",
+          "sport": "nhl"
+        }
+      ],
+      "event": "odds-3",
+      "matchup": "CGY @ SEA",
+      "start": "2026-11-06T03:05:00Z",
+      "want": true
+    },
+    {
+      "teams": null,
+      "games": [
+        {
+          "event_id": "nhl:402",
+          "matchup": "Calgary Flames @ Seattle Kraken",
+          "commence_time": "2026-11-06T03:00:00Z",
+          "sport": "nhl"
+        }
+      ],
+      "event": "odds-4",
+      "matchup": "BOS @ NYR",
+      "start": "2026-11-06T03:00:00Z",
+      "want": false
+    }
+  ],
+  "clean": {
+    "_about": "A typed or read token, checked before it's saved (Nov 9): web cleanPromo and iPhone Promos.clean. `want` lists the fields the cleaned row must have; `error` is the refusal.",
+    "cases": [
+      {
+        "in": {
+          "kind": "boost",
+          "pct": 30,
+          "amount_dollars": 25,
+          "max_extra_dollars": 0,
+          "min_legs": 0,
+          "min_odds": 5,
+          "sports": [
+            "CFB",
+            "College Basketball",
+            "nba "
+          ],
+          "book": "fanduel"
+        },
+        "want": {
+          "kind": "boost",
+          "pct": 30,
+          "amount_dollars": 25,
+          "max_extra_dollars": null,
+          "min_legs": null,
+          "min_odds": null,
+          "sports": [
+            "ncaaf",
+            "ncaab",
+            "nba"
+          ],
+          "book": "FanDuel"
+        }
+      },
+      {
+        "in": {
+          "kind": "bonus",
+          "amount_dollars": 10,
+          "pct": 30,
+          "min_legs": 25,
+          "max_extra_dollars": 5,
+          "sports": [
+            "golf"
+          ],
+          "max_odds": 2000
+        },
+        "want": {
+          "kind": "bonus",
+          "amount_dollars": 10,
+          "pct": null,
+          "min_legs": null,
+          "max_extra_dollars": null,
+          "sports": null,
+          "max_odds": 2000
+        }
+      },
+      {
+        "in": {
+          "kind": "boost",
+          "pct": 50,
+          "amount_dollars": 25,
+          "min_legs": 3,
+          "market": "parlays",
+          "sports": [
+            "NFL"
+          ],
+          "book": "DraftKings"
+        },
+        "want": {
+          "kind": "boost",
+          "pct": 50,
+          "min_legs": 3,
+          "market": null,
+          "sports": [
+            "nfl"
+          ],
+          "book": "DraftKings"
+        }
+      },
+      {
+        "in": {
+          "kind": "boost",
+          "amount_dollars": 25
+        },
+        "error": "A boost needs its size, 1 to 500%."
+      },
+      {
+        "in": {
+          "kind": "bonus",
+          "amount_dollars": 0
+        },
+        "error": "A bonus bet needs its dollar amount."
+      },
+      {
+        "in": {
+          "kind": "boost",
+          "pct": 50,
+          "amount_dollars": -5
+        },
+        "error": "Dollars must be above 0."
+      }
+    ]
+  },
+  "expiry": {
+    "_about": "A read token's expiry in Eastern time with its offset (web etExpiry, run by /api/promos): a zone-less time is Eastern wall time, a bare date 11:59 PM Eastern.",
+    "cases": [
+      [
+        "2026-10-31T23:59:00-04:00",
+        "2026-10-31T23:59:00-04:00"
+      ],
+      [
+        "2026-11-02T03:59:00Z",
+        "2026-11-01T22:59:00-05:00"
+      ],
+      [
+        "2026-11-10T04:59:00Z",
+        "2026-11-09T23:59:00-05:00"
+      ],
+      [
+        "2026-11-09T23:59:00",
+        "2026-11-09T23:59:00-05:00"
+      ],
+      [
+        "2026-10-31T23:59",
+        "2026-10-31T23:59:00-04:00"
+      ],
+      [
+        "2026-11-12",
+        "2026-11-12T23:59:00-05:00"
+      ],
+      [
+        "next Tuesday",
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "draft_answer": {
+    "_about": "What /api/promos answers (Nov 9): each token cleaned (web promoDraft), with promo_id \"\" and status open so the iPhone's PromoRow decodes it; `problem` says why one can't be kept as read.",
+    "promos": [
+      {
+        "promo_id": "",
+        "status": "open",
+        "kind": "boost",
+        "book": "FanDuel",
+        "amount_dollars": 25,
+        "pct": 30,
+        "max_extra_dollars": null,
+        "min_legs": 3,
+        "min_odds": null,
+        "max_odds": null,
+        "sports": [
+          "nfl"
+        ],
+        "teams": null,
+        "market": null,
+        "games": null,
+        "leg_kinds": null,
+        "note": null,
+        "expires_at": "2026-11-09T23:59:00-05:00",
+        "source": "screenshot",
+        "problem": null
+      },
+      {
+        "promo_id": "",
+        "status": "open",
+        "kind": "boost",
+        "book": "DraftKings",
+        "amount_dollars": 10,
+        "pct": null,
+        "max_extra_dollars": null,
+        "min_legs": null,
+        "min_odds": null,
+        "max_odds": null,
+        "sports": null,
+        "teams": null,
+        "market": null,
+        "games": null,
+        "leg_kinds": null,
+        "note": "SGP only",
+        "expires_at": null,
+        "source": "screenshot",
+        "problem": "A boost needs its size, 1 to 500%."
+      }
+    ]
+  },
+  "usable": {
+    "_about": "Can a token go on a bet now (Nov 9: web promoUsable, iPhone Promos.usable)? Null when it can; judged at `now`.",
+    "cases": [
+      [
+        "a",
+        null
+      ],
+      [
+        "d",
+        "That promo has ended."
+      ],
+      [
+        "e",
+        "That promo is already used."
+      ],
+      [
+        "gone",
+        "That promo is gone."
+      ]
+    ]
+  },
+  "slip_tokens": {
+    "_about": "A slip read from a screenshot (Nov 9): the open wallet tokens it may have used (web slipTokens, iPhone Promos.slipTokens), judged at `now` over `promos` plus these. Kind and book must match (a token for any book fits any), a boost's size when both say it, the wager at most its dollars, its fewest legs and odds; an exact dollar match first. `pick` is the one preselected (only when one fits).",
+    "tokens": [
+      {
+        "promo_id": "fd10",
+        "kind": "bonus",
+        "book": "FanDuel",
+        "amount_dollars": 10,
+        "status": "open",
+        "expires_at": "2026-11-02T03:59:00Z",
+        "created_at": "2026-10-29T12:00:00Z"
+      },
+      {
+        "promo_id": "fd25b",
+        "kind": "boost",
+        "book": "FanDuel",
+        "amount_dollars": 25,
+        "pct": 25,
+        "status": "open",
+        "expires_at": null,
+        "created_at": "2026-10-29T12:00:00Z"
+      },
+      {
+        "promo_id": "any30",
+        "kind": "boost",
+        "book": null,
+        "amount_dollars": 10,
+        "pct": 30,
+        "min_legs": 3,
+        "status": "open",
+        "expires_at": null,
+        "created_at": "2026-10-29T12:00:00Z"
+      },
+      {
+        "promo_id": "fdused",
+        "kind": "bonus",
+        "book": "FanDuel",
+        "amount_dollars": 50,
+        "status": "used",
+        "expires_at": null,
+        "created_at": "2026-10-29T12:00:00Z"
+      }
+    ],
+    "cases": [
+      {
+        "slip": {
+          "book": "FanDuel",
+          "bonus": true,
+          "boost_pct": null,
+          "stake_dollars": 10,
+          "price": 250,
+          "legs": 2
+        },
+        "want": [
+          "fd10",
+          "a"
+        ],
+        "pick": null
+      },
+      {
+        "slip": {
+          "book": "FanDuel",
+          "bonus": true,
+          "boost_pct": null,
+          "stake_dollars": 30,
+          "price": 250,
+          "legs": 2
+        },
+        "want": [
+          "a"
+        ],
+        "pick": "a"
+      },
+      {
+        "slip": {
+          "book": "FanDuel",
+          "bonus": false,
+          "boost_pct": 25,
+          "stake_dollars": 20,
+          "price": 300,
+          "legs": 1
+        },
+        "want": [
+          "fd25b"
+        ],
+        "pick": "fd25b"
+      },
+      {
+        "slip": {
+          "book": "FanDuel",
+          "bonus": false,
+          "boost_pct": 30,
+          "stake_dollars": 10,
+          "price": 600,
+          "legs": 3
+        },
+        "want": [
+          "any30"
+        ],
+        "pick": "any30"
+      },
+      {
+        "slip": {
+          "book": "FanDuel",
+          "bonus": false,
+          "boost_pct": 30,
+          "stake_dollars": 10,
+          "price": 600,
+          "legs": 2
+        },
+        "want": [],
+        "pick": null
+      },
+      {
+        "slip": {
+          "book": "DraftKings",
+          "bonus": false,
+          "boost_pct": 30,
+          "stake_dollars": 25,
+          "price": 400,
+          "legs": 3
+        },
+        "want": [
+          "b"
+        ],
+        "pick": "b"
+      },
+      {
+        "slip": {
+          "book": "DraftKings",
+          "bonus": false,
+          "boost_pct": 30,
+          "stake_dollars": 25,
+          "price": -300,
+          "legs": 3
+        },
+        "want": [],
+        "pick": null
+      },
+      {
+        "slip": {
+          "book": "FanDuel",
+          "bonus": false,
+          "boost_pct": null,
+          "stake_dollars": 10,
+          "price": 250,
+          "legs": 2
+        },
+        "want": [],
+        "pick": null
+      }
+    ]
+  },
+  "clean_kinds": [
+    {
+      "in": [
+        "tds",
+        "first_td"
+      ],
+      "want": [
+        "tds",
+        "first_td"
+      ]
+    },
+    {
+      "in": [
+        "Anytime TD scorer",
+        "first touchdown"
+      ],
+      "want": [
+        "tds",
+        "first_td"
+      ]
+    },
+    {
+      "in": [
+        "passing yards",
+        "nonsense"
+      ],
+      "want": [
+        "passing_yards"
+      ]
+    },
+    {
+      "in": [],
+      "want": null
+    }
+  ],
+  "team_games": {
+    "now": "2026-11-09T16:30:00Z",
+    "schedule": [
+      {
+        "event_id": "nfl:401873051",
+        "matchup": "Buffalo Bills @ Minnesota Vikings",
+        "commence_time": "2026-11-10T01:15:00Z",
+        "sport": "nfl"
+      },
+      {
+        "event_id": "ncaab:401917517",
+        "matchup": "Portland State Vikings @ Seattle U Redhawks",
+        "commence_time": "2026-11-10T03:00:00Z",
+        "sport": "ncaab"
+      },
+      {
+        "event_id": "nba:1",
+        "matchup": "Boston Celtics @ New York Knicks",
+        "commence_time": "2026-11-10T00:30:00Z",
+        "sport": "nba"
+      }
+    ],
+    "cases": [
+      {
+        "in": {
+          "teams": [
+            "Buffalo Bills",
+            "Minnesota Vikings"
+          ],
+          "sports": [
+            "nfl"
+          ]
+        },
+        "want_games": [
+          "nfl:401873051"
+        ],
+        "want_teams": null,
+        "want_sports": [
+          "nfl"
+        ]
+      },
+      {
+        "in": {
+          "teams": [
+            "Bills vs Vikings"
+          ]
+        },
+        "want_games": [
+          "nfl:401873051"
+        ],
+        "want_teams": null,
+        "want_sports": [
+          "nfl"
+        ]
+      },
+      {
+        "in": {
+          "teams": [
+            "Knicks",
+            "Celtics"
+          ]
+        },
+        "want_games": [
+          "nba:1"
+        ],
+        "want_teams": null,
+        "want_sports": [
+          "nba"
+        ]
+      },
+      {
+        "in": {
+          "teams": [
+            "Ohio State"
+          ]
+        },
+        "want_games": null,
+        "want_teams": [
+          "Ohio State"
+        ],
+        "want_sports": null
+      },
+      {
+        "in": {
+          "teams": [
+            "Knicks",
+            "Lakers"
+          ]
+        },
+        "want_games": null,
+        "want_teams": [
+          "Knicks",
+          "Lakers"
+        ],
+        "want_sports": null
+      },
+      {
+        "in": {
+          "teams": [
+            "Bills",
+            "Vikings"
+          ],
+          "expires_at": "2026-11-09T18:00:00-05:00"
+        },
+        "want_games": null,
+        "want_teams": [
+          "Bills",
+          "Vikings"
+        ],
+        "want_sports": null
+      }
+    ]
+  },
+  "boost_expiry": [
+    {
+      "in": {
+        "kind": "boost",
+        "expires_at": "2026-11-10T00:00:00-05:00"
+      },
+      "want": "2026-11-09T23:59:00-05:00"
+    },
+    {
+      "in": {
+        "kind": "boost",
+        "expires_at": "2026-11-15"
+      },
+      "want": "2026-11-14T23:59:00-05:00"
+    },
+    {
+      "in": {
+        "kind": "boost",
+        "expires_at": "2026-11-12T15:00:00-05:00"
+      },
+      "want": "2026-11-11T23:59:00-05:00"
+    },
+    {
+      "in": {
+        "kind": "boost",
+        "expires_at": null,
+        "games": [
+          {
+            "event_id": "nfl:401873051",
+            "matchup": "Buffalo Bills @ Minnesota Vikings",
+            "commence_time": "2026-11-10T01:15:00Z",
+            "sport": "nfl"
+          }
+        ]
+      },
+      "want": "2026-11-09T20:20:00-05:00"
+    },
+    {
+      "in": {
+        "kind": "boost",
+        "expires_at": "2026-11-20",
+        "games": [
+          {
+            "event_id": "nfl:401873051",
+            "matchup": "Buffalo Bills @ Minnesota Vikings",
+            "commence_time": "2026-11-10T01:15:00Z",
+            "sport": "nfl"
+          },
+          {
+            "event_id": "nba:1",
+            "matchup": "Boston Celtics @ New York Knicks",
+            "commence_time": "2026-11-10T00:30:00Z",
+            "sport": "nba"
+          }
+        ]
+      },
+      "want": "2026-11-09T20:20:00-05:00"
+    },
+    {
+      "in": {
+        "kind": "bonus",
+        "expires_at": "2026-11-15T23:59:00-05:00"
+      },
+      "want": "2026-11-15T23:59:00-05:00"
+    },
+    {
+      "in": {
+        "kind": "boost",
+        "expires_at": null
+      },
+      "want": null
+    }
+  ],
+  "shot_books": [
+    {
+      "shots": [
+        {
+          "book": "FanDuel",
+          "from": "name"
+        },
+        {
+          "book": "DraftKings",
+          "from": "look"
+        },
+        {
+          "book": null,
+          "from": "unknown"
+        }
+      ],
+      "mine": [
+        "FanDuel",
+        "DraftKings"
+      ],
+      "want": [
+        "FanDuel",
+        "FanDuel",
+        "FanDuel"
+      ]
+    },
+    {
+      "shots": [
+        {
+          "book": "FanDuel",
+          "from": "name"
+        },
+        {
+          "book": "DraftKings",
+          "from": "name"
+        },
+        {
+          "book": null,
+          "from": "unknown"
+        }
+      ],
+      "mine": [
+        "FanDuel",
+        "DraftKings"
+      ],
+      "want": [
+        "FanDuel",
+        "DraftKings",
+        null
+      ]
+    },
+    {
+      "shots": [
+        {
+          "book": "FanDuel",
+          "from": "look"
+        },
+        {
+          "book": "FanDuel",
+          "from": "look"
+        },
+        {
+          "book": "DraftKings",
+          "from": "look"
+        },
+        {
+          "book": null,
+          "from": "unknown"
+        }
+      ],
+      "mine": [
+        "FanDuel",
+        "DraftKings"
+      ],
+      "want": [
+        "FanDuel",
+        "FanDuel",
+        "DraftKings",
+        "FanDuel"
+      ]
+    },
+    {
+      "shots": [
+        {
+          "book": null,
+          "from": "unknown"
+        }
+      ],
+      "mine": [
+        "FanDuel"
+      ],
+      "want": [
+        "FanDuel"
+      ]
+    },
+    {
+      "shots": [
+        {
+          "book": null,
+          "from": "unknown"
+        }
+      ],
+      "mine": [
+        "FanDuel",
+        "DraftKings"
+      ],
+      "want": [
+        null
+      ]
+    }
+  ]
+}

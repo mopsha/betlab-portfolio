@@ -1,0 +1,53 @@
+{
+  "_doc": "Books on and off (Nov 6, supabase 0043): a card bet at the best book an account has on. One fixture for Python books.at_books, web lib/books.ts atBooks and iPhone BooksOff.atBooks. `books` is the worker's books.per_book list; `want` null means the bet is hidden.",
+  "offer": {
+    "offer_id": "x", "league": "nfl", "label": "Bills +3.5", "tier": "pick", "book": "Novig", "price": 120, "point": 3.5, "ev": 0.05, "units_tier": 1.5, "bet_limit": 400,
+    "fd_url": "nv-link", "other_book": "DraftKings", "other_point": 3.5, "other_price": 105, "other_ev": 0.035,
+    "books": [
+      {"book": "FanDuel", "price": -110, "point": 3.5, "ev": 0.005, "tier": null, "units_tier": null, "link": "fd-link"},
+      {"book": "DraftKings", "price": 105, "point": 3.5, "ev": 0.035, "tier": "pick", "units_tier": 1.0, "link": "dk-link"},
+      {"book": "Novig", "price": 120, "point": 3.5, "ev": 0.05, "tier": "pick", "units_tier": 1.5, "bet_limit": 400, "link": "nv-link"}
+    ]
+  },
+  "cases": [
+    {"case": "every book on: unchanged", "off": [],
+     "want": {"tier": "pick", "book": "Novig", "price": 120, "ev": 0.05, "units_tier": 1.5, "fd_url": "nv-link", "bet_limit": 400,
+              "other_book": "DraftKings", "other_price": 105, "other_ev": 0.035}},
+    {"case": "Novig off: DraftKings, the next best book that makes it a bet; FanDuel's price rides along", "off": ["Novig"],
+     "want": {"tier": "pick", "book": "DraftKings", "price": 105, "ev": 0.035, "units_tier": 1.0, "fd_url": "dk-link", "bet_limit": null,
+              "other_book": "FanDuel", "other_price": -110, "other_ev": 0.005}},
+    {"case": "only FanDuel on: FanDuel's price makes no bet, so it's hidden", "off": ["Novig", "DraftKings"], "want": null},
+    {"case": "DraftKings off: still Novig, and the other price is FanDuel's", "off": ["DraftKings"],
+     "want": {"tier": "pick", "book": "Novig", "price": 120, "ev": 0.05, "units_tier": 1.5, "fd_url": "nv-link", "bet_limit": 400,
+              "other_book": "FanDuel", "other_price": -110, "other_ev": 0.005}},
+    {"case": "FanDuel off: unchanged (Novig, with DraftKings as the other price)", "off": ["FanDuel"],
+     "want": {"tier": "pick", "book": "Novig", "price": 120, "ev": 0.05, "units_tier": 1.5, "fd_url": "nv-link", "bet_limit": 400,
+              "other_book": "DraftKings", "other_price": 105, "other_ev": 0.035}}
+  ],
+  "lean": {
+    "_doc": "a pick at Novig is a lean at DraftKings: it shows as a lean",
+    "offer": {"offer_id": "y", "league": "nhl", "label": "Rangers ML", "tier": "pick", "book": "Novig", "price": 150, "point": null, "ev": 0.04, "units_tier": 1.0, "bet_limit": 900,
+              "fd_url": "nv", "other_book": "DraftKings", "other_point": null, "other_price": 135, "other_ev": 0.015,
+              "books": [{"book": "DraftKings", "price": 135, "point": null, "ev": 0.015, "tier": "lean", "units_tier": null, "link": "dk"},
+                        {"book": "Novig", "price": 150, "point": null, "ev": 0.04, "tier": "pick", "units_tier": 1.0, "bet_limit": 900, "link": "nv"}]},
+    "off": ["Novig"],
+    "want": {"tier": "lean", "book": "DraftKings", "price": 135, "ev": 0.015, "units_tier": null, "fd_url": "dk", "bet_limit": null,
+             "other_book": null, "other_price": null, "other_ev": null}
+  },
+  "old": {
+    "_doc": "a row published before Nov 6 has no books list: with its book off it's hidden; with only its other book off, that price drops",
+    "offer": {"offer_id": "z", "league": "nba", "label": "Knicks -2.5", "tier": "lean", "book": "FanDuel", "price": -105, "point": 2.5, "ev": 0.012, "units_tier": null,
+              "fd_url": "fd", "other_book": "Novig", "other_point": 2.5, "other_price": 100, "other_ev": 0.01, "books": null},
+    "cases": [
+      {"off": ["FanDuel"], "want": null},
+      {"off": ["Novig"], "want": {"tier": "lean", "book": "FanDuel", "price": -105, "ev": 0.012, "units_tier": null, "fd_url": "fd",
+                                   "bet_limit": null, "other_book": null, "other_price": null, "other_ev": null}}
+    ]
+  },
+  "on": [
+    {"off": [], "want": ["FanDuel", "DraftKings", "Novig"]},
+    {"off": ["Novig"], "want": ["FanDuel", "DraftKings"]},
+    {"off": ["FanDuel", "Novig"], "want": ["DraftKings"]},
+    {"off": ["FanDuel", "DraftKings", "Novig"], "want": ["FanDuel", "DraftKings", "Novig"], "_doc": "never all three: read as none off"}
+  ]
+}

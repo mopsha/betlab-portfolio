@@ -1,0 +1,3 @@
+// Shared settings for the BetLab iPhone app. The Supabase address and public (anon) key come from
+// Secrets.xcconfig, which ios/scripts/make_secrets.sh writes from web/.env.local and git ignores.
+#include? "Secrets.xcconfig"

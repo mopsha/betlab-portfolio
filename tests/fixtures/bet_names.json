@@ -1,0 +1,118 @@
+{
+ "_about": "A bet's short name (web lib/gameday.ts betName, iPhone Stats.betName): a parlay by who is in it, up to two names then 'and N more' (the other names and the legs with no name, like a game total); a player by his name without the first name, a team by its full name; one name across every leg is '<full name>, N legs'; no name at all, 'N-leg parlay'. A single is its leg. Overhaul gap, Nov 6: every parlay read '4-leg parlay'.",
+ "cases": [
+  {
+   "legs": [
+    "Joe Fagnano 125+ passing yds",
+    "Trevor Lawrence 200+ passing yds",
+    "Parker Washington 3+ receptions",
+    "Justice Hill 2+ receptions"
+   ],
+   "price": 940,
+   "name": "Fagnano, Lawrence and 2 more +940"
+  },
+  {
+   "legs": [
+    "Trevor Lawrence 220+ passing yds",
+    "Bhayshul Tuten anytime TD"
+   ],
+   "price": 260,
+   "name": "Lawrence, Tuten +260"
+  },
+  {
+   "legs": [
+    "Rashod Bateman over 1.5 receptions",
+    "Rashod Bateman 40+ receiving yds",
+    "Jacksonville Jaguars ML"
+   ],
+   "price": 410,
+   "name": "Bateman, Jacksonville Jaguars +410"
+  },
+  {
+   "legs": [
+    "Jacksonville Jaguars -9.5",
+    "Over 47.5"
+   ],
+   "price": 264,
+   "name": "Jacksonville Jaguars and 1 more +264"
+  },
+  {
+   "legs": [
+    "Over 2.5 goals",
+    "Both teams to score"
+   ],
+   "price": 150,
+   "name": "2-leg parlay +150"
+  },
+  {
+   "legs": [
+    "New York Rangers ML",
+    "Philadelphia Flyers ML",
+    "Boston Bruins ML"
+   ],
+   "price": null,
+   "name": "New York Rangers, Philadelphia Flyers and 1 more"
+  },
+  {
+   "legs": [
+    "Michigan Wolverines ML"
+   ],
+   "price": 250,
+   "name": "Michigan Wolverines ML +250"
+  },
+  {
+   "legs": null,
+   "label": "LSU Tigers ML",
+   "price": -265,
+   "name": "LSU Tigers ML -265"
+  },
+  {
+   "legs": [],
+   "price": null,
+   "name": "Bet"
+  },
+  {
+   "legs": [
+    "Jalen Brunson 25+ points",
+    "Josh Hart 8+ rebounds",
+    "OG Anunoby o2.5 threes"
+   ],
+   "price": 600,
+   "name": "Brunson, Hart and 1 more +600"
+  },
+  {
+   "legs": [
+    "A",
+    "B"
+   ],
+   "n": 5,
+   "price": 900,
+   "name": "5-leg parlay +900"
+  },
+  {
+   "legs": [
+    "Rashod Bateman over 1.5 receptions",
+    "Rashod Bateman 40+ receiving yds"
+   ],
+   "price": 180,
+   "name": "Rashod Bateman, 2 legs +180"
+  },
+  {
+   "legs": [
+    "Amon-Ra St. Brown 6+ receptions",
+    "Michael Pittman Jr. 50+ receiving yds",
+    "Manchester City to win"
+   ],
+   "price": 500,
+   "name": "St. Brown, Pittman Jr. and 1 more +500"
+  },
+  {
+   "legs": [
+    "Erling Haaland anytime goalscorer",
+    "Manchester City to win"
+   ],
+   "price": 120,
+   "name": "Haaland, Manchester City +120"
+  }
+ ]
+}

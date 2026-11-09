@@ -1,0 +1,24 @@
+{
+  "_": "Watched games (Nov 7, 0045): which single-game slips Today shows, and the watched games' locks to come. A game's own slips lock by its own start, never its slice (Mike: \"locks on a sgp shouldn't depend on slices at all\"): a slip shows when its game is watched, hasn't started, and is within 25 minutes of its start (the worker's sgp_plus.lock_slips). A watched game's lock is its start minus 25 minutes, while that is ahead. Two ports: web/lib/watch.ts, ios/BetLab/Today/Watch.swift.",
+  "now": "2026-11-08T17:40:00Z",
+  "watching": ["nfl:2026_10_BUF_NYJ", "nba:e7"],
+  "cases": [
+    {"name": "a watched game's slip in its last 25 minutes", "ticket": {"kind": "sgp", "game_id": "nfl:2026_10_BUF_NYJ", "slate": "2026-11-08-early", "commence_time": "2026-11-08T18:00:00Z"}, "show": true},
+    {"name": "an unwatched game's slip at the same time", "ticket": {"kind": "sgp", "game_id": "nfl:2026_10_MIA_NE", "slate": "2026-11-08-early", "commence_time": "2026-11-08T18:00:00Z"}, "show": false},
+    {"name": "a watched game's slip in a locked slice, its own start hours away", "ticket": {"kind": "sgp", "game_id": "nba:e7", "slate": "2026-11-08-nba-early", "commence_time": "2026-11-08T20:10:00Z"}, "show": false},
+    {"name": "a watched game that has started", "ticket": {"kind": "sgp", "game_id": "nba:e7", "slate": "2026-11-08-nba-early", "commence_time": "2026-11-08T17:30:00Z"}, "show": false},
+    {"name": "a watched game's slip with no slice, in its last 25 minutes", "ticket": {"kind": "sgp", "game_id": "nba:e7", "slate": null, "commence_time": "2026-11-08T18:00:00Z"}, "show": true},
+    {"name": "a watched game's slip with no slice, an hour out", "ticket": {"kind": "sgp", "game_id": "nba:e7", "slate": null, "commence_time": "2026-11-08T18:45:00Z"}, "show": false},
+    {"name": "an over on a watched game is not a slip", "ticket": {"kind": "over", "game_id": "nba:e7", "slate": "2026-11-08-nba-early", "commence_time": "2026-11-08T18:00:00Z"}, "show": false}
+  ],
+  "locks": {
+    "tickets": [
+      {"kind": "sgp", "game_id": "nba:e7", "sport": "nba", "matchup": "New York Knicks @ Cleveland Cavaliers", "commence_time": "2026-11-08T20:10:00Z"},
+      {"kind": "sgp", "game_id": "nba:e7", "sport": "nba", "matchup": "New York Knicks @ Cleveland Cavaliers", "commence_time": "2026-11-08T20:10:00Z"},
+      {"kind": "sgp", "game_id": "nfl:2026_10_BUF_NYJ", "sport": "nfl", "matchup": "Buffalo Bills @ New York Jets", "commence_time": "2026-11-08T18:00:00Z"},
+      {"kind": "sgp", "game_id": "nfl:2026_10_MIA_NE", "sport": "nfl", "matchup": "Miami Dolphins @ New England Patriots", "commence_time": "2026-11-08T21:00:00Z"},
+      {"kind": "over", "game_id": "nba:e7", "sport": "nba", "matchup": "New York Knicks @ Cleveland Cavaliers", "commence_time": "2026-11-08T20:10:00Z"}
+    ],
+    "want": [{"key": "game:nba:e7", "title": "Knicks @ Cavaliers slips", "at": "2026-11-08T19:45:00.000Z"}]
+  }
+}

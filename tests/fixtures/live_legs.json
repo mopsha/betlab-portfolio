@@ -1,0 +1,3204 @@
+{
+ "_about": "Leg labels and game states that both trackers must read the same way: web/lib/live.ts (web/tests/live.test.mjs) and src/betlab/live_legs.py (tests/test_live_legs.py). Add a case here when either side learns a new label. plays (Nov 6): play-by-play summaries every port's box parser must turn into the same play-derived stats (playStats). days (Nov 9): the Eastern days each bet's game is looked for on (searchDays in every port).",
+ "parse": [
+  {
+   "label": "A.J. Brown 60+ receiving yds",
+   "expect": {
+    "kind": "prop",
+    "player": "A.J. Brown",
+    "stat": "receiving yds",
+    "side": "over",
+    "need": 60,
+    "point": 59.5
+   }
+  },
+  {
+   "label": "Joel Embiid over 7.5 rebounds",
+   "expect": {
+    "kind": "prop",
+    "player": "Joel Embiid",
+    "stat": "rebounds",
+    "side": "over",
+    "need": 8,
+    "point": 7.5
+   }
+  },
+  {
+   "label": "Derrick White over 7.5 reb + ast",
+   "expect": {
+    "kind": "prop",
+    "player": "Derrick White",
+    "stat": "reb + ast",
+    "side": "over",
+    "need": 8,
+    "point": 7.5
+   }
+  },
+  {
+   "label": "Jalen Brunson under 26.5 pts + reb + ast",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "pts + reb + ast",
+    "side": "under",
+    "need": 27,
+    "point": 26.5
+   }
+  },
+  {
+   "label": "Rolando Mandragora 1+ shots on target",
+   "expect": {
+    "kind": "prop",
+    "player": "Rolando Mandragora",
+    "stat": "shots on target",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Victor Wembanyama over 1.5 threes",
+   "expect": {
+    "kind": "prop",
+    "player": "Victor Wembanyama",
+    "stat": "threes",
+    "side": "over",
+    "need": 2,
+    "point": 1.5
+   }
+  },
+  {
+   "label": "Over 2.5 goals",
+   "expect": {
+    "kind": "total",
+    "side": "over",
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Under 47.5 total points",
+   "expect": {
+    "kind": "total",
+    "side": "under",
+    "point": 47.5
+   }
+  },
+  {
+   "label": "Over 1.5 rounds",
+   "expect": {
+    "kind": "total",
+    "side": "over",
+    "point": 1.5
+   }
+  },
+  {
+   "label": "Over 55.5 total points",
+   "expect": {
+    "kind": "total",
+    "side": "over",
+    "point": 55.5
+   }
+  },
+  {
+   "label": "CBJ to win",
+   "expect": {
+    "kind": "ml",
+    "team": "CBJ"
+   }
+  },
+  {
+   "label": "Borussia Dortmund to win",
+   "expect": {
+    "kind": "ml",
+    "team": "Borussia Dortmund"
+   }
+  },
+  {
+   "label": "Michigan Wolverines ML",
+   "expect": {
+    "kind": "ml",
+    "team": "Michigan Wolverines"
+   }
+  },
+  {
+   "label": "Virginia Tech Hokies -3.5",
+   "expect": {
+    "kind": "spread",
+    "team": "Virginia Tech Hokies",
+    "point": -3.5
+   }
+  },
+  {
+   "label": "Akron Zips +2.5",
+   "expect": {
+    "kind": "spread",
+    "team": "Akron Zips",
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Both teams to score",
+   "expect": {
+    "kind": "btts"
+   }
+  },
+  {
+   "label": "Drake Maye first TD scorer",
+   "expect": {
+    "kind": "td",
+    "player": "Drake Maye",
+    "first": true
+   }
+  },
+  {
+   "label": "Colston Loveland anytime TD",
+   "expect": {
+    "kind": "td",
+    "player": "Colston Loveland",
+    "first": false
+   }
+  },
+  {
+   "label": "Maghnes Akliouche to score or assist",
+   "expect": {
+    "kind": "goal_or_assist",
+    "player": "Maghnes Akliouche"
+   }
+  },
+  {
+   "label": "Something we never wrote",
+   "expect": null
+  },
+  {
+   "label": "Christian McCaffrey 100+ rushing + receiving yds",
+   "expect": {
+    "kind": "prop",
+    "player": "Christian McCaffrey",
+    "stat": "rush + rec yds",
+    "side": "over",
+    "need": 100,
+    "point": 99.5
+   }
+  },
+  {
+   "label": "Bijan Robinson over 85.5 Rush & Rec Yards",
+   "expect": {
+    "kind": "prop",
+    "player": "Bijan Robinson",
+    "stat": "rush + rec yds",
+    "side": "over",
+    "need": 86,
+    "point": 85.5
+   }
+  },
+  {
+   "label": "Bijan Robinson 50+ rushing yards",
+   "expect": {
+    "kind": "prop",
+    "player": "Bijan Robinson",
+    "stat": "rushing yds",
+    "side": "over",
+    "need": 50,
+    "point": 49.5
+   }
+  },
+  {
+   "label": "Lamine Yamal anytime goalscorer",
+   "expect": {
+    "kind": "prop",
+    "player": "Lamine Yamal",
+    "stat": "goals",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Kylian Mbappe to score",
+   "expect": {
+    "kind": "prop",
+    "player": "Kylian Mbappe",
+    "stat": "goals",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Karl-Anthony Towns To Record Double Double",
+   "expect": {
+    "kind": "double",
+    "player": "Karl-Anthony Towns",
+    "n": 2
+   }
+  },
+  {
+   "label": "Nikola Jokic triple-double",
+   "expect": {
+    "kind": "double",
+    "player": "Nikola Jokic",
+    "n": 3
+   }
+  },
+  {
+   "label": "Draw",
+   "expect": {
+    "kind": "draw"
+   }
+  },
+  {
+   "label": "Arsenal or draw",
+   "expect": {
+    "kind": "draw_or",
+    "team": "Arsenal"
+   }
+  },
+  {
+   "label": "Both teams to score: no",
+   "expect": {
+    "kind": "btts_no"
+   }
+  },
+  {
+   "label": "Both teams to score: yes",
+   "expect": {
+    "kind": "btts"
+   }
+  },
+  {
+   "label": "Over 2.5 total goals",
+   "expect": {
+    "kind": "total",
+    "side": "over",
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Puka Nacua over 22.5 longest reception",
+   "expect": {
+    "kind": "prop",
+    "player": "Puka Nacua",
+    "stat": "longest reception",
+    "side": "over",
+    "need": 23,
+    "point": 22.5
+   }
+  },
+  {
+   "label": "Puka Nacua longest catch over 22.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Puka Nacua",
+    "stat": "longest reception",
+    "side": "over",
+    "need": 23,
+    "point": 22.5
+   }
+  },
+  {
+   "label": "Derrick Henry 18+ carries",
+   "expect": {
+    "kind": "prop",
+    "player": "Derrick Henry",
+    "stat": "rush attempts",
+    "side": "over",
+    "need": 18,
+    "point": 17.5
+   }
+  },
+  {
+   "label": "Derrick Henry longest rush over 12.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Derrick Henry",
+    "stat": "longest rush",
+    "side": "over",
+    "need": 13,
+    "point": 12.5
+   }
+  },
+  {
+   "label": "Lamar Jackson over 30.5 pass attempts",
+   "expect": {
+    "kind": "prop",
+    "player": "Lamar Jackson",
+    "stat": "pass attempts",
+    "side": "over",
+    "need": 31,
+    "point": 30.5
+   }
+  },
+  {
+   "label": "Lamar Jackson over 19.5 pass completions",
+   "expect": {
+    "kind": "prop",
+    "player": "Lamar Jackson",
+    "stat": "completions",
+    "side": "over",
+    "need": 20,
+    "point": 19.5
+   }
+  },
+  {
+   "label": "Josh Allen over 0.5 interceptions thrown",
+   "expect": {
+    "kind": "prop",
+    "player": "Josh Allen",
+    "stat": "interceptions",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Roquan Smith over 7.5 tackles + assists",
+   "expect": {
+    "kind": "prop",
+    "player": "Roquan Smith",
+    "stat": "tackles",
+    "side": "over",
+    "need": 8,
+    "point": 7.5
+   }
+  },
+  {
+   "label": "Micah Parsons over 0.5 sacks",
+   "expect": {
+    "kind": "prop",
+    "player": "Micah Parsons",
+    "stat": "sacks",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Harrison Butker over 7.5 kicking points",
+   "expect": {
+    "kind": "prop",
+    "player": "Harrison Butker",
+    "stat": "kicking points",
+    "side": "over",
+    "need": 8,
+    "point": 7.5
+   }
+  },
+  {
+   "label": "Jalen Brunson over 2.5 steals + blocks",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "stl + blk",
+    "side": "over",
+    "need": 3,
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Jalen Brunson 3+ stocks",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "stl + blk",
+    "side": "over",
+    "need": 3,
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Jalen Brunson over 3.5 turnovers",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "turnovers",
+    "side": "over",
+    "need": 4,
+    "point": 3.5
+   }
+  },
+  {
+   "label": "Jalen Brunson 3+ made threes",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "threes",
+    "side": "over",
+    "need": 3,
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Jalen Brunson points + rebounds + assists over 40.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "pts + reb + ast",
+    "side": "over",
+    "need": 41,
+    "point": 40.5
+   }
+  },
+  {
+   "label": "Luka Doncic over 45.5 points + rebounds + assists",
+   "expect": {
+    "kind": "prop",
+    "player": "Luka Doncic",
+    "stat": "pts + reb + ast",
+    "side": "over",
+    "need": 46,
+    "point": 45.5
+   }
+  },
+  {
+   "label": "Mitchell Robinson over 3.5 offensive rebounds",
+   "expect": {
+    "kind": "prop",
+    "player": "Mitchell Robinson",
+    "stat": "offensive rebounds",
+    "side": "over",
+    "need": 4,
+    "point": 3.5
+   }
+  },
+  {
+   "label": "Jalen Brunson 9+ made field goals",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "field goals made",
+    "side": "over",
+    "need": 9,
+    "point": 8.5
+   }
+  },
+  {
+   "label": "Jalen Brunson over 5.5 free throws made",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "free throws made",
+    "side": "over",
+    "need": 6,
+    "point": 5.5
+   }
+  },
+  {
+   "label": "Jacob Trouba over 2.5 blocked shots",
+   "expect": {
+    "kind": "prop",
+    "player": "Jacob Trouba",
+    "stat": "blocked shots",
+    "side": "over",
+    "need": 3,
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Brady Tkachuk over 2.5 hits",
+   "expect": {
+    "kind": "prop",
+    "player": "Brady Tkachuk",
+    "stat": "hits",
+    "side": "over",
+    "need": 3,
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Rodri over 1.5 fouls committed",
+   "expect": {
+    "kind": "prop",
+    "player": "Rodri",
+    "stat": "fouls",
+    "side": "over",
+    "need": 2,
+    "point": 1.5
+   }
+  },
+  {
+   "label": "Bukayo Saka to be carded",
+   "expect": {
+    "kind": "card",
+    "player": "Bukayo Saka"
+   }
+  },
+  {
+   "label": "Ja'Marr Chase most receiving yards",
+   "expect": {
+    "kind": "leader",
+    "player": "Ja'Marr Chase",
+    "stat": "receiving yds"
+   }
+  },
+  {
+   "label": "Ja'Marr Chase to have the most receiving yards in the game",
+   "expect": {
+    "kind": "leader",
+    "player": "Ja'Marr Chase",
+    "stat": "receiving yds"
+   }
+  },
+  {
+   "label": "Jalen Brunson most points",
+   "expect": {
+    "kind": "leader",
+    "player": "Jalen Brunson",
+    "stat": "points"
+   }
+  },
+  {
+   "label": "Jalen Brunson over 7.5 1st quarter points",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "1q points",
+    "side": "over",
+    "need": 8,
+    "point": 7.5
+   }
+  },
+  {
+   "label": "Jalen Brunson 1st quarter points over 7.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "1q points",
+    "side": "over",
+    "need": 8,
+    "point": 7.5
+   }
+  },
+  {
+   "label": "Jalen Brunson 1Q points over 7.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "1q points",
+    "side": "over",
+    "need": 8,
+    "point": 7.5
+   }
+  },
+  {
+   "label": "Jalen Brunson over 12.5 first half points",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "1h points",
+    "side": "over",
+    "need": 13,
+    "point": 12.5
+   }
+  },
+  {
+   "label": "Josh Hart 2nd half rebounds over 4.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Josh Hart",
+    "stat": "2h rebounds",
+    "side": "over",
+    "need": 5,
+    "point": 4.5
+   }
+  },
+  {
+   "label": "Jalen Brunson first basket",
+   "expect": {
+    "kind": "first",
+    "player": "Jalen Brunson",
+    "what": "basket"
+   }
+  },
+  {
+   "label": "Jalen Brunson to score first basket",
+   "expect": {
+    "kind": "first",
+    "player": "Jalen Brunson",
+    "what": "basket"
+   }
+  },
+  {
+   "label": "Trevor Lawrence longest completion over 35.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Trevor Lawrence",
+    "stat": "longest completion",
+    "side": "over",
+    "need": 36,
+    "point": 35.5
+   }
+  },
+  {
+   "label": "Trevor Lawrence over 35.5 longest pass completion",
+   "expect": {
+    "kind": "prop",
+    "player": "Trevor Lawrence",
+    "stat": "longest completion",
+    "side": "over",
+    "need": 36,
+    "point": 35.5
+   }
+  },
+  {
+   "label": "Logan Cooley over 0.5 power play points",
+   "expect": {
+    "kind": "prop",
+    "player": "Logan Cooley",
+    "stat": "power play points",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Logan Cooley 1st period points over 0.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Logan Cooley",
+    "stat": "1p points",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Logan Cooley first goal scorer",
+   "expect": {
+    "kind": "first",
+    "player": "Logan Cooley",
+    "what": "goal"
+   }
+  },
+  {
+   "label": "Kai Havertz first goalscorer",
+   "expect": {
+    "kind": "first",
+    "player": "Kai Havertz",
+    "what": "goal"
+   }
+  },
+  {
+   "label": "Bhayshul Tuten first touchdown scorer",
+   "expect": {
+    "kind": "td",
+    "player": "Bhayshul Tuten",
+    "first": true
+   }
+  },
+  {
+   "label": "Josh Jacobs rushing yards over 89.5",
+   "expect": {
+    "kind": "prop",
+    "player": "Josh Jacobs",
+    "stat": "rushing yds",
+    "side": "over",
+    "need": 90,
+    "point": 89.5
+   }
+  },
+  {
+   "label": "Christian McCaffrey Anytime Touchdown Scorer",
+   "expect": {
+    "kind": "td",
+    "player": "Christian McCaffrey",
+    "first": false
+   }
+  },
+  {
+   "label": "Jonathan Taylor anytime TD",
+   "expect": {
+    "kind": "td",
+    "player": "Jonathan Taylor",
+    "first": false
+   }
+  },
+  {
+   "label": "Josh Jacobs 2+ TDs",
+   "expect": {
+    "kind": "prop",
+    "player": "Josh Jacobs",
+    "stat": "touchdowns",
+    "side": "over",
+    "need": 2,
+    "point": 1.5
+   }
+  },
+  {
+   "label": "Josh Jacobs 2+ touchdowns",
+   "expect": {
+    "kind": "prop",
+    "player": "Josh Jacobs",
+    "stat": "touchdowns",
+    "side": "over",
+    "need": 2,
+    "point": 1.5
+   }
+  },
+  {
+   "label": "Bijan Robinson 1+ rushing TDs",
+   "expect": {
+    "kind": "prop",
+    "player": "Bijan Robinson",
+    "stat": "rushing tds",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Jared Goff 2+ Passing Touchdowns",
+   "expect": {
+    "kind": "prop",
+    "player": "Jared Goff",
+    "stat": "passing tds",
+    "side": "over",
+    "need": 2,
+    "point": 1.5
+   }
+  },
+  {
+   "label": "Jared Goff over 1.5 passing touchdowns",
+   "expect": {
+    "kind": "prop",
+    "player": "Jared Goff",
+    "stat": "passing tds",
+    "side": "over",
+    "need": 2,
+    "point": 1.5
+   }
+  },
+  {
+   "label": "Jalen Brunson 25+ Pts",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "points",
+    "side": "over",
+    "need": 25,
+    "point": 24.5
+   }
+  },
+  {
+   "label": "Jalen Brunson over 30.5 pts + reb",
+   "expect": {
+    "kind": "prop",
+    "player": "Jalen Brunson",
+    "stat": "pts + reb",
+    "side": "over",
+    "need": 31,
+    "point": 30.5
+   }
+  },
+  {
+   "label": "Auston Matthews Over 2.5 SOG",
+   "expect": {
+    "kind": "prop",
+    "player": "Auston Matthews",
+    "stat": "shots on goal",
+    "side": "over",
+    "need": 3,
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Stephen Curry Over 2.5 Threes Made",
+   "expect": {
+    "kind": "prop",
+    "player": "Stephen Curry",
+    "stat": "threes",
+    "side": "over",
+    "need": 3,
+    "point": 2.5
+   }
+  },
+  {
+   "label": "Kansas City Chiefs PK",
+   "expect": {
+    "kind": "spread",
+    "team": "Kansas City Chiefs",
+    "point": 0
+   }
+  },
+  {
+   "label": "Salzburg not to win",
+   "expect": {
+    "kind": "not_win",
+    "team": "Salzburg"
+   }
+  },
+  {
+   "label": "No draw",
+   "expect": {
+    "kind": "no_draw"
+   }
+  },
+  {
+   "label": "New York Knicks 1H -3.5",
+   "expect": null
+  },
+  {
+   "label": "New York Knicks 1st Half ML",
+   "expect": null
+  },
+  {
+   "label": "New York Rangers 60 Min ML",
+   "expect": null
+  },
+  {
+   "label": "New York Knicks 1H over 55.5 points",
+   "expect": null
+  },
+  {
+   "label": "Militao 1+ shots",
+   "expect": {
+    "kind": "prop",
+    "player": "Militao",
+    "stat": "shots",
+    "side": "over",
+    "need": 1,
+    "point": 0.5
+   }
+  },
+  {
+   "label": "Over 45.5 1H total points",
+   "expect": null
+  },
+  {
+   "label": "New York Rangers 1st Period ML",
+   "expect": null
+  }
+ ],
+ "judge": [
+  {
+   "label": "Akron Zips +2.5",
+   "game": {
+    "sport": "ncaaf",
+    "state": "in",
+    "home": [
+     "Kent State Golden Flashes",
+     "KENT",
+     17
+    ],
+    "away": [
+     "Akron Zips",
+     "AKR",
+     14
+    ]
+   },
+   "expect": {
+    "status": "losing",
+    "current": -3,
+    "text": "Short by 0.5"
+   }
+  },
+  {
+   "label": "Akron Zips +2.5",
+   "game": {
+    "sport": "ncaaf",
+    "state": "in",
+    "home": [
+     "Kent State Golden Flashes",
+     "KENT",
+     15
+    ],
+    "away": [
+     "Akron Zips",
+     "AKR",
+     14
+    ]
+   },
+   "expect": {
+    "status": "winning",
+    "current": -1
+   }
+  },
+  {
+   "label": "Akron Zips +2.5",
+   "game": {
+    "sport": "ncaaf",
+    "state": "post",
+    "home": [
+     "Kent State Golden Flashes",
+     "KENT",
+     24
+    ],
+    "away": [
+     "Akron Zips",
+     "AKR",
+     20
+    ]
+   },
+   "expect": {
+    "status": "lost",
+    "current": -4
+   }
+  },
+  {
+   "label": "TCU Horned Frogs -10.5",
+   "game": {
+    "sport": "ncaaf",
+    "state": "post",
+    "home": [
+     "TCU Horned Frogs",
+     "TCU",
+     38
+    ],
+    "away": [
+     "West Virginia Mountaineers",
+     "WVU",
+     20
+    ]
+   },
+   "expect": {
+    "status": "won",
+    "current": 18,
+    "text": "Covering by 7.5"
+   }
+  },
+  {
+   "label": "Michigan Wolverines ML",
+   "game": {
+    "sport": "ncaaf",
+    "state": "pre",
+    "home": [
+     "Michigan Wolverines",
+     "MICH",
+     null
+    ],
+    "away": [
+     "Indiana Hoosiers",
+     "IU",
+     null
+    ]
+   },
+   "expect": {
+    "status": "pending"
+   }
+  },
+  {
+   "label": "Chelsea to win",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Chelsea",
+     "CHE",
+     1
+    ],
+    "away": [
+     "Tottenham Hotspur",
+     "TOT",
+     1
+    ]
+   },
+   "expect": {
+    "status": "lost",
+    "current": 0
+   }
+  },
+  {
+   "label": "Over 2.5 goals",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     2
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "won",
+    "current": 3
+   }
+  },
+  {
+   "label": "Over 2.5 goals",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     1
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "live",
+    "current": 2
+   }
+  },
+  {
+   "label": "Under 47.5 total points",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Chicago Bears",
+     "CHI",
+     31
+    ],
+    "away": [
+     "New England Patriots",
+     "NE",
+     17
+    ]
+   },
+   "expect": {
+    "status": "lost",
+    "current": 48
+   }
+  },
+  {
+   "label": "Both teams to score",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Valencia",
+     "VAL",
+     2
+    ],
+    "away": [
+     "Villarreal",
+     "VIL",
+     0
+    ]
+   },
+   "expect": {
+    "status": "lost"
+   }
+  },
+  {
+   "label": "Jalen Brunson 25+ points",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     80
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     84
+    ]
+   },
+   "box": {
+    "jalen brunson": {
+     "points": 26
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 26
+   }
+  },
+  {
+   "label": "Jalen Brunson 25+ points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "jalen brunson": {
+     "points": 21
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 21
+   }
+  },
+  {
+   "label": "Josh Hart under 9.5 rebounds",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     50
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     52
+    ]
+   },
+   "box": {
+    "josh hart": {
+     "rebounds": 10
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 10
+   }
+  },
+  {
+   "label": "Colston Loveland anytime TD",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Chicago Bears",
+     "CHI",
+     7
+    ],
+    "away": [
+     "New England Patriots",
+     "NE",
+     0
+    ]
+   },
+   "box": {
+    "colston loveland": {
+     "receivingTouchdowns": 1
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 1
+   }
+  },
+  {
+   "label": "Nikita Krylov ML",
+   "game": {
+    "sport": "ufc",
+    "state": "post",
+    "home": [
+     "Nikita Krylov",
+     "krylov",
+     null
+    ],
+    "away": [
+     "Abdulrakhman Yakhyaev",
+     "yakhyaev",
+     null
+    ],
+    "winner": "away"
+   },
+   "expect": {
+    "status": "lost"
+   }
+  },
+  {
+   "label": "Rennes ML",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Nice",
+     "NICE",
+     2
+    ],
+    "away": [
+     "Stade Rennais",
+     "REN",
+     4
+    ]
+   },
+   "expect": {
+    "status": "winning"
+   }
+  },
+  {
+   "label": "LSU Tigers ML",
+   "game": {
+    "sport": "ncaaf",
+    "state": "in",
+    "home": [
+     "Auburn Tigers",
+     "AUB",
+     3
+    ],
+    "away": [
+     "LSU Tigers",
+     "LSU",
+     10
+    ]
+   },
+   "expect": {
+    "status": "winning",
+    "current": 7
+   }
+  },
+  {
+   "label": "Auburn Tigers +6.5",
+   "game": {
+    "sport": "ncaaf",
+    "state": "in",
+    "home": [
+     "Auburn Tigers",
+     "AUB",
+     3
+    ],
+    "away": [
+     "LSU Tigers",
+     "LSU",
+     10
+    ]
+   },
+   "expect": {
+    "status": "losing",
+    "current": -7
+   }
+  },
+  {
+   "label": "NJD to win",
+   "game": {
+    "sport": "nhl",
+    "state": "in",
+    "home": [
+     "New Jersey Devils",
+     "NJ",
+     2
+    ],
+    "away": [
+     "New York Rangers",
+     "NYR",
+     1
+    ]
+   },
+   "expect": {
+    "status": "winning",
+    "current": 1
+   }
+  },
+  {
+   "label": "Karl-Anthony Towns To Record Double Double",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "New York Knicks",
+     "NY",
+     60
+    ],
+    "away": [
+     "Orlando Magic",
+     "ORL",
+     55
+    ]
+   },
+   "box": {
+    "karl anthony towns": {
+     "points": 18,
+     "rebounds": 7,
+     "assists": 3
+    }
+   },
+   "expect": {
+    "status": "live",
+    "current": 1,
+    "text": "18 pts \u00b7 7 reb \u00b7 3 ast \u00b7 3 reb to go"
+   }
+  },
+  {
+   "label": "Karl-Anthony Towns double-double",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "New York Knicks",
+     "NY",
+     70
+    ],
+    "away": [
+     "Orlando Magic",
+     "ORL",
+     65
+    ]
+   },
+   "box": {
+    "karl anthony towns": {
+     "points": 22,
+     "rebounds": 11
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 2
+   }
+  },
+  {
+   "label": "Draw",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     1
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "winning",
+    "text": "Level"
+   }
+  },
+  {
+   "label": "Draw",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     2
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "losing"
+   }
+  },
+  {
+   "label": "Draw",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Napoli",
+     "NAP",
+     1
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "won"
+   }
+  },
+  {
+   "label": "Draw",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Napoli",
+     "NAP",
+     2
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "lost"
+   }
+  },
+  {
+   "label": "AS Roma or draw",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     1
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "winning"
+   }
+  },
+  {
+   "label": "AS Roma or draw",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Napoli",
+     "NAP",
+     2
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "lost",
+    "text": "1-2"
+   }
+  },
+  {
+   "label": "Napoli or draw",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Napoli",
+     "NAP",
+     2
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "won"
+   }
+  },
+  {
+   "label": "Chelsea or draw",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     2
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "unknown"
+   }
+  },
+  {
+   "label": "Both teams to score: no",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     1
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     0
+    ]
+   },
+   "expect": {
+    "status": "live"
+   }
+  },
+  {
+   "label": "Both teams to score: no",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Napoli",
+     "NAP",
+     1
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     0
+    ]
+   },
+   "expect": {
+    "status": "won"
+   }
+  },
+  {
+   "label": "Both teams to score: no",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Napoli",
+     "NAP",
+     1
+    ],
+    "away": [
+     "AS Roma",
+     "ROMA",
+     1
+    ]
+   },
+   "expect": {
+    "status": "lost"
+   }
+  },
+  {
+   "label": "Parker Washington over 40.5 longest reception",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Baltimore Ravens",
+     "BAL",
+     10
+    ],
+    "away": [
+     "Jacksonville Jaguars",
+     "JAX",
+     33
+    ]
+   },
+   "box": {
+    "parker washington": {
+     "longReception": 50
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 50
+   }
+  },
+  {
+   "label": "Derrick Henry longest rush over 12.5",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Baltimore Ravens",
+     "BAL",
+     10
+    ],
+    "away": [
+     "Jacksonville Jaguars",
+     "JAX",
+     33
+    ]
+   },
+   "box": {
+    "derrick henry": {
+     "longRushing": 8
+    }
+   },
+   "expect": {
+    "status": "live",
+    "current": 8
+   }
+  },
+  {
+   "label": "Derrick Henry 15+ carries",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Baltimore Ravens",
+     "BAL",
+     10
+    ],
+    "away": [
+     "Jacksonville Jaguars",
+     "JAX",
+     33
+    ]
+   },
+   "box": {
+    "derrick henry": {
+     "rushingAttempts": 17
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 17
+   }
+  },
+  {
+   "label": "Joe Fagnano over 29.5 pass attempts",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Baltimore Ravens",
+     "BAL",
+     10
+    ],
+    "away": [
+     "Jacksonville Jaguars",
+     "JAX",
+     33
+    ]
+   },
+   "box": {
+    "joe fagnano": {
+     "completions": 10,
+     "passingAttempts": 18
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 18
+   }
+  },
+  {
+   "label": "Joe Fagnano over 0.5 interceptions thrown",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Baltimore Ravens",
+     "BAL",
+     10
+    ],
+    "away": [
+     "Jacksonville Jaguars",
+     "JAX",
+     33
+    ]
+   },
+   "box": {
+    "joe fagnano": {
+     "interceptions": 2
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 2
+   }
+  },
+  {
+   "label": "Parker Washington most receiving yards",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Baltimore Ravens",
+     "BAL",
+     10
+    ],
+    "away": [
+     "Jacksonville Jaguars",
+     "JAX",
+     33
+    ]
+   },
+   "box": {
+    "parker washington": {
+     "receivingYards": 61
+    },
+    "brian thomas jr": {
+     "receivingYards": 65
+    }
+   },
+   "expect": {
+    "status": "losing",
+    "current": 61
+   }
+  },
+  {
+   "label": "Parker Washington most receiving yards",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Baltimore Ravens",
+     "BAL",
+     10
+    ],
+    "away": [
+     "Jacksonville Jaguars",
+     "JAX",
+     33
+    ]
+   },
+   "box": {
+    "parker washington": {
+     "receivingYards": 66
+    },
+    "brian thomas jr": {
+     "receivingYards": 65
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 66
+   }
+  },
+  {
+   "label": "Jalen Brunson over 2.5 steals + blocks",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "jalen brunson": {
+     "steals": 2,
+     "blocks": 1
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 3
+   }
+  },
+  {
+   "label": "Jalen Brunson most points",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "jalen brunson": {
+     "points": 30
+    },
+    "jaylen brown": {
+     "points": 30
+    }
+   },
+   "expect": {
+    "status": "tied",
+    "current": 30
+   }
+  },
+  {
+   "label": "Bukayo Saka to be carded",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Arsenal",
+     "ARS",
+     1
+    ],
+    "away": [
+     "Chelsea",
+     "CHE",
+     0
+    ]
+   },
+   "box": {
+    "bukayo saka": {
+     "yellowCards": 1
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 1
+   }
+  },
+  {
+   "label": "Bukayo Saka to be carded",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Arsenal",
+     "ARS",
+     1
+    ],
+    "away": [
+     "Chelsea",
+     "CHE",
+     0
+    ]
+   },
+   "box": {
+    "bukayo saka": {
+     "yellowCards": 0
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 0
+   }
+  },
+  {
+   "label": "Devin Booker first basket",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "devin booker": {
+     "firstBasket": 1
+    },
+    "_game": {
+     "firstBasket": 1
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 1
+   }
+  },
+  {
+   "label": "Kevin Durant first basket",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "devin booker": {
+     "firstBasket": 1
+    },
+    "_game": {
+     "firstBasket": 1
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 0
+   }
+  },
+  {
+   "label": "Kevin Durant first basket",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "kevin durant": {
+     "points": 0
+    }
+   },
+   "expect": {
+    "status": "live",
+    "current": 0
+   }
+  },
+  {
+   "label": "Devin Booker over 7.5 1st quarter points",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "devin booker": {
+     "q1:points": 5
+    }
+   },
+   "expect": {
+    "status": "live",
+    "current": 5
+   }
+  },
+  {
+   "label": "Devin Booker over 14.5 first half points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "devin booker": {
+     "q1:points": 12,
+     "q2:points": 11
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 23
+   }
+  },
+  {
+   "label": "Logan Cooley 1st period points over 0.5",
+   "game": {
+    "sport": "nhl",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "logan cooley": {
+     "p1:goals": 1
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 1
+   }
+  },
+  {
+   "label": "Logan Cooley over 0.5 power play points",
+   "game": {
+    "sport": "nhl",
+    "state": "post",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "logan cooley": {
+     "goals": 1
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 0
+   }
+  },
+  {
+   "label": "Bhayshul Tuten first TD scorer",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "bhayshul tuten": {
+     "rushingTouchdowns": 1,
+     "firstTd": 1
+    },
+    "_game": {
+     "firstTd": 1
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 1
+   }
+  },
+  {
+   "label": "Derrick Henry first TD scorer",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "derrick henry": {
+     "rushingTouchdowns": 1
+    },
+    "_game": {
+     "firstTd": 1
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 0
+   }
+  },
+  {
+   "label": "Trevor Lawrence longest completion over 35.5",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Boston Celtics",
+     "BOS",
+     100
+    ],
+    "away": [
+     "New York Knicks",
+     "NY",
+     104
+    ]
+   },
+   "box": {
+    "trevor lawrence": {
+     "longCompletion": 52
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 52
+   }
+  },
+  {
+   "label": "Over 6 goals",
+   "game": {
+    "sport": "nhl",
+    "state": "post",
+    "home": [
+     "New York Rangers",
+     "NYR",
+     3
+    ],
+    "away": [
+     "Boston Bruins",
+     "BOS",
+     3
+    ]
+   },
+   "expect": {
+    "status": "void",
+    "current": 6,
+    "text": "Push at 6"
+   }
+  },
+  {
+   "label": "Under 6 goals",
+   "game": {
+    "sport": "nhl",
+    "state": "post",
+    "home": [
+     "New York Rangers",
+     "NYR",
+     4
+    ],
+    "away": [
+     "Boston Bruins",
+     "BOS",
+     2
+    ]
+   },
+   "expect": {
+    "status": "void",
+    "current": 6,
+    "text": "Push at 6"
+   }
+  },
+  {
+   "label": "Over 6 goals",
+   "game": {
+    "sport": "nhl",
+    "state": "in",
+    "home": [
+     "New York Rangers",
+     "NYR",
+     3
+    ],
+    "away": [
+     "Boston Bruins",
+     "BOS",
+     3
+    ]
+   },
+   "expect": {
+    "status": "live",
+    "current": 6,
+    "text": "6 of 6"
+   }
+  },
+  {
+   "label": "Stephen Curry over 2 threes",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "Golden State Warriors",
+     "GS",
+     120
+    ],
+    "away": [
+     "Los Angeles Lakers",
+     "LAL",
+     110
+    ]
+   },
+   "box": {
+    "stephen curry": {
+     "threePointFieldGoalsMade": 2,
+     "points": 20
+    }
+   },
+   "expect": {
+    "status": "void",
+    "current": 2,
+    "text": "Push at 2"
+   }
+  },
+  {
+   "label": "Ja'Marr Chase most receiving yds",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Cincinnati Bengals",
+     "CIN",
+     27
+    ],
+    "away": [
+     "Pittsburgh Steelers",
+     "PIT",
+     20
+    ]
+   },
+   "box": {
+    "ja marr chase": {
+     "receivingYards": 112
+    },
+    "tee higgins": {
+     "receivingYards": 112
+    }
+   },
+   "expect": {
+    "status": "won",
+    "deadHeat": true,
+    "current": 112,
+    "text": "Dead heat at 112"
+   }
+  },
+  {
+   "label": "Jalen Brunson 25+ points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "box": {
+    "josh hart": {
+     "points": 10,
+     "rebounds": 12
+    }
+   },
+   "expect": {
+    "status": "void",
+    "text": "Didn't play"
+   }
+  },
+  {
+   "label": "Jalen Brunson under 25.5 points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "box": {
+    "josh hart": {
+     "points": 10,
+     "rebounds": 12
+    }
+   },
+   "expect": {
+    "status": "void",
+    "text": "Didn't play"
+   }
+  },
+  {
+   "label": "Jalen Brunson 25+ points",
+   "game": {
+    "sport": "nba",
+    "state": "in",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "box": {
+    "josh hart": {
+     "points": 4
+    }
+   },
+   "expect": {
+    "status": "pending",
+    "text": "Not in the box score yet"
+   }
+  },
+  {
+   "label": "Bukayo Saka to be carded",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Arsenal",
+     "ARS",
+     2
+    ],
+    "away": [
+     "Chelsea",
+     "CHE",
+     0
+    ]
+   },
+   "box": {
+    "declan rice": {
+     "yellowCards": 1
+    }
+   },
+   "expect": {
+    "status": "void",
+    "text": "Didn't play"
+   }
+  },
+  {
+   "label": "Xavier Worthy 50+ receiving yds",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Kansas City Chiefs",
+     "KC",
+     24
+    ],
+    "away": [
+     "Denver Broncos",
+     "DEN",
+     17
+    ]
+   },
+   "box": {
+    "travis kelce": {
+     "receivingYards": 80
+    }
+   },
+   "expect": {
+    "status": "lost",
+    "current": 0
+   }
+  },
+  {
+   "label": "Jalen Brunson 25+ points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "expect": {
+    "status": "unknown",
+    "text": "No box score"
+   }
+  },
+  {
+   "label": "New York Knicks over 110.5 points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "box": {
+    "jalen brunson": {
+     "points": 30
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 118,
+    "text": "118 of 110.5"
+   }
+  },
+  {
+   "label": "Boston Celtics over 110 points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "box": {
+    "jalen brunson": {
+     "points": 30
+    }
+   },
+   "expect": {
+    "status": "void",
+    "current": 110,
+    "text": "Push at 110"
+   }
+  },
+  {
+   "label": "New York Knicks over 28.5 1st quarter points",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "box": {
+    "jalen brunson": {
+     "points": 30
+    }
+   },
+   "expect": {
+    "status": "unknown",
+    "text": "Not tracked"
+   }
+  },
+  {
+   "label": "New York Knicks 1H -3.5",
+   "game": {
+    "sport": "nba",
+    "state": "post",
+    "home": [
+     "New York Knicks",
+     "NY",
+     118
+    ],
+    "away": [
+     "Boston Celtics",
+     "BOS",
+     110
+    ]
+   },
+   "expect": {
+    "status": "unknown",
+    "text": "Not tracked"
+   }
+  },
+  {
+   "label": "Militao 1+ shots",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Real Madrid",
+     "RMA",
+     1
+    ],
+    "away": [
+     "Barcelona",
+     "BAR",
+     0
+    ]
+   },
+   "box": {
+    "eder militao": {
+     "totalShots": 1
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 1
+   }
+  },
+  {
+   "label": "Salzburg not to win",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Red Bull Salzburg",
+     "SAL",
+     1
+    ],
+    "away": [
+     "Feyenoord",
+     "FEY",
+     1
+    ]
+   },
+   "expect": {
+    "status": "won",
+    "text": "Level"
+   }
+  },
+  {
+   "label": "Salzburg not to win",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Red Bull Salzburg",
+     "SAL",
+     2
+    ],
+    "away": [
+     "Feyenoord",
+     "FEY",
+     1
+    ]
+   },
+   "expect": {
+    "status": "losing",
+    "text": "2-1"
+   }
+  },
+  {
+   "label": "No draw",
+   "game": {
+    "sport": "soccer",
+    "state": "in",
+    "home": [
+     "Red Bull Salzburg",
+     "SAL",
+     2
+    ],
+    "away": [
+     "Feyenoord",
+     "FEY",
+     1
+    ]
+   },
+   "expect": {
+    "status": "winning"
+   }
+  },
+  {
+   "label": "No draw",
+   "game": {
+    "sport": "soccer",
+    "state": "post",
+    "home": [
+     "Red Bull Salzburg",
+     "SAL",
+     1
+    ],
+    "away": [
+     "Feyenoord",
+     "FEY",
+     1
+    ]
+   },
+   "expect": {
+    "status": "lost",
+    "text": "Level"
+   }
+  },
+  {
+   "label": "Kansas City Chiefs PK",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Kansas City Chiefs",
+     "KC",
+     24
+    ],
+    "away": [
+     "Denver Broncos",
+     "DEN",
+     24
+    ]
+   },
+   "expect": {
+    "status": "void",
+    "text": "Right on the number"
+   }
+  },
+  {
+   "label": "Josh Jacobs 2+ TDs",
+   "game": {
+    "sport": "nfl",
+    "state": "post",
+    "home": [
+     "Green Bay Packers",
+     "GB",
+     31
+    ],
+    "away": [
+     "Chicago Bears",
+     "CHI",
+     17
+    ]
+   },
+   "box": {
+    "josh jacobs": {
+     "rushingTouchdowns": 1,
+     "receivingTouchdowns": 1,
+     "rushingYards": 80
+    }
+   },
+   "expect": {
+    "status": "won",
+    "current": 2
+   }
+  },
+  {
+   "label": "Jared Goff over 1.5 passing touchdowns",
+   "game": {
+    "sport": "nfl",
+    "state": "in",
+    "home": [
+     "Detroit Lions",
+     "DET",
+     14
+    ],
+    "away": [
+     "Chicago Bears",
+     "CHI",
+     7
+    ]
+   },
+   "box": {
+    "jared goff": {
+     "passingTouchdowns": 1,
+     "passingYards": 150
+    }
+   },
+   "expect": {
+    "status": "live",
+    "current": 1
+   }
+  }
+ ],
+ "plays": [
+  {
+   "sport": "nba",
+   "summary": {
+    "boxscore": {
+     "players": [
+      {
+       "statistics": [
+        {
+         "keys": [
+          "points"
+         ],
+         "athletes": [
+          {
+           "athlete": {
+            "id": "1",
+            "displayName": "Devin Booker"
+           },
+           "stats": [
+            "5"
+           ]
+          },
+          {
+           "athlete": {
+            "id": "2",
+            "displayName": "Kevin Durant"
+           },
+           "stats": [
+            "2"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "plays": [
+     {
+      "period": {
+       "number": 1
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "type": {
+       "text": "Free Throw - 1 of 2"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "id": "2"
+        }
+       }
+      ]
+     },
+     {
+      "period": {
+       "number": 1
+      },
+      "scoringPlay": true,
+      "scoreValue": 3,
+      "type": {
+       "text": "Jump Shot"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "id": "1"
+        }
+       },
+       {
+        "athlete": {
+         "id": "2"
+        }
+       }
+      ]
+     },
+     {
+      "period": {
+       "number": 1
+      },
+      "scoringPlay": false,
+      "type": {
+       "text": "Defensive Rebound"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "id": "2"
+        }
+       }
+      ]
+     },
+     {
+      "period": {
+       "number": 2
+      },
+      "scoringPlay": true,
+      "scoreValue": 2,
+      "type": {
+       "text": "Layup Shot"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "id": "1"
+        }
+       }
+      ]
+     },
+     {
+      "period": {
+       "number": 2
+      },
+      "scoringPlay": true,
+      "scoreValue": 1,
+      "type": {
+       "text": "Free Throw - 2 of 2"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "id": "2"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "expect": {
+    "devin booker": {
+     "points": 5.0,
+     "q1:points": 3.0,
+     "firstBasket": 1.0,
+     "q1:threes": 1.0,
+     "q2:points": 2.0
+    },
+    "kevin durant": {
+     "points": 2.0,
+     "q1:points": 1.0,
+     "q1:assists": 1.0,
+     "q1:rebounds": 1.0,
+     "q2:points": 1.0
+    },
+    "_game": {
+     "firstBasket": 1.0
+    }
+   }
+  },
+  {
+   "sport": "nhl",
+   "summary": {
+    "boxscore": {
+     "players": []
+    },
+    "plays": [
+     {
+      "type": {
+       "text": "Goal"
+      },
+      "period": {
+       "number": 1
+      },
+      "strength": {
+       "abbreviation": "even-strength"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "displayName": "Logan Cooley"
+        },
+        "type": "scorer"
+       },
+       {
+        "athlete": {
+         "displayName": "Nate Schmidt"
+        },
+        "type": "assister"
+       }
+      ]
+     },
+     {
+      "type": {
+       "text": "Goal"
+      },
+      "period": {
+       "number": 2
+      },
+      "strength": {
+       "abbreviation": "power-play"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "displayName": "Nick Suzuki"
+        },
+        "type": "scorer"
+       },
+       {
+        "athlete": {
+         "displayName": "Logan Cooley"
+        },
+        "type": "assister"
+       }
+      ]
+     }
+    ]
+   },
+   "expect": {
+    "_game": {
+     "firstGoal": 1.0
+    },
+    "logan cooley": {
+     "firstGoal": 1.0,
+     "p1:goals": 1.0,
+     "p2:assists": 1.0,
+     "ppPoints": 1.0
+    },
+    "nate schmidt": {
+     "p1:assists": 1.0
+    },
+    "nick suzuki": {
+     "p2:goals": 1.0,
+     "ppGoals": 1.0,
+     "ppPoints": 1.0
+    }
+   }
+  },
+  {
+   "sport": "nfl",
+   "summary": {
+    "boxscore": {
+     "players": [
+      {
+       "statistics": [
+        {
+         "name": "passing",
+         "keys": [
+          "passingYards"
+         ],
+         "athletes": [
+          {
+           "athlete": {
+            "displayName": "Trevor Lawrence"
+           },
+           "stats": [
+            "250"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "drives": {
+     "previous": [
+      {
+       "plays": [
+        {
+         "type": {
+          "text": "Pass Reception"
+         },
+         "statYardage": 12,
+         "text": "T.Lawrence pass short right to B.Thomas for 12 yards"
+        },
+        {
+         "type": {
+          "text": "Pass Reception"
+         },
+         "statYardage": 52,
+         "text": "(Shotgun) T.Lawrence pass deep right to N.Boerkircher to BLT 21 for 52 yards (M.Humphrey)."
+        },
+        {
+         "type": {
+          "text": "Pass Incompletion"
+         },
+         "statYardage": 0,
+         "text": "T.Lawrence pass incomplete deep left"
+        }
+       ]
+      }
+     ]
+    },
+    "scoringPlays": [
+     {
+      "type": {
+       "text": "Field Goal Good"
+      },
+      "text": "Cam Little 36 Yd Field Goal"
+     },
+     {
+      "type": {
+       "text": "Rushing Touchdown"
+      },
+      "text": "Bhayshul Tuten 1 Yd Rush (Cam Little Kick)"
+     },
+     {
+      "type": {
+       "text": "Passing Touchdown"
+      },
+      "text": "Brian Thomas Jr. 23 Yd pass from Trevor Lawrence (Cam Little Kick)"
+     }
+    ]
+   },
+   "expect": {
+    "trevor lawrence": {
+     "passingYards": 250.0,
+     "longCompletion": 52.0
+    },
+    "_game": {
+     "firstTd": 1.0
+    },
+    "bhayshul tuten": {
+     "firstTd": 1.0
+    }
+   }
+  },
+  {
+   "sport": "soccer",
+   "summary": {
+    "rosters": [],
+    "keyEvents": [
+     {
+      "type": {
+       "text": "Yellow Card"
+      },
+      "participants": [
+       {
+        "athlete": {
+         "displayName": "Declan Rice"
+        }
+       }
+      ]
+     },
+     {
+      "type": {
+       "text": "Goal"
+      },
+      "scoringPlay": true,
+      "participants": [
+       {
+        "athlete": {
+         "displayName": "Kai Havertz"
+        }
+       },
+       {
+        "athlete": {
+         "displayName": "Declan Rice"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "expect": {
+    "_game": {
+     "firstGoal": 1.0
+    },
+    "kai havertz": {
+     "firstGoal": 1.0
+    }
+   }
+  }
+ ],
+ "days": [
+  {
+   "why": "an open bet whose start isn't known: around when it was placed, and yesterday and today",
+   "bet": {
+    "placed_at": "2026-11-08T00:21:00Z"
+   },
+   "group": {
+    "ref": "ncaaf:0842fcd69fdf5061f6751f876ead09f2"
+   },
+   "open": true,
+   "single": false,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261107",
+    "20261108",
+    "20261109"
+   ]
+  },
+  {
+   "why": "an open bet with its game's start: that day and the next, though it was two days ago",
+   "bet": {
+    "placed_at": "2026-11-08T00:21:00Z"
+   },
+   "group": {
+    "ref": "ncaaf:0842fc",
+    "start": "2026-11-08T00:30:00Z"
+   },
+   "open": true,
+   "single": false,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261107",
+    "20261108"
+   ]
+  },
+  {
+   "why": "an open bet on a game tomorrow: its own day, before it starts",
+   "bet": {
+    "placed_at": "2026-11-09T14:00:00Z"
+   },
+   "group": {
+    "start": "2026-11-11T01:15:00Z"
+   },
+   "open": true,
+   "single": true,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261110",
+    "20261111"
+   ]
+  },
+  {
+   "why": "a settled bet with no start: the day it was placed and the next only",
+   "bet": {
+    "placed_at": "2026-10-22T23:05:00Z"
+   },
+   "group": {
+    "ref": "2026_07_NE_CHI"
+   },
+   "open": false,
+   "single": true,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261022",
+    "20261023"
+   ]
+  },
+  {
+   "why": "a one-game slip placed two days early: its game's start (game_start), not the day it was placed",
+   "bet": {
+    "placed_at": "2026-10-28T15:00:00Z",
+    "game_start": "2026-10-30T23:00:00Z"
+   },
+   "group": {
+    "ref": "ncaaf:401862813"
+   },
+   "open": false,
+   "single": true,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261030",
+    "20261031"
+   ]
+  },
+  {
+   "why": "a multi-game slip's first kickoff isn't every game's: an open game with none of its own looks around",
+   "bet": {
+    "placed_at": "2026-11-06T15:00:00Z",
+    "game_start": "2026-11-07T17:00:00Z"
+   },
+   "group": {
+    "ref": "ncaaf:1"
+   },
+   "open": true,
+   "single": false,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261106",
+    "20261107",
+    "20261108",
+    "20261109"
+   ]
+  },
+  {
+   "why": "the kickoff in a soccer ref",
+   "bet": {
+    "placed_at": "2026-11-01T15:00:00Z"
+   },
+   "group": {
+    "ref": "epl|Ipswich Town|Nottingham Forest|2026-11-08T19:00:00+00:00"
+   },
+   "open": true,
+   "single": true,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261108",
+    "20261109"
+   ]
+  },
+  {
+   "why": "a pick's own start comes first",
+   "bet": {
+    "placed_at": "2026-11-01T15:00:00Z",
+    "pick_commence_time": "2026-11-09T00:20:00Z"
+   },
+   "group": {},
+   "open": true,
+   "single": true,
+   "now": "2026-11-09T15:00:00Z",
+   "expect": [
+    "20261108",
+    "20261109"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "_about": "A priced slip's expected value per dollar: web lib/slip.ts slipEv (web/tests/slip-fair.test.mjs) and iPhone Slip.ev (SlipFairTests) must answer alike. A boost pays extra on the profit; a bonus bet's stake isn't yours, so it's per dollar of credit. verdict: within 1% of even is about even.",
+  "cases": [
+    {"p": 0.25, "price": 300, "boost": null, "bonus": false, "ev": 0.0, "fair": 300, "verdict": "even"},
+    {"p": 0.25, "price": 350, "boost": null, "bonus": false, "ev": 0.125, "fair": 300, "verdict": "plus"},
+    {"p": 0.25, "price": 250, "boost": null, "bonus": false, "ev": -0.125, "fair": 300, "verdict": "minus"},
+    {"p": 0.25, "price": 250, "boost": 30, "bonus": false, "ev": 0.0625, "fair": 300, "verdict": "plus"},
+    {"p": 0.25, "price": 300, "boost": 50, "bonus": false, "ev": 0.375, "fair": 300, "verdict": "plus"},
+    {"p": 0.25, "price": 300, "boost": null, "bonus": true, "ev": 0.75, "fair": 300, "verdict": "plus"},
+    {"p": 0.6, "price": -120, "boost": null, "bonus": false, "ev": 0.1, "fair": -150, "verdict": "plus"},
+    {"p": 0.5, "price": 101, "boost": null, "bonus": false, "ev": 0.005, "fair": 100, "verdict": "even"}
+  ]
+}

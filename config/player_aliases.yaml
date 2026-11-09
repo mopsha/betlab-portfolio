@@ -1,0 +1,4 @@
+# Sportsbook player name -> nflverse full name, for names that normalizing alone
+# can't match (see src/betlab/players.py). Add a line when `betlab fun` reports
+# an unmatched player.
+"Chigoziem Okonkwo": "Chig Okonkwo"

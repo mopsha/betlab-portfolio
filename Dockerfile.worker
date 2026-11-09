@@ -1,0 +1,16 @@
+# The BetLab worker (src/betlab/worker.py) on Railway: Python 3.13 like CI, an editable install so
+# config.ROOT is /app, git for the data-live commits. data/ lives on a Railway volume (BETLAB_DATA_DIR).
+FROM python:3.13-slim
+ENV PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8 TZ=America/New_York PIP_DISABLE_PIP_VERSION_CHECK=1
+# The math libraries size their thread pools by the host's cores, not the container's CPU share; on
+# a 1-2 vCPU limit that many threads thrash (Oct 6: `betlab preview` took 30 s locally, 25+ min here).
+ENV OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 NUMEXPR_NUM_THREADS=2 POLARS_MAX_THREADS=2
+RUN apt-get update && apt-get install -y --no-install-recommends git tzdata && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY pyproject.toml ./
+COPY src ./src
+COPY config ./config
+COPY scripts ./scripts
+COPY supabase/migrations ./supabase/migrations
+RUN pip install --no-cache-dir -e .
+CMD ["python", "-m", "betlab.worker"]

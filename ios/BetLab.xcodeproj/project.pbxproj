@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1A000000000000000000X01 /* BetLabWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B1A000000000000000000R03 /* BetLabWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1A000000000000000000C01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1A000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1A000000000000000000T01;
+			remoteInfo = BetLab;
+		};
+		B1A000000000000000000C02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1A000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1A000000000000000000T03;
+			remoteInfo = BetLabWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1A000000000000000000B10 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B1A000000000000000000X01 /* BetLabWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B1A000000000000000000R01 /* BetLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1A000000000000000000R02 /* BetLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1A000000000000000000F01 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		B1A000000000000000000F02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1A000000000000000000F03 /* BetLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetLab.entitlements; sourceTree = "<group>"; };
+		B1A000000000000000000R03 /* BetLabWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BetLabWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1A000000000000000000F04 /* BetLabWidgets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BetLabWidgets-Info.plist"; sourceTree = "<group>"; };
+		B1A000000000000000000F05 /* BetLabWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetLabWidgets.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B1A000000000000000000S01 /* BetLab */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BetLab;
+			sourceTree = "<group>";
+		};
+		B1A000000000000000000S02 /* BetLabTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BetLabTests;
+			sourceTree = "<group>";
+		};
+		B1A000000000000000000S03 /* BetLabWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BetLabWidgets;
+			sourceTree = "<group>";
+		};
+		B1A000000000000000000S04 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1A000000000000000000B02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1A000000000000000000B05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1A000000000000000000B08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1A000000000000000000G00 = {
+			isa = PBXGroup;
+			children = (
+				B1A000000000000000000S01 /* BetLab */,
+				B1A000000000000000000S02 /* BetLabTests */,
+				B1A000000000000000000S03 /* BetLabWidgets */,
+				B1A000000000000000000S04 /* Shared */,
+				B1A000000000000000000G02 /* Config */,
+				B1A000000000000000000G01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1A000000000000000000G01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1A000000000000000000R01 /* BetLab.app */,
+				B1A000000000000000000R02 /* BetLabTests.xctest */,
+				B1A000000000000000000R03 /* BetLabWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1A000000000000000000G02 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B1A000000000000000000F01 /* Base.xcconfig */,
+				B1A000000000000000000F02 /* Info.plist */,
+				B1A000000000000000000F03 /* BetLab.entitlements */,
+				B1A000000000000000000F04 /* BetLabWidgets-Info.plist */,
+				B1A000000000000000000F05 /* BetLabWidgets.entitlements */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1A000000000000000000T01 /* BetLab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1A000000000000000000L01 /* Build configuration list for PBXNativeTarget "BetLab" */;
+			buildPhases = (
+				B1A000000000000000000B01 /* Sources */,
+				B1A000000000000000000B02 /* Frameworks */,
+				B1A000000000000000000B03 /* Resources */,
+				B1A000000000000000000B10 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1A000000000000000000D02 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B1A000000000000000000S01 /* BetLab */,
+				B1A000000000000000000S04 /* Shared */,
+			);
+			name = BetLab;
+			productName = BetLab;
+			productReference = B1A000000000000000000R01 /* BetLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1A000000000000000000T02 /* BetLabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1A000000000000000000L02 /* Build configuration list for PBXNativeTarget "BetLabTests" */;
+			buildPhases = (
+				B1A000000000000000000B04 /* Sources */,
+				B1A000000000000000000B05 /* Frameworks */,
+				B1A000000000000000000B06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1A000000000000000000D01 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B1A000000000000000000S02 /* BetLabTests */,
+			);
+			name = BetLabTests;
+			productName = BetLabTests;
+			productReference = B1A000000000000000000R02 /* BetLabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B1A000000000000000000T03 /* BetLabWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1A000000000000000000L03 /* Build configuration list for PBXNativeTarget "BetLabWidgets" */;
+			buildPhases = (
+				B1A000000000000000000B07 /* Sources */,
+				B1A000000000000000000B08 /* Frameworks */,
+				B1A000000000000000000B09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B1A000000000000000000S03 /* BetLabWidgets */,
+				B1A000000000000000000S04 /* Shared */,
+			);
+			name = BetLabWidgets;
+			productName = BetLabWidgets;
+			productReference = B1A000000000000000000R03 /* BetLabWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1A000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					B1A000000000000000000T01 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					B1A000000000000000000T02 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = B1A000000000000000000T01;
+					};
+					B1A000000000000000000T03 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = B1A000000000000000000L00 /* Build configuration list for PBXProject "BetLab" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1A000000000000000000G00;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B1A000000000000000000G01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1A000000000000000000T01 /* BetLab */,
+				B1A000000000000000000T02 /* BetLabTests */,
+				B1A000000000000000000T03 /* BetLabWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1A000000000000000000B03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1A000000000000000000B06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1A000000000000000000B09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1A000000000000000000B01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1A000000000000000000B04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1A000000000000000000B07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1A000000000000000000D01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1A000000000000000000T01 /* BetLab */;
+			targetProxy = B1A000000000000000000C01 /* PBXContainerItemProxy */;
+		};
+		B1A000000000000000000D02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1A000000000000000000T03 /* BetLabWidgets */;
+			targetProxy = B1A000000000000000000C02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B1A000000000000000000P01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1A000000000000000000F01 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B1A000000000000000000P02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1A000000000000000000F01 /* Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1A000000000000000000A01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/BetLab.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetLab;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "BetLab uses Face ID to unlock the app when you turn the lock on.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mopsha.betlab;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B1A000000000000000000A02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/BetLab.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BetLab;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "BetLab uses Face ID to unlock the app when you turn the lock on.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mopsha.betlab;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B1A000000000000000000E01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mopsha.betlab.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BetLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BetLab";
+			};
+			name = Debug;
+		};
+		B1A000000000000000000E02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mopsha.betlab.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BetLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BetLab";
+			};
+			name = Release;
+		};
+		B1A000000000000000000W01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/BetLabWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/BetLabWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = BetLab;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "BetLab uses Face ID to unlock the app when you turn the lock on.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mopsha.betlab.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B1A000000000000000000W02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/BetLabWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Config/BetLabWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = BetLab;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "BetLab uses Face ID to unlock the app when you turn the lock on.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mopsha.betlab.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1A000000000000000000L00 /* Build configuration list for PBXProject "BetLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1A000000000000000000P01 /* Debug */,
+				B1A000000000000000000P02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1A000000000000000000L01 /* Build configuration list for PBXNativeTarget "BetLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1A000000000000000000A01 /* Debug */,
+				B1A000000000000000000A02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1A000000000000000000L02 /* Build configuration list for PBXNativeTarget "BetLabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1A000000000000000000E01 /* Debug */,
+				B1A000000000000000000E02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1A000000000000000000L03 /* Build configuration list for PBXNativeTarget "BetLabWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1A000000000000000000W01 /* Debug */,
+				B1A000000000000000000W02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1A000000000000000000001 /* Project object */;
+}

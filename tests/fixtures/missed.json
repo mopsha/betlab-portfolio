@@ -1,0 +1,26 @@
+{
+  "note": "Missed bets (Mike's #41): settled picks since the account's start that it has no bet on. web/lib/missed.ts and ios/BetLab/Live/Missed.swift answer the same cases.",
+  "cases": [
+    {
+      "name": "skipped picks count, taken ones don't, open and early ones are left out",
+      "since": "2026-10-18T04:00:00Z",
+      "taken": ["t1"],
+      "picks": [
+        {"pick_id": "w1", "status": "won", "profit_flat": 0.91, "clv": 0.02, "clv_raw": null, "commence_time": "2026-10-20T23:00:00Z"},
+        {"pick_id": "l1", "status": "lost", "profit_flat": -1, "clv": null, "clv_raw": -0.01, "commence_time": "2026-10-21T23:00:00Z"},
+        {"pick_id": "p1", "status": "push", "profit_flat": 0, "clv": null, "clv_raw": null, "commence_time": "2026-10-19T23:00:00Z"},
+        {"pick_id": "t1", "status": "won", "profit_flat": 1.5, "clv": 0.04, "clv_raw": null, "commence_time": "2026-10-22T23:00:00Z"},
+        {"pick_id": "o1", "status": "open", "profit_flat": null, "clv": null, "clv_raw": null, "commence_time": "2026-10-23T23:00:00Z"},
+        {"pick_id": "e1", "status": "won", "profit_flat": 5, "clv": 0.5, "clv_raw": null, "commence_time": "2026-10-10T23:00:00Z"}
+      ],
+      "want": {"ids": ["l1", "w1", "p1"], "won": 1, "lost": 1, "push": 1, "units": -0.09, "clv": 0.005, "took_n": 1, "took_units": 1.5}
+    },
+    {
+      "name": "nothing settled yet",
+      "since": "2026-10-18T04:00:00Z",
+      "taken": [],
+      "picks": [{"pick_id": "o1", "status": "open", "profit_flat": null, "clv": null, "clv_raw": null, "commence_time": "2026-10-23T23:00:00Z"}],
+      "want": {"ids": [], "won": 0, "lost": 0, "push": 0, "units": 0, "clv": null, "took_n": 0, "took_units": 0}
+    }
+  ]
+}

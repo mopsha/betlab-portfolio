@@ -1,0 +1,936 @@
+[
+{
+"id": "Icon-look-gold",
+"title": "Gold",
+"group": "Looks",
+"bg": "0b0a08",
+"fg": "e2b84a",
+"tag": ""
+},
+{
+"id": "Icon-look-pink",
+"title": "Pink",
+"group": "Looks",
+"bg": "0c0a0c",
+"fg": "ff5fa8",
+"tag": ""
+},
+{
+"id": "Icon-look-purple",
+"title": "Purple",
+"group": "Looks",
+"bg": "0d0b12",
+"fg": "b18cff",
+"tag": ""
+},
+{
+"id": "Icon-look-neon",
+"title": "Neon",
+"group": "Looks",
+"bg": "050505",
+"fg": "39ff14",
+"tag": ""
+},
+{
+"id": "Icon-look-mint",
+"title": "Mint",
+"group": "Looks",
+"bg": "0f9d78",
+"fg": "ffffff",
+"tag": ""
+},
+{
+"id": "Icon-season-football",
+"title": "Football season",
+"group": "Seasons",
+"bg": "5a3a1e",
+"fg": "ffffff",
+"tag": "FB"
+},
+{
+"id": "Icon-season-basketball",
+"title": "Basketball season",
+"group": "Seasons",
+"bg": "d9661f",
+"fg": "ffffff",
+"tag": "BB"
+},
+{
+"id": "Icon-season-hockey",
+"title": "Hockey season",
+"group": "Seasons",
+"bg": "0b3d91",
+"fg": "ffffff",
+"tag": "NHL"
+},
+{
+"id": "Icon-season-soccer",
+"title": "Soccer season",
+"group": "Seasons",
+"bg": "0e8a3c",
+"fg": "ffffff",
+"tag": "FC"
+},
+{
+"id": "Icon-season-fight",
+"title": "Fight night",
+"group": "Seasons",
+"bg": "b00020",
+"fg": "ffffff",
+"tag": "UFC"
+},
+{
+"id": "Icon-season-playoffs",
+"title": "Playoffs",
+"group": "Seasons",
+"bg": "111111",
+"fg": "e2b84a",
+"tag": "WIN"
+},
+{
+"id": "Icon-nfl-ARI",
+"title": "Arizona Cardinals",
+"group": "NFL",
+"bg": "a40227",
+"fg": "ffffff",
+"tag": "ARI",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nfl-ATL",
+"title": "Atlanta Falcons",
+"group": "NFL",
+"bg": "a71930",
+"fg": "ffffff",
+"tag": "ATL",
+"stripe": "000000"
+},
+{
+"id": "Icon-nfl-BAL",
+"title": "Baltimore Ravens",
+"group": "NFL",
+"bg": "29126f",
+"fg": "ffffff",
+"tag": "BAL",
+"stripe": null
+},
+{
+"id": "Icon-nfl-BUF",
+"title": "Buffalo Bills",
+"group": "NFL",
+"bg": "00338d",
+"fg": "ffffff",
+"tag": "BUF",
+"stripe": null
+},
+{
+"id": "Icon-nfl-CAR",
+"title": "Carolina Panthers",
+"group": "NFL",
+"bg": "0085ca",
+"fg": "ffffff",
+"tag": "CAR",
+"stripe": "000000"
+},
+{
+"id": "Icon-nfl-CHI",
+"title": "Chicago Bears",
+"group": "NFL",
+"bg": "0b1c3a",
+"fg": "ffffff",
+"tag": "CHI",
+"stripe": "e64100"
+},
+{
+"id": "Icon-nfl-CIN",
+"title": "Cincinnati Bengals",
+"group": "NFL",
+"bg": "fb4f14",
+"fg": "ffffff",
+"tag": "CIN",
+"stripe": "000000"
+},
+{
+"id": "Icon-nfl-CLE",
+"title": "Cleveland Browns",
+"group": "NFL",
+"bg": "472a08",
+"fg": "ffffff",
+"tag": "CLE",
+"stripe": "ff3c00"
+},
+{
+"id": "Icon-nfl-DAL",
+"title": "Dallas Cowboys",
+"group": "NFL",
+"bg": "002a5c",
+"fg": "ffffff",
+"tag": "DAL",
+"stripe": "b0b7bc"
+},
+{
+"id": "Icon-nfl-DEN",
+"title": "Denver Broncos",
+"group": "NFL",
+"bg": "0a2343",
+"fg": "ffffff",
+"tag": "DEN",
+"stripe": "fc4c02"
+},
+{
+"id": "Icon-nfl-DET",
+"title": "Detroit Lions",
+"group": "NFL",
+"bg": "0076b6",
+"fg": "ffffff",
+"tag": "DET",
+"stripe": "bbbbbb"
+},
+{
+"id": "Icon-nfl-GB",
+"title": "Green Bay Packers",
+"group": "NFL",
+"bg": "204e32",
+"fg": "ffffff",
+"tag": "GB",
+"stripe": "ffb612"
+},
+{
+"id": "Icon-nfl-HOU",
+"title": "Houston Texans",
+"group": "NFL",
+"bg": "021018",
+"fg": "ffffff",
+"tag": "HOU",
+"stripe": "eb0028"
+},
+{
+"id": "Icon-nfl-IND",
+"title": "Indianapolis Colts",
+"group": "NFL",
+"bg": "003b75",
+"fg": "ffffff",
+"tag": "IND",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nfl-JAX",
+"title": "Jacksonville Jaguars",
+"group": "NFL",
+"bg": "007487",
+"fg": "ffffff",
+"tag": "JAX",
+"stripe": "d7a22a"
+},
+{
+"id": "Icon-nfl-KC",
+"title": "Kansas City Chiefs",
+"group": "NFL",
+"bg": "e31837",
+"fg": "ffffff",
+"tag": "KC",
+"stripe": "ffb612"
+},
+{
+"id": "Icon-nfl-LV",
+"title": "Las Vegas Raiders",
+"group": "NFL",
+"bg": "000000",
+"fg": "ffffff",
+"tag": "LV",
+"stripe": "a5acaf"
+},
+{
+"id": "Icon-nfl-LAC",
+"title": "Los Angeles Chargers",
+"group": "NFL",
+"bg": "0080c6",
+"fg": "ffffff",
+"tag": "LAC",
+"stripe": "ffc20e"
+},
+{
+"id": "Icon-nfl-LAR",
+"title": "Los Angeles Rams",
+"group": "NFL",
+"bg": "003594",
+"fg": "ffffff",
+"tag": "LAR",
+"stripe": "ffd100"
+},
+{
+"id": "Icon-nfl-MIA",
+"title": "Miami Dolphins",
+"group": "NFL",
+"bg": "008e97",
+"fg": "ffffff",
+"tag": "MIA",
+"stripe": null
+},
+{
+"id": "Icon-nfl-MIN",
+"title": "Minnesota Vikings",
+"group": "NFL",
+"bg": "4f2683",
+"fg": "ffffff",
+"tag": "MIN",
+"stripe": "ffc62f"
+},
+{
+"id": "Icon-nfl-NE",
+"title": "New England Patriots",
+"group": "NFL",
+"bg": "002a5c",
+"fg": "ffffff",
+"tag": "NE",
+"stripe": null
+},
+{
+"id": "Icon-nfl-NO",
+"title": "New Orleans Saints",
+"group": "NFL",
+"bg": "d3bc8d",
+"fg": "111111",
+"tag": "NO",
+"stripe": "000000"
+},
+{
+"id": "Icon-nfl-NYG",
+"title": "New York Giants",
+"group": "NFL",
+"bg": "003c7f",
+"fg": "ffffff",
+"tag": "NYG",
+"stripe": null
+},
+{
+"id": "Icon-nfl-NYJ",
+"title": "New York Jets",
+"group": "NFL",
+"bg": "115740",
+"fg": "ffffff",
+"tag": "NYJ",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nfl-PHI",
+"title": "Philadelphia Eagles",
+"group": "NFL",
+"bg": "06424d",
+"fg": "ffffff",
+"tag": "PHI",
+"stripe": "000000"
+},
+{
+"id": "Icon-nfl-PIT",
+"title": "Pittsburgh Steelers",
+"group": "NFL",
+"bg": "000000",
+"fg": "ffffff",
+"tag": "PIT",
+"stripe": "ffb612"
+},
+{
+"id": "Icon-nfl-SF",
+"title": "San Francisco 49ers",
+"group": "NFL",
+"bg": "aa0000",
+"fg": "ffffff",
+"tag": "SF",
+"stripe": "b3995d"
+},
+{
+"id": "Icon-nfl-SEA",
+"title": "Seattle Seahawks",
+"group": "NFL",
+"bg": "002a5c",
+"fg": "ffffff",
+"tag": "SEA",
+"stripe": "69be28"
+},
+{
+"id": "Icon-nfl-TB",
+"title": "Tampa Bay Buccaneers",
+"group": "NFL",
+"bg": "bd1c36",
+"fg": "ffffff",
+"tag": "TB",
+"stripe": null
+},
+{
+"id": "Icon-nfl-TEN",
+"title": "Tennessee Titans",
+"group": "NFL",
+"bg": "4495d2",
+"fg": "ffffff",
+"tag": "TEN",
+"stripe": "001532"
+},
+{
+"id": "Icon-nfl-WSH",
+"title": "Washington Commanders",
+"group": "NFL",
+"bg": "5a1414",
+"fg": "ffffff",
+"tag": "WSH",
+"stripe": "ffb612"
+},
+{
+"id": "Icon-nba-ATL",
+"title": "Atlanta Hawks",
+"group": "NBA",
+"bg": "c8102e",
+"fg": "ffffff",
+"tag": "ATL",
+"stripe": "fdb927"
+},
+{
+"id": "Icon-nba-BOS",
+"title": "Boston Celtics",
+"group": "NBA",
+"bg": "008348",
+"fg": "ffffff",
+"tag": "BOS",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nba-BKN",
+"title": "Brooklyn Nets",
+"group": "NBA",
+"bg": "000000",
+"fg": "ffffff",
+"tag": "BKN",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nba-CHA",
+"title": "Charlotte Hornets",
+"group": "NBA",
+"bg": "008ca8",
+"fg": "ffffff",
+"tag": "CHA",
+"stripe": "1d1060"
+},
+{
+"id": "Icon-nba-CHI",
+"title": "Chicago Bulls",
+"group": "NBA",
+"bg": "ce1141",
+"fg": "ffffff",
+"tag": "CHI",
+"stripe": "000000"
+},
+{
+"id": "Icon-nba-CLE",
+"title": "Cleveland Cavaliers",
+"group": "NBA",
+"bg": "860038",
+"fg": "ffffff",
+"tag": "CLE",
+"stripe": "bc945c"
+},
+{
+"id": "Icon-nba-DAL",
+"title": "Dallas Mavericks",
+"group": "NBA",
+"bg": "0064b1",
+"fg": "ffffff",
+"tag": "DAL",
+"stripe": "bbc4ca"
+},
+{
+"id": "Icon-nba-DEN",
+"title": "Denver Nuggets",
+"group": "NBA",
+"bg": "0e2240",
+"fg": "ffffff",
+"tag": "DEN",
+"stripe": "fec524"
+},
+{
+"id": "Icon-nba-DET",
+"title": "Detroit Pistons",
+"group": "NBA",
+"bg": "1d428a",
+"fg": "ffffff",
+"tag": "DET",
+"stripe": null
+},
+{
+"id": "Icon-nba-GS",
+"title": "Golden State Warriors",
+"group": "NBA",
+"bg": "fdb927",
+"fg": "111111",
+"tag": "GS",
+"stripe": "1d428a"
+},
+{
+"id": "Icon-nba-HOU",
+"title": "Houston Rockets",
+"group": "NBA",
+"bg": "ce0e2d",
+"fg": "ffffff",
+"tag": "HOU",
+"stripe": "000000"
+},
+{
+"id": "Icon-nba-IND",
+"title": "Indiana Pacers",
+"group": "NBA",
+"bg": "0c2340",
+"fg": "ffffff",
+"tag": "IND",
+"stripe": "ffd520"
+},
+{
+"id": "Icon-nba-LAC",
+"title": "LA Clippers",
+"group": "NBA",
+"bg": "12173f",
+"fg": "ffffff",
+"tag": "LAC",
+"stripe": "c8102e"
+},
+{
+"id": "Icon-nba-LAL",
+"title": "Los Angeles Lakers",
+"group": "NBA",
+"bg": "552583",
+"fg": "ffffff",
+"tag": "LAL",
+"stripe": "fdb927"
+},
+{
+"id": "Icon-nba-MEM",
+"title": "Memphis Grizzlies",
+"group": "NBA",
+"bg": "5d76a9",
+"fg": "ffffff",
+"tag": "MEM",
+"stripe": "12173f"
+},
+{
+"id": "Icon-nba-MIA",
+"title": "Miami Heat",
+"group": "NBA",
+"bg": "98002e",
+"fg": "ffffff",
+"tag": "MIA",
+"stripe": "000000"
+},
+{
+"id": "Icon-nba-MIL",
+"title": "Milwaukee Bucks",
+"group": "NBA",
+"bg": "00471b",
+"fg": "ffffff",
+"tag": "MIL",
+"stripe": "eee1c6"
+},
+{
+"id": "Icon-nba-MIN",
+"title": "Minnesota Timberwolves",
+"group": "NBA",
+"bg": "266092",
+"fg": "ffffff",
+"tag": "MIN",
+"stripe": "79bc43"
+},
+{
+"id": "Icon-nba-NO",
+"title": "New Orleans Pelicans",
+"group": "NBA",
+"bg": "0a2240",
+"fg": "ffffff",
+"tag": "NO",
+"stripe": "b4975a"
+},
+{
+"id": "Icon-nba-NY",
+"title": "New York Knicks",
+"group": "NBA",
+"bg": "1d428a",
+"fg": "ffffff",
+"tag": "NY",
+"stripe": "f58426"
+},
+{
+"id": "Icon-nba-OKC",
+"title": "Oklahoma City Thunder",
+"group": "NBA",
+"bg": "007ac1",
+"fg": "ffffff",
+"tag": "OKC",
+"stripe": null
+},
+{
+"id": "Icon-nba-ORL",
+"title": "Orlando Magic",
+"group": "NBA",
+"bg": "0150b5",
+"fg": "ffffff",
+"tag": "ORL",
+"stripe": "9ca0a3"
+},
+{
+"id": "Icon-nba-PHI",
+"title": "Philadelphia 76ers",
+"group": "NBA",
+"bg": "1d428a",
+"fg": "ffffff",
+"tag": "PHI",
+"stripe": null
+},
+{
+"id": "Icon-nba-PHX",
+"title": "Phoenix Suns",
+"group": "NBA",
+"bg": "29127a",
+"fg": "ffffff",
+"tag": "PHX",
+"stripe": "e56020"
+},
+{
+"id": "Icon-nba-POR",
+"title": "Portland Trail Blazers",
+"group": "NBA",
+"bg": "e03a3e",
+"fg": "ffffff",
+"tag": "POR",
+"stripe": "000000"
+},
+{
+"id": "Icon-nba-SAC",
+"title": "Sacramento Kings",
+"group": "NBA",
+"bg": "5a2d81",
+"fg": "ffffff",
+"tag": "SAC",
+"stripe": "6a7a82"
+},
+{
+"id": "Icon-nba-SA",
+"title": "San Antonio Spurs",
+"group": "NBA",
+"bg": "000000",
+"fg": "ffffff",
+"tag": "SA",
+"stripe": "c4ced4"
+},
+{
+"id": "Icon-nba-TOR",
+"title": "Toronto Raptors",
+"group": "NBA",
+"bg": "d91244",
+"fg": "ffffff",
+"tag": "TOR",
+"stripe": "000000"
+},
+{
+"id": "Icon-nba-UTAH",
+"title": "Utah Jazz",
+"group": "NBA",
+"bg": "4e008e",
+"fg": "ffffff",
+"tag": "UTAH",
+"stripe": "79a3dc"
+},
+{
+"id": "Icon-nba-WSH",
+"title": "Washington Wizards",
+"group": "NBA",
+"bg": "e31837",
+"fg": "ffffff",
+"tag": "WSH",
+"stripe": "002b5c"
+},
+{
+"id": "Icon-nhl-ANA",
+"title": "Anaheim Ducks",
+"group": "NHL",
+"bg": "fc4c02",
+"fg": "ffffff",
+"tag": "ANA",
+"stripe": "000000"
+},
+{
+"id": "Icon-nhl-BOS",
+"title": "Boston Bruins",
+"group": "NHL",
+"bg": "231f20",
+"fg": "ffffff",
+"tag": "BOS",
+"stripe": "fdb71a"
+},
+{
+"id": "Icon-nhl-BUF",
+"title": "Buffalo Sabres",
+"group": "NHL",
+"bg": "00468b",
+"fg": "ffffff",
+"tag": "BUF",
+"stripe": "fdb71a"
+},
+{
+"id": "Icon-nhl-CGY",
+"title": "Calgary Flames",
+"group": "NHL",
+"bg": "dd1a32",
+"fg": "ffffff",
+"tag": "CGY",
+"stripe": "000000"
+},
+{
+"id": "Icon-nhl-CAR",
+"title": "Carolina Hurricanes",
+"group": "NHL",
+"bg": "e30426",
+"fg": "ffffff",
+"tag": "CAR",
+"stripe": "000000"
+},
+{
+"id": "Icon-nhl-CHI",
+"title": "Chicago Blackhawks",
+"group": "NHL",
+"bg": "e31937",
+"fg": "ffffff",
+"tag": "CHI",
+"stripe": "000000"
+},
+{
+"id": "Icon-nhl-COL",
+"title": "Colorado Avalanche",
+"group": "NHL",
+"bg": "860038",
+"fg": "ffffff",
+"tag": "COL",
+"stripe": "005ea3"
+},
+{
+"id": "Icon-nhl-CBJ",
+"title": "Columbus Blue Jackets",
+"group": "NHL",
+"bg": "002d62",
+"fg": "ffffff",
+"tag": "CBJ",
+"stripe": "e31937"
+},
+{
+"id": "Icon-nhl-DAL",
+"title": "Dallas Stars",
+"group": "NHL",
+"bg": "20864c",
+"fg": "ffffff",
+"tag": "DAL",
+"stripe": "000000"
+},
+{
+"id": "Icon-nhl-DET",
+"title": "Detroit Red Wings",
+"group": "NHL",
+"bg": "e30526",
+"fg": "ffffff",
+"tag": "DET",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nhl-EDM",
+"title": "Edmonton Oilers",
+"group": "NHL",
+"bg": "00205b",
+"fg": "ffffff",
+"tag": "EDM",
+"stripe": "ff4c00"
+},
+{
+"id": "Icon-nhl-FLA",
+"title": "Florida Panthers",
+"group": "NHL",
+"bg": "e51937",
+"fg": "ffffff",
+"tag": "FLA",
+"stripe": "002d62"
+},
+{
+"id": "Icon-nhl-LA",
+"title": "Los Angeles Kings",
+"group": "NHL",
+"bg": "121212",
+"fg": "ffffff",
+"tag": "LA",
+"stripe": "a2aaad"
+},
+{
+"id": "Icon-nhl-MIN",
+"title": "Minnesota Wild",
+"group": "NHL",
+"bg": "124734",
+"fg": "ffffff",
+"tag": "MIN",
+"stripe": null
+},
+{
+"id": "Icon-nhl-MTL",
+"title": "Montreal Canadiens",
+"group": "NHL",
+"bg": "c41230",
+"fg": "ffffff",
+"tag": "MTL",
+"stripe": null
+},
+{
+"id": "Icon-nhl-NSH",
+"title": "Nashville Predators",
+"group": "NHL",
+"bg": "fdba31",
+"fg": "111111",
+"tag": "NSH",
+"stripe": "002d62"
+},
+{
+"id": "Icon-nhl-NJ",
+"title": "New Jersey Devils",
+"group": "NHL",
+"bg": "e30b2b",
+"fg": "ffffff",
+"tag": "NJ",
+"stripe": "000000"
+},
+{
+"id": "Icon-nhl-NYI",
+"title": "New York Islanders",
+"group": "NHL",
+"bg": "00529b",
+"fg": "ffffff",
+"tag": "NYI",
+"stripe": "f47d31"
+},
+{
+"id": "Icon-nhl-NYR",
+"title": "New York Rangers",
+"group": "NHL",
+"bg": "0056ae",
+"fg": "ffffff",
+"tag": "NYR",
+"stripe": null
+},
+{
+"id": "Icon-nhl-OTT",
+"title": "Ottawa Senators",
+"group": "NHL",
+"bg": "dd1a32",
+"fg": "ffffff",
+"tag": "OTT",
+"stripe": "b79257"
+},
+{
+"id": "Icon-nhl-PHI",
+"title": "Philadelphia Flyers",
+"group": "NHL",
+"bg": "fe5823",
+"fg": "ffffff",
+"tag": "PHI",
+"stripe": "000000"
+},
+{
+"id": "Icon-nhl-PIT",
+"title": "Pittsburgh Penguins",
+"group": "NHL",
+"bg": "000000",
+"fg": "ffffff",
+"tag": "PIT",
+"stripe": "fdb71a"
+},
+{
+"id": "Icon-nhl-SJ",
+"title": "San Jose Sharks",
+"group": "NHL",
+"bg": "00788a",
+"fg": "ffffff",
+"tag": "SJ",
+"stripe": "070707"
+},
+{
+"id": "Icon-nhl-SEA",
+"title": "Seattle Kraken",
+"group": "NHL",
+"bg": "000d33",
+"fg": "ffffff",
+"tag": "SEA",
+"stripe": "a3dce4"
+},
+{
+"id": "Icon-nhl-STL",
+"title": "St. Louis Blues",
+"group": "NHL",
+"bg": "0070b9",
+"fg": "ffffff",
+"tag": "STL",
+"stripe": "fdb71a"
+},
+{
+"id": "Icon-nhl-TB",
+"title": "Tampa Bay Lightning",
+"group": "NHL",
+"bg": "003e7e",
+"fg": "ffffff",
+"tag": "TB",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nhl-TOR",
+"title": "Toronto Maple Leafs",
+"group": "NHL",
+"bg": "003e7e",
+"fg": "ffffff",
+"tag": "TOR",
+"stripe": "ffffff"
+},
+{
+"id": "Icon-nhl-UTAH",
+"title": "Utah Mammoth",
+"group": "NHL",
+"bg": "000000",
+"fg": "ffffff",
+"tag": "UTAH",
+"stripe": "7ab2e1"
+},
+{
+"id": "Icon-nhl-VAN",
+"title": "Vancouver Canucks",
+"group": "NHL",
+"bg": "003e7e",
+"fg": "ffffff",
+"tag": "VAN",
+"stripe": "008752"
+},
+{
+"id": "Icon-nhl-VGK",
+"title": "Vegas Golden Knights",
+"group": "NHL",
+"bg": "344043",
+"fg": "ffffff",
+"tag": "VGK",
+"stripe": "b4975a"
+},
+{
+"id": "Icon-nhl-WSH",
+"title": "Washington Capitals",
+"group": "NHL",
+"bg": "d71830",
+"fg": "ffffff",
+"tag": "WSH",
+"stripe": "0b1f41"
+},
+{
+"id": "Icon-nhl-WPG",
+"title": "Winnipeg Jets",
+"group": "NHL",
+"bg": "002d62",
+"fg": "ffffff",
+"tag": "WPG",
+"stripe": null
+}
+]

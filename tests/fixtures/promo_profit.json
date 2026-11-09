@@ -1,0 +1,19 @@
+{
+  "_about": "A settled bet's profit in units, as every port computes it: web lib/bets.ts profit (web/tests/bets.test.mjs), iPhone BetMath.profit (BetLabTests), and fun_ledger.marked_profit (tests/test_promo_profit.py). `profit_1u` is what the ledger's grading gives one unit (the Python side starts from it); `price` is the user's own price (the apps start from it). A boost's cap (`boost_cap`, units) is the book's max extra winnings (Oct 30).",
+  "cases": [
+    {"name": "a plain win", "bet": {"stake": 1, "price": 150, "ticket_status": "won", "profit_1u": 1.5}, "profit": 1.5},
+    {"name": "a plain loss", "bet": {"stake": 2, "price": 150, "ticket_status": "lost", "profit_1u": -1}, "profit": -2},
+    {"name": "a 50% boost on a win", "bet": {"stake": 1, "price": 200, "boost": 50, "ticket_status": "won", "profit_1u": 2}, "profit": 3},
+    {"name": "a 50% boost capped at 0.5u", "bet": {"stake": 1, "price": 200, "boost": 50, "boost_cap": 0.5, "ticket_status": "won", "profit_1u": 2}, "profit": 2.5},
+    {"name": "a cap the boost never reaches", "bet": {"stake": 1, "price": 100, "boost": 30, "boost_cap": 5, "ticket_status": "won", "profit_1u": 1}, "profit": 1.3},
+    {"name": "a boosted loss", "bet": {"stake": 1, "price": 200, "boost": 50, "boost_cap": 0.5, "ticket_status": "lost", "profit_1u": -1}, "profit": -1},
+    {"name": "a bonus loss costs nothing", "bet": {"stake": 10, "price": 7772, "bonus": true, "ticket_status": "lost", "profit_1u": -1}, "profit": 0},
+    {"name": "a bonus win pays the profit only", "bet": {"stake": 10, "price": 150, "bonus": true, "ticket_status": "won", "profit_1u": 1.5}, "profit": 15},
+    {"name": "Bet Protect+ takes 3% of the stake, in cash, even on a bonus win", "bet": {"stake": 10, "price": 150, "bonus": true, "protect": true, "ticket_status": "won", "profit_1u": 1.5}, "profit": 14.7},
+    {"name": "Bet Protect+ is refunded on a void", "bet": {"stake": 2, "price": 150, "protect": true, "ticket_status": "void", "profit_1u": 0}, "profit": 0},
+    {"name": "a boosted bonus win, capped", "bet": {"stake": 2, "price": 300, "bonus": true, "boost": 30, "boost_cap": 1, "ticket_status": "won", "profit_1u": 3}, "profit": 7},
+    {"name": "a bet reset's loss still costs the stake (the bonus bet it gives back counts when it's used)", "bet": {"stake": 20, "price": 127, "reset": true, "ticket_status": "lost", "profit_1u": -1}, "profit": -20},
+    {"name": "a cash bet cashed out", "bet": {"stake": 2, "price": 400, "cashout": 3, "ticket_status": "lost", "profit_1u": -1}, "profit": 1},
+    {"name": "a bonus bet cashed out", "bet": {"stake": 2, "price": 400, "bonus": true, "cashout": 3, "ticket_status": "lost", "profit_1u": -1}, "profit": 3}
+  ]
+}

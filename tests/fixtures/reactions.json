@@ -1,0 +1,30 @@
+{
+  "_doc": "Reactions on friends' bets (Nov 6, supabase 0042): one fixture for web lib/social.ts (tally, nextReaction, whoText) and iPhone Social.swift. me = 'a'.",
+  "me": "a",
+  "tally": [
+    {"case": "nothing yet", "reactions": [], "want": []},
+    {"case": "most first, then the first reacted; you are You and lead your chip; no name is Someone; an unknown key is skipped",
+     "reactions": [
+       {"bet_id": "x", "user_id": "b", "name": "Sam", "reaction": "sweat", "created_at": "2026-11-06T20:00:00Z"},
+       {"bet_id": "x", "user_id": "c", "name": null, "reaction": "fire", "created_at": "2026-11-06T20:01:00Z"},
+       {"bet_id": "x", "user_id": "d", "name": "Dan", "reaction": "clap", "created_at": "2026-11-06T20:01:30Z"},
+       {"bet_id": "x", "user_id": "a", "name": "Mike", "reaction": "fire", "created_at": "2026-11-06T20:02:00Z"},
+       {"bet_id": "x", "user_id": "e", "name": "Eve", "reaction": "goat", "created_at": "2026-11-06T20:03:00Z"}
+     ],
+     "want": [
+       {"reaction": "fire", "emoji": "🔥", "count": 2, "mine": true, "names": ["You", "Someone"]},
+       {"reaction": "sweat", "emoji": "😬", "count": 1, "mine": false, "names": ["Sam"]},
+       {"reaction": "goat", "emoji": "🐐", "count": 1, "mine": false, "names": ["Eve"]}
+     ]}
+  ],
+  "next": [
+    {"current": null, "tapped": "fire", "want": "fire"},
+    {"current": "fire", "tapped": "fire", "want": null},
+    {"current": "fire", "tapped": "goat", "want": "goat"}
+  ],
+  "who": [
+    {"names": ["You"], "want": "You"},
+    {"names": ["Sam", "Cal"], "want": "Sam and Cal"},
+    {"names": ["You", "Sam", "Cal", "Dan"], "want": "You, Sam and 2 more"}
+  ]
+}

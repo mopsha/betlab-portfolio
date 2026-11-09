@@ -1,0 +1,35 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+/build/
+dist/
+
+# secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Local agent instructions and configuration (shared adapters stay tracked)
+AGENTS.override.md
+CLAUDE.local.md
+.claude/settings.local.json
+.codex/config.local.toml
+.codex/config.local.*.toml
+.codex/agents/*.local.toml
+.codex/auth.json
+.codex/auth.*.json
+.codex/.env*
+.agents/skills/**/.env*
+
+# large re-downloadable data (history, raw pulls) stays out of git
+data/cache/
+
+# iPhone app: Supabase address (made by ios/scripts/make_secrets.sh) and Xcode's per-user files
+ios/Config/Secrets.xcconfig
+ios/build/
+xcuserdata/
+*.xcuserstate
+.DS_Store

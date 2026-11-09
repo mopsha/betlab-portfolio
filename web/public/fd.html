@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open in FanDuel</title>
+<!--
+  The iPhone app's "Open in FanDuel" for a parlay (Oct 15). FanDuel takes a parlay as
+  addToBetslip?marketId[0]=..&selectionId[0]=.. and its app needs the brackets as they are, but iOS
+  percent-encodes them in any link a native app opens (marketId%5B0%5D: the app opened with an empty
+  betslip). Safari keeps them, as the web app's links did when parlays landed on Oct 6, so the app opens
+  this page with ?m=<marketId>&s=<selectionId> per leg (no brackets) and the page hands FanDuel's app the
+  bracketed link. Static and public (proxy.ts lets it through): it holds no data, and only digits and dots
+  ever reach the link.
+-->
+<style>
+  :root { color-scheme: light dark; --bg: #f4f4f6; --fg: #111; --muted: #666; --btn: #1493ff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111; --fg: #eee; --muted: #999; } }
+  body { margin: 0; padding: 48px 16px; background: var(--bg); color: var(--fg);
+         font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; text-align: center; }
+  a.btn { display: inline-block; margin-top: 16px; padding: 12px 22px; border-radius: 12px; background: var(--btn);
+          color: #fff; font-weight: 600; text-decoration: none; }
+  a.web { display: block; margin-top: 18px; color: var(--muted); font-size: 14px; }
+  p { color: var(--muted); }
+</style>
+</head>
+<body>
+<h1 style="font-size:20px">Opening your slip in FanDuel…</h1>
+<p id="msg">If FanDuel doesn't open, tap the button.</p>
+<a class="btn" id="app" href="#">Open in FanDuel</a>
+<a class="web" id="web" href="#">Open FanDuel's website instead</a>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var ok = function (x) { return /^[0-9.]+$/.test(x); };
+    var m = q.getAll("m"), s = q.getAll("s");
+    var parts = [];
+    for (var i = 0; i < m.length && i < s.length; i++) {
+      if (ok(m[i]) && ok(s[i])) parts.push("marketId[" + i + "]=" + m[i] + "&selectionId[" + i + "]=" + s[i]);
+    }
+    if (!parts.length || parts.length !== m.length) {
+      document.getElementById("msg").textContent = "This link has no bets in it. Go back to BetLab and try again.";
+      document.getElementById("app").style.display = "none";
+      document.getElementById("web").style.display = "none";
+      return;
+    }
+    var tail = "ny.sportsbook.fanduel.com/addToBetslip?" + parts.join("&");
+    var app = "fanduelsportsbook://" + tail;
+    document.getElementById("app").href = app;
+    document.getElementById("web").href = "https://" + tail;
+    location.href = app;
+  })();
+</script>
+</body>
+</html>
